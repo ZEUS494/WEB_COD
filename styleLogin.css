@@ -59,9 +59,9 @@ button[type="submit"] {
     margin-top: 200px;
     width: 200px;
     height: 35px;
-    background-color: #fdbe00;
+    background-color: #fff;
     border-radius: 15px;
-    border: none;
+    border: 1px solid #fdbe00;
     cursor: pointer;
     font-size: 20px;
 }
