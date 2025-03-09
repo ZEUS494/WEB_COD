@@ -10,7 +10,8 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(-135deg, #fff, #bbbbbb);
+    background-image: url(login_pictures/backgrounddark.png);
+    background-size: cover;
 }
 
 .container {
@@ -20,13 +21,12 @@ body {
     height: 500px;
     background-color: #fff;
     border-radius: 25px;
-    box-shadow: 0 0 5px #ffffff6a;
 }
 
 #picture1 {
     width: 50%;
     border-radius: 25px;
-    background-image: url(pictures/22.webp);
+    background-image: url(login_pictures/filler.webp);
     background-size: cover;
     background-repeat: no-repeat;
 }
@@ -48,27 +48,37 @@ input {
     width: 300px;
     height: 35px;
     margin: 10px;
-    background-color: #d9d9d9;
+    background-color: #eeeeee;
     border-radius: 10px;
     border: none;
     color: #000;
     font-size: 15px;
+    box-shadow: 0px 0px 5px #0000002d;
+    padding: 8px;
+}
+
+input:hover {
+    transition: 0.3s;
+    box-shadow: 0px 0px 5px #e8ae00;
 }
 
 button[type="submit"] {
-    margin-top: 200px;
+    margin-top: 170px;
     width: 200px;
     height: 35px;
     background-color: #fff;
     border-radius: 15px;
-    border: 1px solid #fdbe00;
+    border: 2px solid #e8ae00;
+    color: #d8a200;
     cursor: pointer;
     font-size: 20px;
 }
 
 button[type="submit"]:hover {
-    background-color: #cc9900;
+    background-color: #daa300;
+    color: #000;
     transition: 0.3s;
+    scale: 1.05;
 }
 
 a {
@@ -81,4 +91,38 @@ a {
 a:hover {
     color: #003f6f;
     transition: 0.3s;
+}
+
+@media (max-width: 768px) {
+    .container {
+        display: flex;
+        position: relative;
+        flex-direction: column;
+        width: 400px;
+        height: 500px;
+        background-color: #fff;
+        border-radius: 25px;
+    }
+    form {
+        width: 100%;
+    }
+    input {
+        width: 250px;
+        margin-top: 30px;
+    }
+    button[type="submit"] {
+        margin-top: 100px;
+    }
+}
+
+@media (max-width: 360px) {
+    .container {
+        display: flex;
+        position: relative;
+        flex-direction: column;
+        width: 300px;
+        height: 500px;
+        background-color: #fff;
+        border-radius: 25px;
+    }
 }
