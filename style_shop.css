@@ -1,10 +1,11 @@
 *{
     font-family: "Roboto";
+    color: white;
 }
 body{
-    background-image: url(fon.png);
+    background-image: url(backgrounddark.png);
     width: 99vw;
-    height: 334vw;
+    height: 413vw;
     margin: 0;
     padding: 0;
     display: flex;
@@ -14,7 +15,7 @@ body{
 }
 .post{
     width: 300px;
-    height: 410px;
+    height: 470px;
     border-radius: 10px;
     margin: 50px;
     padding: 20px;
@@ -23,7 +24,7 @@ body{
 }
 .top{
     width: 320px;
-    height: 65%;
+    height: 67%;
     border-radius: 10px 10px 0 0;
     background-position: center;
     background-repeat: no-repeat;
@@ -31,8 +32,8 @@ body{
 }
 .down{
     width: 100%;
-    height: 35%;
-    background-color: #f9e5bc;
+    height: 33%;
+    background-color: #1a1a1a;
     padding-left: 20px;
     display: flex;
     flex-direction: column;
@@ -51,41 +52,93 @@ body{
     position: relative;
     display: flex;
     width: 100%;
-    background: #f9f9fd;
+    background: #202020;
 }
 #t1{
-    background-image: url(mouse.png);
+    background-image: url(t1.jpg);
 }
 #t2{
-    background-image: url(mouse2.png);
+    background-image: url(t2.jpg);
 }
 #t3{
-    background-image: url(mouse3.png);
+    background-image: url(t3.png);
 }
 #t4{
-    background-image: url(mouse4.png);
+    background-image: url(t4.jpg);
 }
 #t5{
-    background-image: url(mouse.png);
+    background-image: url(t5.jpg);
 }
 #t6{
-    background-image: url(mouse2.png);
+    background-image: url(t6.jpg);
 }
 #t7{
-    background-image: url(mouse4.png);
+    background-image: url(t7.jpg);
 }
 #t8{
-    background-image: url(mouse3.png);
+    background-image: url(t9.jpg);
 }
 #t9{
-    background-image: url(mouse2.png);
+    background-image: url(t8.jpg);
 }
 #t10{
-    background-image: url(mouse3.png);
+    background-image: url(t10.jpeg);
 }
 #t11{
-    background-image: url(mouse4.png);
+    background-image: url(t11.jpg);
 }
+#t12{
+    background-image: url(t12.jpg);
+}
+#t13{
+    background-image: url(t13.jpg);
+}
+#t14{
+    background-image: url(t14.jpg);
+}
+#t15{
+    background-image: url(t15.jpg);
+}
+#t16{
+    background-image: url(t16.jpg);
+}
+#t17{
+    background-image: url(t17.jpg);
+}
+#t18{
+    background-image: url(t18.jpg);
+}
+#t19{
+    background-image: url(t19.jpg);
+}
+#t20{
+    background-image: url(t20.jpg);
+}
+#t21{
+    background-image: url(t21.jpg);
+}
+#t22{
+    background-image: url(t22.jpg);
+}
+#t23{
+    background-image: url(t23.jpg);
+}
+#t24{
+    background-image: url(t24.jpg);
+}
+#t25{
+    background-image: url(t25.jpg);
+}
+#t26{
+    background-image: url(t26.jpg);
+}
+#t27{
+    background-image: url(t27.jpg);
+}
+#t28{
+    background-image: url(t28.jpg);
+}
+
 .back{
     width: 60px;
     height: 60px;
@@ -123,6 +176,7 @@ body{
 #c1{
     border-radius: 10px 10px 0 0;
     padding-top: 15px;
+    margin-top: 30px;
 }
 #c4{
     border-radius: 0px 0px 10px 10px;
@@ -131,6 +185,15 @@ h1{
     color: rgb(48, 159, 218);
     text-shadow: rgb(34, 139, 195) 1px 0 10px;
     font-size: 34px;
+    width: 800px;
+    height: 60px;
+    border-radius: 10px;
+    background-color: #202020;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
 }
 .coin{
     width: 30px;
@@ -162,7 +225,7 @@ p{
     bottom: 30px;
     z-index: 12;
     cursor: pointer;
-    font-size: 15px;
+    font-size: 17px;
 }
 
 .btn-new:hover {
