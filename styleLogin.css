@@ -19,7 +19,7 @@ body {
     position: relative;
     width: 900px;
     height: 500px;
-    background-color: #fff;
+    background-color: #202020;
     border-radius: 25px;
 }
 
@@ -42,17 +42,18 @@ form {
 form p {
     font-weight: bold;
     font-size: 30px;
+    color: #fff;
 }
 
 input {
     width: 300px;
     height: 35px;
     margin: 10px;
-    background-color: #eeeeee;
+    background-color: #333333;
+    color: #fff;
     border-radius: 10px;
     border: none;
-    color: #000;
-    font-size: 15px;
+    font-size: 18px;
     box-shadow: 0px 0px 5px #0000002d;
     padding: 8px;
 }
@@ -66,7 +67,7 @@ button[type="submit"] {
     margin-top: 170px;
     width: 200px;
     height: 35px;
-    background-color: #fff;
+    background-color: #202020;
     border-radius: 15px;
     border: 2px solid #e8ae00;
     color: #d8a200;
@@ -91,38 +92,4 @@ a {
 a:hover {
     color: #003f6f;
     transition: 0.3s;
-}
-
-@media (max-width: 768px) {
-    .container {
-        display: flex;
-        position: relative;
-        flex-direction: column;
-        width: 400px;
-        height: 500px;
-        background-color: #fff;
-        border-radius: 25px;
-    }
-    form {
-        width: 100%;
-    }
-    input {
-        width: 250px;
-        margin-top: 30px;
-    }
-    button[type="submit"] {
-        margin-top: 100px;
-    }
-}
-
-@media (max-width: 360px) {
-    .container {
-        display: flex;
-        position: relative;
-        flex-direction: column;
-        width: 300px;
-        height: 500px;
-        background-color: #fff;
-        border-radius: 25px;
-    }
 }

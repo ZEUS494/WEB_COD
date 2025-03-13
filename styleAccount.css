@@ -1,0 +1,168 @@
+* {
+    outline: none;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+body {
+    padding: 0;
+    margin: 0;
+    height: 100vh;
+    width: 100vw;
+    background-image: url(account_pictures/backgrounddark.png);
+    background-position: center;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    justify-self: center;
+    align-items: center;
+}
+
+h1 {
+    width: 500px;
+    margin-top: 50px;
+    color: #fff;
+    background-color: #202020;
+    padding: 10px;
+    border-radius: 15px;
+    text-align: center;
+}
+
+a {
+    text-decoration: none;
+    color: #ffb941;
+    font-size: 18px;
+}
+
+a:hover {
+    transition: 0.3s;
+    color: #cb8a1b;
+    text-decoration: underline;
+}
+
+.container {
+    position: relative;
+    width: 70%;
+    display: flex;
+    justify-content: center;
+    height: 600px;
+}
+
+.profile {
+    width: 30%;
+    margin: 10px;
+    padding: 25px;
+}
+
+#profile-photo {
+    width: 100px;
+    height: 100px;
+    background-image: url(account_pictures/account_profile.png);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-radius: 10px;
+}
+
+.statistics {
+    width: 70%;
+    margin: 10px;
+    background-color: #202020;
+    color: #fff;
+    border-radius: 15px;
+    font-size: 20px;
+    padding: 25px;
+}
+
+#balance, #homework {
+    background-color: #333333;
+    padding: 8px;
+    border-radius: 10px;
+}
+
+#history {
+    font-weight: bold;
+}
+
+.profile {
+    background-color: #202020;
+    color: #fff;
+    border-radius: 15px;
+    font-size: 20px;
+    width: 400px;
+}
+
+button[type="submit"] {
+    background-color: #af2626;
+    border: none;
+    width: 90%;
+    height: 50px;
+    margin-left: 16px;
+    color: #000;
+    font-size: 20px;
+    border-radius: 15px;
+    margin-top: 40%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+button[type="submit"]:hover {
+    transition: 0.3s;
+    cursor: pointer;
+    background-color: #db3c3c;
+}
+
+.history-card {
+    background-color: #0000002d;
+    width: 160px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 10px;
+    border-radius: 15px;
+    margin: 15px;
+}
+
+.card-images {
+    width: 150px;
+    height: 150px;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    border-radius: 15px;
+}
+
+#img1 {
+    background-image: url(account_pictures/no-image.png);
+}
+
+.history {
+    display: flex;
+}
+
+#leave {
+    width: 20px;
+    height: 20px;
+    background-image: url(account_pictures/exit.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    margin-left: 10px;
+}
+
+.block {
+    display: flex;
+    margin: 0;
+}
+
+
+#id, #course {
+    color: #838383;
+    margin-right: 10px;
+}
+
+#username {
+    margin-left: 15%;
+}
