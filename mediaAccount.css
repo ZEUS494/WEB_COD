@@ -53,6 +53,7 @@
     }
     
     .profile-and-exit {
+        position: absolute;
         order: 2;
     }
     
@@ -76,6 +77,8 @@
     }
     
     .statistics {
+        margin-top: 650px;
+        width: 100%;
         width: 100%;
     }
 }
@@ -88,13 +91,16 @@
     
     .container {
         width: 99%;
+        display: flex;
     }
     
     .profile-and-exit {
+        position: absolute;
         width: 102%;
     }
     
     .statistics {
+        margin-top: 650px;
         width: 100%;
         font-size: 18px;
         text-decoration: none;
