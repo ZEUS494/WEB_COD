@@ -240,7 +240,7 @@ h3{
 #co1{
     left: 60px;
 }
-@media screen and (max-width: 1200px) {
+@media screen and (width <= 1200px) {
     body{
         width: 100vw;
         height: 930vh;
@@ -251,7 +251,7 @@ h3{
         margin-left:5px ;
     }
 }
-@media screen and (max-width: 576px) {
+@media screen and (width <= 576px) {
     .chil{
         flex-direction: column;
         align-items: center;
@@ -274,7 +274,7 @@ h3{
     }
     
 }
-@media screen and (max-width: 360px) {
+@media screen and (width <= 360px) {
     .chil{
         
         width: 300px;
