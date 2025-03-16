@@ -1,0 +1,116 @@
+@media screen and (max-width: 1200px) {
+    .header {
+        width: 75%;
+    }
+    
+    .container {
+        width: 85%;
+    }
+    
+    .profile-and-exit {
+        width: 400px;
+    }
+    
+    .statistics {
+        width: 60%;
+    }
+}
+
+@media screen and (max-width: 998px) {
+    .header {
+        width: 85%;
+    }
+    #avatar-picture {
+        width: 220px;
+        height: 220px;
+    }
+    .container {
+        width: 95%;
+    }
+    
+    .profile-and-exit {
+        width: 350px;
+    }
+    
+    .statistics {
+        width: 55%;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .header {
+        width: 90%;
+    }
+    
+    .container {
+        width: 98%;
+    }
+    
+    .profile-and-exit,
+    .statistics {
+        width: 100%;
+    }
+    
+    .profile-and-exit {
+        position: absolute;
+        order: 2;
+    }
+    
+    .statistics {
+        order: 1;
+        margin-top: 650px;
+        height: 300px;
+        margin-bottom: 50px;
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .header {
+        width: 95%;
+        padding-left: 15px;
+    }
+    
+    .container {
+        width: 99%;
+    }
+    
+    .profile-and-exit {
+        width: 100%;
+    }
+    
+    .statistics {
+        margin-top: 650px;
+        width: 100%;
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 360px) {
+    .header {
+        width: 102%;
+        padding-left: 50px;
+    }
+    
+    .container {
+        width: 99%;
+        display: flex;
+    }
+    
+    .profile-and-exit {
+        position: absolute;
+        width: 102%;
+    }
+    
+    .statistics {
+        margin-top: 650px;
+        width: 100%;
+        font-size: 18px;
+        text-decoration: none;
+        font-weight: normal;
+    }
+
+    #completed-courses-header, #homework-stat-done-header, #homework-stat-notdone-header {
+        font-weight: normal;
+        font-size: 18px;
+    }
+}
