@@ -5,7 +5,7 @@
 body{
     background: #181818;
     width: 99vw;
-    height: 413vw;
+    height: auto;
     margin: 0;
     padding: 0;
     display: flex;
@@ -139,9 +139,10 @@ body{
     background-image: url(images/t28.jpg);
 }
 
-.back{
-    width: 60px;
-    height: 60px;
+.tovari{
+    width: auto;
+    height: auto;
+    padding: 15px;
     background-color:rgb(255, 184, 52);
     display: flex;
     align-items: center;
@@ -154,7 +155,7 @@ body{
     font-family: "Roboto";
     position: absolute;
     z-index: 12;
-    left: 12px;
+    right: 12px;
     top: 12px;
     transition: .2s linear;
     font-weight: bolder;
@@ -180,29 +181,57 @@ body{
 }
 #c4{
     border-radius: 0px 0px 10px 10px;
+    margin-bottom: 30px;
 }
 h1{
     color: rgb(255, 255, 255);
     text-shadow: rgb(34, 139, 195) 1px 0 10px;
     font-size: 34px;
-
+    margin-top: 60px;
     text-align: center;
     display: flex;
     flex-direction: column;
     justify-content: center;
 
 }
-.coin{
-    width: 30px;
-    min-height: 30px;
-    background-image: url(images/coin.png);
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
+.coin {
+    width: 20px;
+    height: 20px;
+    background: radial-gradient(circle, #ffcc00, #ff9900, #ff6600);
+    border-radius: 50%;
     position: absolute;
-    bottom: 39px;
-    left: 80px;
+    bottom: 44px;
+    left: 85px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3), inset 0 1px 2px rgba(255, 255, 255, 0.3);
 }
+
+.coin::before {
+    content: '';
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    background: radial-gradient(circle, rgba(255, 215, 0, 0.9), rgba(255, 165, 0, 0.8));
+    border-radius: 50%;
+    top: 2px;
+    left: 2px;
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.coin::after {
+    content: 'C';
+    position: absolute;
+    font-family: Arial, sans-serif;
+    font-size: 8px;
+    font-weight: bold;
+    color: #fff;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    line-height: 1;
+}
+
 p{
     font-size: 17px;
     position: absolute;
@@ -228,22 +257,22 @@ p{
 .btn-new:hover {
     box-shadow: 0 0 0 2px white, 0 0 0 4px rgb(255, 184, 52);
 }
-.back:hover {
+.tovari:hover {
     box-shadow: 0 0 0 2px white, 0 0 0 4px rgb(255, 184, 52);
 }
 h3{
     width: 95%;
     font-size: 18px;
 }#c{
-    left: 70px;
+    left: 75px;
 }
 #co1{
-    left: 60px;
+    left: 65px;
 }
-@media screen and (width <= 1200px) {
+@media screen and (max-width: 1200px) {
     body{
-        width: 100vw;
-        height: 930vh;
+        width: auto;
+        height: auto;
     }
     
     .post{
@@ -251,15 +280,215 @@ h3{
         margin-left:5px ;
     }
 }
-@media screen and (width <= 576px) {
+@media screen and (max-width: 1150px) and (min-width: 768px) {
+    .chil {
+        flex-direction: column; /* Карточки размещаются в столбец */
+        align-items: center; /* Центрируем карточки по центру */
+        justify-content: center; /* Выравниваем карточки по центру */
+    }
+
+    .post {
+        width: 73%; /* Карточки занимают 80% ширины экрана */
+        height: 800px; /* Автоматическая высота */
+        margin: 20px auto; /* Отступы сверху и снизу, а также автоматическое выравнивание по центру */
+    }
+
+    .top {
+        width: auto; /* Верхняя часть карточки занимает всю ширину карточки */
+        height: 65%; /* Немного уменьшаем высоту верхней части */
+    }
+
+    .down {
+        width: auto; /* Нижняя часть карточки занимает всю ширину карточки */
+        height: 35%; /* Увеличиваем высоту нижней части */
+        padding: 15px; /* Уменьшаем внутренний отступ */
+    }
+
+    h1 {
+        font-size: 35px; /* Уменьшаем размер заголовка */
+        margin-top: 60px; /* Уменьшаем отступ сверху */
+    }
+
+    p {
+        font-size: 25px; /* Уменьшаем размер текста */
+        bottom: 5px; /* Корректируем позицию текста */
+        left: 50px;
+    }
+
+    .coin {
+        width: 25px;
+        height: 25px;
+        background: radial-gradient(circle, #ffcc00, #ff9900, #ff6600);
+        border-radius: 50%;
+        position: absolute;
+        bottom: 32px;
+        left: 100px;
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3), inset 0 1px 2px rgba(255, 255, 255, 0.3);
+    }
+
+    .coin::before {
+        content: '';
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        background: radial-gradient(circle, rgba(255, 215, 0, 0.9), rgba(255, 165, 0, 0.8));
+        border-radius: 50%;
+        top: 2.5px;
+        left: 2.5px;
+        box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.2);
+    }
+
+    .coin::after {
+        content: 'C';
+        position: absolute;
+        font-family: Arial, sans-serif;
+        font-size: 10px;
+        font-weight: bold;
+        color: #fff;
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+        line-height: 1;
+    }
+
+    #c {
+        left: 85px;
+    }
+
+    #co1 {
+        left: 72px;
+    }
+
+    .btn-new {
+        width: 300px; /* Уменьшаем ширину кнопки */
+        height: auto; /* Уменьшаем высоту кнопки */
+        font-size: 21px;
+        padding: 0px; /* Уменьшаем размер текста кнопки */
+        left: 280px; /* Кнопка выравнивается по центру */
+        bottom: 10px;
+    }
+
+    .tovari {
+        font-size: 23px; /* Уменьшаем размер текста кнопки */
+        padding: 15px; /* Уменьшаем внутренний отступ кнопки */
+        top: -8px;
+        right: -5px;
+    }
+}
+@media screen and (max-width: 768px) and (min-width: 577px) {
+    body {
+        width: auto;
+        height: auto;
+        padding: 10px; /* Добавляем небольшой отступ */
+    }
+
+    .post {
+        width: 350px; /* Увеличиваем ширину карточки */
+        height: 500px; /* Увеличиваем высоту карточки */
+        margin: 20px; /* Уменьшаем отступы между карточками */
+    }
+
+    .top {
+        width: auto; /* Синхронизируем ширину с .post */
+        height: 65%; /* Немного уменьшаем высоту верхней части */
+    }
+
+    .down {
+        width: auto; /* Синхронизируем ширину с .post */
+        height: 35%; /* Увеличиваем высоту нижней части */
+        padding: 15px; /* Уменьшаем внутренний отступ */
+    }
+
+    .tovari {
+        font-size: 20px; /* Уменьшаем размер текста кнопки */
+        padding: 10px; /* Уменьшаем внутренний отступ кнопки */
+        top: -12px;
+        right: -5px;
+    }
+
+    h1 {
+        font-size: 35px; /* Уменьшаем размер заголовка */
+        margin-top: 40px; /* Уменьшаем отступ сверху */
+    }
+    h3{
+        font-size: 20px;
+    }
+
+    p {
+        font-size: 18px; /* Уменьшаем размер текста */
+        bottom: 0px; /* Корректируем позицию текста */
+        left: 60px;
+    }
+
+    .coin {
+        width: 20px;
+        height: 20px;
+        background: radial-gradient(circle, #ffcc00, #ff9900, #ff6600);
+        border-radius: 50%;
+        position: absolute;
+        bottom: 18px;
+        left: 95px;
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3), inset 0 1px 2px rgba(255, 255, 255, 0.3);
+    }
+    
+    .coin::before {
+        content: '';
+        position: absolute;
+        width: 16px;
+        height: 16px;
+        background: radial-gradient(circle, rgba(255, 215, 0, 0.9), rgba(255, 165, 0, 0.8));
+        border-radius: 50%;
+        top: 2px;
+        left: 2px;
+        box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.2);
+    }
+    
+    .coin::after {
+        content: 'C';
+        position: absolute;
+        font-family: Arial, sans-serif;
+        font-size: 8px;
+        font-weight: bold;
+        color: #fff;
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+        line-height: 1;
+    }
+    #c{
+        left: 85px;
+    }
+    #co1{
+        left: 78px;
+    }
+
+    .btn-new {
+        width: 160px; /* Уменьшаем ширину кнопки */
+        height: 40px; /* Уменьшаем высоту кнопки */
+        font-size: 16px; /* Уменьшаем размер текста кнопки */
+        left: 200px; /* Корректируем позицию кнопки */
+        bottom: 0px;
+    }
+
+    .chil {
+        flex-direction: row; /* Размещаем карточки в строку */
+        flex-wrap: wrap; /* Переносим карточки на новую строку при необходимости */
+        justify-content: center; /* Центрируем карточки */
+    }
+}
+@media screen and (max-width: 576px) {
     .chil{
         flex-direction: column;
         align-items: center;
         justify-content: center;
     }
     body{
-        width: 97vw;
-        height: 2530vh;
+        width: auto;
+        height: auto;
     }
     .back{
         height: 40px;
@@ -268,21 +497,26 @@ h3{
         top: 10px;
         left: 10px;
     }
+    .tovari{
+        font-size: 20px; /* Уменьшаем размер текста кнопки */
+        padding: 10px; /* Уменьшаем внутренний отступ кнопки */
+        top: -8px;
+        right: -5px;
+    }
     .post{
         margin-top: 20px;
         left: 10px;
     }
     
 }
-@media screen and (width <= 360px) {
-    .chil{
-        
+@media screen and (max-width: 400px) {
+    .chil{    
         width: 300px;
         height: 1400px;
     }
     body{
-        width: 97vw;
-        height: 2024vh;
+        width: auto;
+        height: auto;
     }
     .top{
         width: 270px;
@@ -302,6 +536,7 @@ h3{
         bottom: 7px;
         width: 150px;
         height: 30px;
+        font-size: 14px;
     }
     p{
         
@@ -310,7 +545,7 @@ h3{
     }
     .coin{
         
-        bottom: 18px;
+        bottom: 24px;
     }
     h3{
         font-size: 15px;
@@ -322,12 +557,13 @@ h3{
         width: 250px;
         font-size: 26px;
     }
-    .back{
-        width: 30px;
-        height: 30px;
+    .tovari{
+        width: auto;
+        height: auto;
         font-size: 12px;
-        top: -6px;
-        left: -6px;
+        top: -12px;
+        right: -12px;
+        padding:10px;
     }
     ::-webkit-scrollbar {
         width: 0px;
