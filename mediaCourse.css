@@ -1,0 +1,117 @@
+@media screen and (max-width: 1200px) {
+    .header {
+        width: 80%;
+    }
+
+    .container {
+        width: 80%;
+    }
+
+    .block {
+        width: 330px;
+    }
+}
+
+/* Для экранов шириной 998px и меньше */
+@media screen and (max-width: 998px) {
+    .header {
+        width: 90%;
+    }
+
+    .container {
+        width: 90%;
+    }
+
+    .block {
+        width: 310px;
+    }
+
+    h1 {
+        font-size: 20px;
+    }
+
+    #course-name {
+        font-size: 20px;
+    }
+}
+
+/* Для экранов шириной 768px и меньше */
+@media screen and (max-width: 768px) {
+    .header {
+        width: 95%;
+        padding-left: 50px;
+    }
+
+    .container {
+        width: 95%;
+        flex-wrap: wrap;
+    }
+
+    .block {
+        width: 100%;
+    }
+
+    h1 {
+        font-size: 18px;
+    }
+
+    #course-name {
+        font-size: 18px;
+    }
+
+    #lessons {
+        width: 100%;
+    }
+}
+
+/* Для экранов шириной 576px и меньше */
+@media screen and (max-width: 576px) {
+    .header {
+        width: 100%;
+        padding-left: 50px;
+    }
+
+    .container {
+        width: 100%;
+    }
+
+    .block {
+        width: 100%;
+    }
+
+    h1 {
+        font-size: 18px;
+    }
+
+    #course-name {
+        font-size: 18px;
+    }
+}
+
+/* Для экранов шириной 360px и меньше */
+@media screen and (max-width: 360px) {
+    .header {
+        width: 100%;
+        padding-left: 50px;
+    }
+
+    .container {
+        width: 100%;
+    }
+
+    .block {
+        width: 100%;
+    }
+
+    h1 {
+        font-size: 18px;
+    }
+
+    #course-name {
+        font-size: 18px;
+    }
+
+    #open-close {
+        width: 110px;
+    }
+}
