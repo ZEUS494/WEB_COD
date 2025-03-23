@@ -1,0 +1,701 @@
+*{
+    font-family: "Roboto";
+    color: white;
+}
+body{
+    background: #181818;
+    width: 99vw;
+    height: auto;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.post{
+    width: 300px;
+    height: 470px;
+    border-radius: 10px;
+    margin: 50px;
+    padding: 20px;
+    font-family: "Arial Black";
+    position: relative;
+}
+.top{
+    width: 320px;
+    height: 67%;
+    border-radius: 10px 10px 0 0;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.down{
+    width: 300px;
+    height: 33%;
+    background-color: #333333;
+    padding-left: 20px;
+    display: flex;
+    flex-direction: column;
+    transition: 500ms;
+    border-radius: 0 0 10px 10px;
+
+}
+
+.products{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.chil{
+    position: relative;
+    display: flex;
+    width: 100%;
+    background: #202020;
+}
+#t1{
+    background-image: url(images/t1.jpg);
+}
+#t2{
+    background-image: url(images/t2.jpg);
+}
+#t3{
+    background-image: url(/images/t3.png);
+}
+#t4{
+    background-image: url(images/t4.jpg);
+}
+#t5{
+    background-image: url(images/t5.jpg);
+}
+#t6{
+    background-image: url(images/t6.jpg);
+}
+#t7{
+    background-image: url(images/t7.jpg);
+}
+#t8{
+    background-image: url(images/t9.jpg);
+}
+#t9{
+    background-image: url(images/t8.jpg);
+}
+#t10{
+    background-image: url(images/t10.jpeg);
+}
+#t11{
+    background-image: url(images/t11.jpg);
+}
+#t12{
+    background-image: url(images/t12.jpg);
+}
+#t13{
+    background-image: url(images/t13.jpg);
+}
+#t14{
+    background-image: url(images/t14.jpg);
+}
+#t15{
+    background-image: url(images/t15.jpg);
+}
+#t16{
+    background-image: url(images/t16.jpg);
+}
+#t17{
+    background-image: url(images/t17.jpg);
+}
+#t18{
+    background-image: url(images/t18.jpg);
+}
+#t19{
+    background-image: url(images/t19.jpg);
+}
+#t20{
+    background-image: url(images/t20.jpg);
+}
+#t21{
+    background-image: url(images/t21.jpg);
+}
+#t22{
+    background-image: url(images/t22.jpg);
+}
+#t23{
+    background-image: url(images/t23.jpg);
+}
+#t24{
+    background-image: url(images/t24.jpg);
+}
+#t25{
+    background-image: url(images/t25.jpg);
+}
+#t26{
+    background-image: url(images/t26.jpg);
+}
+#t27{
+    background-image: url(images/t27.jpg);
+}
+#t28{
+    background-image: url(images/t28.jpg);
+}
+
+.tovari{
+    width: auto;
+    height: auto;
+    padding: 15px;
+    background-color:rgb(255, 184, 52);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    text-decoration: none;
+    font-size: 24px;
+    color: rgb(255, 255, 255);
+    margin: 20px;
+    font-family: "Roboto";
+    position: absolute;
+    z-index: 12;
+    right: 12px;
+    top: 12px;
+    transition: .2s linear;
+    font-weight: bolder;
+}
+::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    -webkit-box-shadow: 5px 5px 5px -5px rgba(34, 60, 80, 0.2) inset;
+    background-color: #f9f9fd;
+    border-radius: 10px;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background: linear-gradient(180deg, #00c6fb, #005bea);
+  }
+#c1{
+    border-radius: 10px 10px 0 0;
+    padding-top: 15px;
+    margin-top: 30px;
+}
+#c4{
+    border-radius: 0px 0px 10px 10px;
+    margin-bottom: 30px;
+}
+h1{
+    color: rgb(255, 255, 255);
+    text-shadow: rgb(34, 139, 195) 1px 0 10px;
+    font-size: 34px;
+    margin-top: 60px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    font-family: "Roboto";
+
+}
+.coin {
+    width: 20px;
+    height: 20px;
+    background: radial-gradient(circle, #ffcc00, #ff9900, #ff6600);
+    border-radius: 50%;
+    position: absolute;
+    bottom: 44px;
+    left: 85px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3), inset 0 1px 2px rgba(255, 255, 255, 0.3);
+}
+
+.coin::before {
+    content: '';
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    background: radial-gradient(circle, rgba(255, 215, 0, 0.9), rgba(255, 165, 0, 0.8));
+    border-radius: 50%;
+    top: 2px;
+    left: 2px;
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.coin::after {
+    content: 'C';
+    position: absolute;
+    font-family: Arial, sans-serif;
+    font-size: 8px;
+    font-weight: bold;
+    color: #fff;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    line-height: 1;
+}
+
+p{
+    font-size: 17px;
+    position: absolute;
+    bottom: 27px;
+    left: 50px;
+}
+.btn-new {
+    width: 180px;
+    min-height: 50px;
+    border-radius: 10px;
+    color: white;
+    transition: .2s linear;
+    background: rgb(255, 184, 52);
+    border: none;
+    position: absolute;
+    left: 150px;
+    bottom: 30px;
+    z-index: 12;
+    cursor: pointer;
+    font-size: 17px;
+}
+
+.btn-new:hover {
+    box-shadow: 0 0 0 2px white, 0 0 0 4px rgb(255, 184, 52);
+}
+.tovari:hover {
+    box-shadow: 0 0 0 2px white, 0 0 0 4px rgb(255, 184, 52);
+}
+h3{
+    width: 95%;
+    font-size: 18px;
+}#c{
+    left: 75px;
+}
+#co1{
+    left: 65px;
+}
+
+/* Общие стили для страницы */
+.menu-container {
+    position: fixed;
+    left: 10px; /* Расположение слева */
+    top: 50%; /* Позиционирование по центру по высоте */
+    transform: translateY(-50%); /* Корректировка центрирования */
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* Расстояние между кнопками */
+    overflow: hidden; /* Скрываем кнопки за пределами контейнера */
+    height: auto;
+    z-index: 13;
+}
+
+/* Стили для кнопок */
+.menu-item {
+    width: 50px;
+    height: 50px;
+    background-color: #333; /* Темно-серый цвет кнопок */
+    border-radius: 50%; /* Делаем кнопки круглыми */
+    cursor: pointer;
+    transition: transform 0.3s ease, opacity 0.3s ease; /* Анимация перемещения и прозрачности */
+    transform: translateY(-100px); /* Начальное положение (скрыто выше) */
+    opacity: 0; /* Начальная прозрачность */
+    transition: 0.2s;
+    background-position: center;
+    background-repeat: no-repeat;
+    
+}
+
+/* Первая кнопка всегда видна */
+#item1 {
+    transform: translateY(0); /* Первая кнопка всегда на месте */
+    opacity: 1; /* Видима */
+    background-color: #ffffff; /* Цвет первой кнопки */
+    transition: 0.8s;
+    background-image: url(images/menu.png);
+    
+
+}
+
+/* Эффект при наведении на контейнер */
+.menu-container:hover .menu-item:not(#item1) {
+    transform: translateY(0); /* Перемещаем кнопки вниз */
+    opacity: 1; /* Делаем кнопки видимыми */
+}
+
+/* Разные цвета для каждой кнопки */
+#item2 { background-color: #f1c40f; background-image: url(images/user.png);}
+#item3 { background-color: #2ecc71; background-image: url(images/shop.png);}
+#item4 { background-color: #3498db; background-image: url(images/bascet.png);}
+#item5 { background-color: #9b59b6; background-image: url(images/dz.png);}
+
+/* Задержки для анимации */
+.menu-container:hover{
+    height: auto;
+}
+.menu-container:hover #item1 { background-color: white; background-image: url(images/home.png);}
+.menu-container:hover #item2 { transition-delay: 0.1s; }
+.menu-container:hover #item3 { transition-delay: 0.2s; }
+.menu-container:hover #item4 { transition-delay: 0.3s; }
+.menu-container:hover #item5 { transition-delay: 0.4s; }
+@media screen and (max-width: 1200px) {
+    body{
+        width: auto;
+        height: auto;
+    }
+    
+    .post{
+        margin-top: 20px;
+        margin-left:5px ;
+    }
+    .menu-container{
+        left: 3px;
+    }
+    .menu-item{
+        width: 40px;
+        height: 40px;
+    }
+
+    #item1 {  background-image: url(images/menu-s.png);}
+    #item2 {  background-image: url(images/user-s.png);}
+    #item3 {  background-image: url(images/shop-s.png);}
+    #item4 {  background-image: url(images/bascet-s.png);}
+    #item5 {  background-image: url(images/dz-s.png);}
+    .menu-container:hover #item1 { background-image: url(images/home-s.png);}
+}
+@media screen and (max-width: 1150px) and (min-width: 768px) {
+    .chil {
+        flex-direction: column; /* Карточки размещаются в столбец */
+        align-items: center; /* Центрируем карточки по центру */
+        justify-content: center; /* Выравниваем карточки по центру */
+    }
+
+    .post {
+        width: 560px; /* Карточки занимают 80% ширины экрана */
+        height: 800px; /* Автоматическая высота */
+        margin: 20px; /* Отступы сверху и снизу, а также автоматическое выравнивание по центру */
+    }
+
+    .top {
+        width: auto; /* Верхняя часть карточки занимает всю ширину карточки */
+        height: 65%; /* Немного уменьшаем высоту верхней части */
+    }
+
+    .down {
+        width: auto; /* Нижняя часть карточки занимает всю ширину карточки */
+        height: 35%; /* Увеличиваем высоту нижней части */
+        padding: 15px; /* Уменьшаем внутренний отступ */
+    }
+
+    h1 {
+        font-size: 35px; /* Уменьшаем размер заголовка */
+        margin-top: 60px; /* Уменьшаем отступ сверху */
+    }
+
+    p {
+        font-size: 25px; /* Уменьшаем размер текста */
+        bottom: 5px; /* Корректируем позицию текста */
+        left: 50px;
+    }
+
+    .coin {
+        width: 25px;
+        height: 25px;
+        background: radial-gradient(circle, #ffcc00, #ff9900, #ff6600);
+        border-radius: 50%;
+        position: absolute;
+        bottom: 32px;
+        left: 100px;
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3), inset 0 1px 2px rgba(255, 255, 255, 0.3);
+    }
+
+    .coin::before {
+        content: '';
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        background: radial-gradient(circle, rgba(255, 215, 0, 0.9), rgba(255, 165, 0, 0.8));
+        border-radius: 50%;
+        top: 2.5px;
+        left: 2.5px;
+        box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.2);
+    }
+
+    .coin::after {
+        content: 'C';
+        position: absolute;
+        font-family: Arial, sans-serif;
+        font-size: 10px;
+        font-weight: bold;
+        color: #fff;
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+        line-height: 1;
+    }
+
+    #c {
+        left: 85px;
+    }
+
+    #co1 {
+        left: 72px;
+    }
+
+    .btn-new {
+        width: 400px; /* Устанавливаем фиксированную ширину кнопки */
+        height: auto; /* Автоматическая высота */
+        font-size: 22px;
+        padding: 10px; /* Внутренний отступ кнопки */
+        position: absolute; /* Абсолютное позиционирование */
+        right: 0px; /* Располагаем справа */
+        bottom: 20px; /* Располагаем снизу */
+        z-index: 10; /* Убедимся, что кнопка выше других элементов */
+        cursor: pointer; /* Добавляем указатель мыши */
+        background: rgb(255, 184, 52); /* Цвет фона */
+        border: none; /* Убираем границу */
+        border-radius: 10px; /* Закругляем углы */
+        text-align: center; /* Центрируем текст */
+        transition: 0.2s linear; /* Плавный эффект при наведении */
+    }
+
+    .tovari {
+        font-size: 23px; /* Уменьшаем размер текста кнопки */
+        padding: 15px; /* Уменьшаем внутренний отступ кнопки */
+        top: -8px;
+        right: -5px;
+    }
+    h3{
+        font-size: 23px;
+    }
+    .menu-container{
+        left: 10px;
+    }
+    .menu-item{
+        width: 50px;
+        height: 50px;
+    }
+
+    #item1 {  background-image: url(images/menu.png);}
+    #item2 {  background-image: url(images/user.png);}
+    #item3 {  background-image: url(images/shop.png);}
+    #item4 {  background-image: url(images/bascet.png);}
+    #item5 {  background-image: url(images/dz.png);}
+    .menu-container:hover #item1 { background-image: url(images/home.png);}
+}
+@media screen and (max-width: 768px) and (min-width: 577px) {
+    body {
+        width: auto;
+        height: auto;
+        padding: 10px; /* Добавляем небольшой отступ */
+    }
+
+    .post {
+        width: 350px; /* Увеличиваем ширину карточки */
+        height: 500px; /* Увеличиваем высоту карточки */
+        margin: 20px; /* Уменьшаем отступы между карточками */
+    }
+
+    .top {
+        width: auto; /* Синхронизируем ширину с .post */
+        height: 65%; /* Немного уменьшаем высоту верхней части */
+    }
+
+    .down {
+        width: auto; /* Синхронизируем ширину с .post */
+        height: 35%; /* Увеличиваем высоту нижней части */
+        padding: 15px; /* Уменьшаем внутренний отступ */
+    }
+
+    .tovari {
+        font-size: 20px; /* Уменьшаем размер текста кнопки */
+        padding: 10px; /* Уменьшаем внутренний отступ кнопки */
+        top: -12px;
+        right: -5px;
+    }
+
+    h1 {
+        font-size: 35px; /* Уменьшаем размер заголовка */
+        margin-top: 40px; /* Уменьшаем отступ сверху */
+    }
+    h3{
+        font-size: 20px;
+    }
+
+    p {
+        font-size: 18px; /* Уменьшаем размер текста */
+        bottom: 0px; /* Корректируем позицию текста */
+        left: 60px;
+    }
+
+    .coin {
+        width: 20px;
+        height: 20px;
+        background: radial-gradient(circle, #ffcc00, #ff9900, #ff6600);
+        border-radius: 50%;
+        position: absolute;
+        bottom: 18px;
+        left: 95px;
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3), inset 0 1px 2px rgba(255, 255, 255, 0.3);
+    }
+    
+    .coin::before {
+        content: '';
+        position: absolute;
+        width: 16px;
+        height: 16px;
+        background: radial-gradient(circle, rgba(255, 215, 0, 0.9), rgba(255, 165, 0, 0.8));
+        border-radius: 50%;
+        top: 2px;
+        left: 2px;
+        box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.2);
+    }
+    
+    .coin::after {
+        content: 'C';
+        position: absolute;
+        font-family: Arial, sans-serif;
+        font-size: 8px;
+        font-weight: bold;
+        color: #fff;
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+        line-height: 1;
+    }
+    #c{
+        left: 85px;
+    }
+    #co1{
+        left: 78px;
+    }
+
+    .btn-new {
+        width: 200px; /* Уменьшаем ширину кнопки */
+        height: 40px; /* Уменьшаем высоту кнопки */
+        font-size: 16px; /* Уменьшаем размер текста кнопки */
+        left: 160px; /* Корректируем позицию кнопки */
+        position: absolute;
+        bottom: 0px;
+    }
+
+    .chil {
+        flex-direction: row; /* Размещаем карточки в строку */
+        flex-wrap: wrap; /* Переносим карточки на новую строку при необходимости */
+        justify-content: center; /* Центрируем карточки */
+    }
+    .menu-container{
+        left: 20px;
+    }
+}
+@media screen and (max-width: 576px) {
+    .chil{
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    body{
+        width: auto;
+        height: auto;
+    }
+    .back{
+        height: 40px;
+        width: 40px;
+        font-size: 19px;
+        top: 10px;
+        left: 10px;
+    }
+    .tovari{
+        font-size: 20px; /* Уменьшаем размер текста кнопки */
+        padding: 10px; /* Уменьшаем внутренний отступ кнопки */
+        top: -8px;
+        right: -5px;
+    }
+    .post{
+        margin-top: 20px;
+        left: 10px;
+    }
+    .menu-item{
+        width: 40px;
+        height: 40px;
+    }
+    .menu-container{
+        left: 5px;
+    }
+    #item1 {  background-image: url(images/menu-s.png);}
+    #item2 {  background-image: url(images/user-s.png);}
+    #item3 {  background-image: url(images/shop-s.png);}
+    #item4 {  background-image: url(images/bascet-s.png);}
+    #item5 {  background-image: url(images/dz-s.png);}
+    .menu-container:hover #item1 { background-image: url(images/home-s.png);}
+    
+}
+@media screen and (max-width: 400px) {
+    .chil{    
+        width: 300px;
+        height: 1400px;
+    }
+    body{
+        width: auto;
+        height: auto;
+    }
+    .top{
+        width: 270px;
+    }
+    .down{
+        width: 250px;
+        height: 40%;
+    }
+    .post{
+        width: 250px;
+        height: 350px;
+        margin-right: 70px;
+        left: 22px;
+    }
+    .btn-new{
+        left: 130px;
+        bottom: 7px;
+        width: 150px;
+        height: 30px;
+        font-size: 14px;
+    }
+    p{
+        
+        bottom: 7px;
+        width: 290px;
+    }
+    .coin{
+        
+        bottom: 24px;
+    }
+    h3{
+        font-size: 15px;
+    }
+    #c4{
+        height: 400px;
+    }
+    h1{
+        width: 250px;
+        font-size: 26px;
+    }
+    .tovari{
+        width: auto;
+        height: auto;
+        font-size: 12px;
+        top: -12px;
+        right: -12px;
+        padding:10px;
+    }
+    ::-webkit-scrollbar {
+        width: 0px;
+      }
+      .menu-item{
+        width: 30px;
+        height: 30px;
+    }
+    #item1 {  background-image: url(images/menu-ss.png);}
+    #item2 {  background-image: url(images/user-ss.png);}
+    #item3 {  background-image: url(images/shop-ss.png);}
+    #item4 {  background-image: url(images/bascet-ss.png);}
+    #item5 {  background-image: url(images/dz-ss.png);}
+    .menu-container:hover #item1 { background-image: url(images/home-ss.png);}
+}
