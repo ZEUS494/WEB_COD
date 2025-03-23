@@ -465,6 +465,20 @@ h3{
     h3{
         font-size: 23px;
     }
+    .menu-container{
+        left: 10px;
+    }
+    .menu-item{
+        width: 50px;
+        height: 50px;
+    }
+
+    #item1 {  background-image: url(images/menu.png);}
+    #item2 {  background-image: url(images/user.png);}
+    #item3 {  background-image: url(images/shop.png);}
+    #item4 {  background-image: url(images/bascet.png);}
+    #item5 {  background-image: url(images/dz.png);}
+    .menu-container:hover #item1 { background-image: url(images/home.png);}
 }
 @media screen and (max-width: 768px) and (min-width: 577px) {
     body {
