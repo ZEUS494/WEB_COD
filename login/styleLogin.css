@@ -1,5 +1,5 @@
 * {
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-family: "Anonymous Pro", monospace;
 }
 
 body {
@@ -10,7 +10,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    background-image: url(login_pictures/backgrounddark.png);
+    background-color: #000;
     background-size: cover;
 }
 
@@ -84,12 +84,18 @@ button[type="submit"]:hover {
 
 a {
     margin-top: 10px;
-    color: #0071c7;
-    text-decoration: underline;
-    
+    text-decoration: none;
+    animation: shine 3s linear infinite;
 }
 
-a:hover {
-    color: #003f6f;
-    transition: 0.3s;
+@keyframes shine {
+    0% {
+        color: #e8ae00;
+    }
+    50% {
+        color: #f3eacf;
+    }
+    100% {
+        color: #e8ae00;
+    }
 }
