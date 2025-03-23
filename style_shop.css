@@ -192,6 +192,7 @@ h1{
     display: flex;
     flex-direction: column;
     justify-content: center;
+    font-family: "Roboto";
 
 }
 .coin {
@@ -273,7 +274,7 @@ h3{
 /* Общие стили для страницы */
 .menu-container {
     position: fixed;
-    left: 20px; /* Расположение слева */
+    left: 10px; /* Расположение слева */
     top: 50%; /* Позиционирование по центру по высоте */
     transform: translateY(-50%); /* Корректировка центрирования */
     display: flex;
@@ -281,6 +282,7 @@ h3{
     gap: 15px; /* Расстояние между кнопками */
     overflow: hidden; /* Скрываем кнопки за пределами контейнера */
     height: auto;
+    z-index: 13;
 }
 
 /* Стили для кнопок */
@@ -296,6 +298,7 @@ h3{
     transition: 0.2s;
     background-position: center;
     background-repeat: no-repeat;
+    
 }
 
 /* Первая кнопка всегда видна */
@@ -305,6 +308,7 @@ h3{
     background-color: #ffffff; /* Цвет первой кнопки */
     transition: 0.8s;
     background-image: url(images/menu.png);
+    
 
 }
 
@@ -339,6 +343,20 @@ h3{
         margin-top: 20px;
         margin-left:5px ;
     }
+    .menu-container{
+        left: 3px;
+    }
+    .menu-item{
+        width: 40px;
+        height: 40px;
+    }
+
+    #item1 {  background-image: url(images/menu-s.png);}
+    #item2 {  background-image: url(images/user-s.png);}
+    #item3 {  background-image: url(images/shop-s.png);}
+    #item4 {  background-image: url(images/bascet-s.png);}
+    #item5 {  background-image: url(images/dz-s.png);}
+    .menu-container:hover #item1 { background-image: url(images/home-s.png);}
 }
 @media screen and (max-width: 1150px) and (min-width: 768px) {
     .chil {
@@ -551,6 +569,9 @@ h3{
         flex-wrap: wrap; /* Переносим карточки на новую строку при необходимости */
         justify-content: center; /* Центрируем карточки */
     }
+    .menu-container{
+        left: 20px;
+    }
 }
 @media screen and (max-width: 576px) {
     .chil{
@@ -579,6 +600,19 @@ h3{
         margin-top: 20px;
         left: 10px;
     }
+    .menu-item{
+        width: 40px;
+        height: 40px;
+    }
+    .menu-container{
+        left: 5px;
+    }
+    #item1 {  background-image: url(images/menu-s.png);}
+    #item2 {  background-image: url(images/user-s.png);}
+    #item3 {  background-image: url(images/shop-s.png);}
+    #item4 {  background-image: url(images/bascet-s.png);}
+    #item5 {  background-image: url(images/dz-s.png);}
+    .menu-container:hover #item1 { background-image: url(images/home-s.png);}
     
 }
 @media screen and (max-width: 400px) {
@@ -640,4 +674,14 @@ h3{
     ::-webkit-scrollbar {
         width: 0px;
       }
+      .menu-item{
+        width: 30px;
+        height: 30px;
+    }
+    #item1 {  background-image: url(images/menu-ss.png);}
+    #item2 {  background-image: url(images/user-ss.png);}
+    #item3 {  background-image: url(images/shop-ss.png);}
+    #item4 {  background-image: url(images/bascet-ss.png);}
+    #item5 {  background-image: url(images/dz-ss.png);}
+    .menu-container:hover #item1 { background-image: url(images/home-ss.png);}
 }
