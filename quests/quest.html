@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styleQuests.css">
+    <link rel="stylesheet" href="mediaQuests.css">
+    <link rel="shortcut icon" href="quests_pictures/codologialogo.png"/>
+    <title>CODOLOGIA | Задания</title>
+</head>
+<body>
+    <div class="header">
+        <a href="/main.html">Вернуться на главную</a>
+        <h1>Задания и миниигры</h1>
+    </div>
+    <div class="container">
+        <div class="block" id="daily">
+            <h1>Ежедневные задания</h1>
+            <div class="quests">
+                <div class="quest" data-quest-id="dquest1">
+                    <h1>Задание №1</h1>
+                    <p class="questinfo">Описание ежедневного задания 1</p>
+                </div>
+                <div class="quest" data-quest-id="dquest2">
+                    <h1>Задание №2</h1>
+                    <p class="questinfo">Описание ежедневного задания 2</p>
+                </div>
+                <div class="quest" data-quest-id="dquest3">
+                    <h1>Задание №3</h1>
+                    <p class="questinfo">Описание ежедневного задания 3</p>
+                </div>
+                <div class="quest" data-quest-id="dquest4">
+                    <h1>Задание №4</h1>
+                    <p class="questinfo">Описание ежедневного задания 4</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="block" id="weekly">
+            <h1>Еженедельные задания</h1>
+            <div class="quests">
+                <div class="quest" data-quest-id="wquest1">
+                    <h1>Задание №1</h1>
+                    <p class="questinfo">Описание еженедельного задания 1</p>
+                </div>
+                <div class="quest" data-quest-id="wquest2">
+                    <h1>Задание №2</h1>
+                    <p class="questinfo">Описание еженедельного задания 2</p>
+                </div>
+                <div class="quest" data-quest-id="wquest3">
+                    <h1>Задание №3</h1>
+                    <p class="questinfo">Описание еженедельного задания 3</p>
+                </div>
+                <div class="quest" data-quest-id="wquest4">
+                    <h1>Задание №4</h1>
+                    <p class="questinfo">Описание еженедельного задания 4</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Модальное окно -->
+        <div class="modal" style="display: none;">
+            <button class="close-modal">X</button>
+            <div class="modal-content">
+                <h1 class="modal-title"></h1>
+                <p class="modal-description"></p>
+            </div>
+        </div>
+    </div>
+    <script src="questsScript.js"></script>
+</body>
+</html>

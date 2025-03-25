@@ -1,0 +1,152 @@
+* {
+    font-family: "Anonymous Pro", monospace;
+    z-index: 0;
+}
+
+body {
+    height: 100vh;
+    width: 100vw;
+    background-color: #000;
+    background-position: center;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #fff;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+body, html {
+    height: 100%;
+}
+
+.header {
+    color: #fff;
+    width: 65%;
+    padding-left: 40px;
+    margin-top: 40px;
+}
+
+h1 {
+    font-size: 22px;
+}
+
+.header h1 {
+    margin-top: 5px;
+}
+
+.header a {
+    text-decoration: none;
+    animation: shine 3s linear infinite;
+    border-radius: 5px;
+}
+
+.container {
+    display: flex;
+    width: 65%;
+    height: 600px;
+}
+.block {
+    width: 50%;
+    background-color: #202020;
+    margin: 10px;
+    border-radius: 15px;
+    padding: 10px;
+    overflow: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.quests {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.block h1 {
+    margin: 10px;
+}
+
+.quest {
+    background-color: #333;
+    width: 200px;
+    height: 200px;
+    margin: 10px;
+    border-radius: 10px;
+    cursor: pointer;
+    overflow: hidden;
+}
+
+.quest:hover {
+    transition: 0.3s;
+    background-color: #414141;
+}
+
+.questinfo {
+    margin: 10px;
+}
+
+/* Стиль для модального окна */
+.modal {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90vw;
+    max-width: 600px;
+    height: 300px;
+    background-color: #4f4f4f;
+    padding: 20px;
+    border-radius: 8px;
+    z-index: 1000;
+    color: #fff;
+}
+
+.close-modal {
+    cursor: pointer;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 20px;
+    width: 40px;
+    height: 40px;
+    padding: 1px;
+    background: transparent;
+    border: none;
+    border-radius: 5px;
+    background-color: #a02323;
+}
+
+.close-modal:hover {
+    transition: 0.3s;
+    background-color: #c73636;
+}
+
+.upload-file {
+    margin-top: 10px;
+    padding: 5px;
+    border-radius: 10px;
+    padding: 10px;
+    border: #fff 1px solid;
+    border-radius: 4px;
+}
+
+.modal-content input {
+    cursor: pointer;
+}
+
+@keyframes shine {
+    0% {
+        color: #e8ae00;
+    }
+    50% {
+        color: #f3eacf;
+    }
+    100% {
+        color: #e8ae00;
+    }
+}
