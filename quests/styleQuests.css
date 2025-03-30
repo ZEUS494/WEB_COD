@@ -1,0 +1,196 @@
+* {
+    font-family: "Anonymous Pro", monospace;
+    z-index: 0;
+}
+
+/* Пастельные цвета для каждого задания */
+.quest:nth-child(1) { background-color: #ffb3ba; } /* Розовый */
+.quest:nth-child(2) { background-color: #ffdfba; } /* Персиковый */
+.quest:nth-child(3) { background-color: #ffffba; } /* Лимонный */
+.quest:nth-child(4) { background-color: #baffc9; } /* Мятный */
+.quest:nth-child(5) { background-color: #bae1ff; } /* Голубой */
+.quest:nth-child(6) { background-color: #d7aefb; } /* Лавандовый */
+.quest:nth-child(7) { background-color: #ffbaec; } /* Сиреневый */
+.quest:nth-child(8) { background-color: #ffccdc; } /* Бежевый */
+
+body {
+    width: 100vw;
+    background-color: #000;
+    background-position: center;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #fff;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.header {
+    color: #fff;
+    width: 65%;
+    padding-left: 40px;
+    margin-top: 40px;
+}
+
+h1 {
+    font-size: 22px;
+}
+
+.header h1 {
+    margin-top: 5px;
+}
+
+.header a {
+    text-decoration: none;
+    animation: shine 3s linear infinite;
+    border-radius: 5px;
+}
+
+.container {
+    display: flex;
+    width: 65%;
+    height: 600px;
+}
+
+#minigames {
+    background-color: #202020;
+    padding: 10px;
+    border-radius: 15px;
+    width: 63%;
+    height: 600px;
+    margin-top: 10px;
+    margin-bottom: 50px;
+}
+
+.block {
+    width: 50%;
+    background-color: #202020;
+    margin: 10px;
+    border-radius: 15px;
+    padding: 10px;
+    overflow: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#minigame {
+    width: 100%;
+    margin: 10px;
+    padding: 10px;
+}
+
+.quests {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.block h1 {
+    margin: 10px;
+}
+
+.quest {
+    background-color: #333;
+    color: #000;
+    width: 200px;
+    height: 200px;
+    margin: 10px;
+    border-radius: 10px;
+    cursor: pointer;
+    overflow: hidden;
+}
+
+/* Основной стиль для .quest */
+.quest {
+    transition: background-color 0.3s ease; /* Переход цвета фона */
+}
+
+/* Темнеющий эффект при наведении */
+.quest:hover {
+    filter: brightness(80%);
+}
+
+.questinfo {
+    margin: 10px;
+}
+
+.modal {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0%;
+    left: 0%;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7); /* Полупрозрачный черный фон */
+    color: #000;
+    z-index: 9999; /* Модальное окно над всеми элементами */
+}
+
+/* Обновленные стили для контейнера внутри модального окна */
+.modal-container {
+    background-color: #202020;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
+    text-align: center;
+    min-width: 250px;
+    max-width: 500px;
+    position: relative; /* Важно установить относительное позиционирование */
+    transform: translate(-50%, -50%); /* Центрируем контейнер */
+    top: 50%; /* Сдвигаем вверх на половину высоты окна */
+    left: 50%; /* Сдвигаем вправо на половину ширины окна */
+}
+
+/* Стиль кнопки закрытия */
+.close-modal {
+    cursor: pointer;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 18px;
+    width: 24px;
+    height: 24px;
+    line-height: 22px;
+    text-align: center;
+    border: none;
+    background-color: #d9534f;
+    color: white;
+    border-radius: 50%;
+}
+
+.close-modal:hover {
+    background-color: #c9302c;
+}
+
+/* Содержимое модального окна */
+.modal-content {
+    margin-top: 20px;
+}
+
+.modal-title {
+    font-size: 24px;
+    margin-bottom: 12px;
+}
+
+.modal-description {
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+@keyframes shine {
+    0% {
+        color: #e8ae00;
+    }
+    50% {
+        color: #f3eacf;
+    }
+    100% {
+        color: #e8ae00;
+    }
+}
