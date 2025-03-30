@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Вертикальные диаграммы</title>
+    <style>
+        
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        .chart-container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            margin-top: 30px;
+        }
+
+        .chart {
+            text-align: center;
+            margin: 7px;
+            width: 45%;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+        }
+
+        .chart h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #555;
+        }
+
+        .bar-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            height: 250px;
+        }
+
+        .bar {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-end;
+        }
+
+        .bar div {
+            width: 40px;
+            background-color: #6c5ce7;
+            border-radius: 5px 5px 0 0;
+            transition: box-shadow ease 0.4s;
+        }
+
+        .bar div:hover{
+            box-shadow: 0 0 #6c5ce7;
+        }
+        .bar span {
+            margin-top: 5px;
+            font-size: 14px;
+            color: #333;
+        }
+
+        .chart:nth-child(2) .bar div {
+            background-color: #ff6b6b;
+        }
+    </style>
+</head>
+<body>
+    <h1>Вертикальные диаграммы рейтинга пользователей</h1>
+
+    <div class="chart-container">
+        <div class="chart">
+            <h2>Рейтинг за период май</h2>
+            <div class="bar-container">
+                <div class="bar">
+                    <div style="height: 30px;"></div>
+                    <span>Пользователь 5 (30)</span>
+                </div>
+                <div class="bar">
+                    <div style="height: 60px;"></div>
+                    <span>Пользователь 4 (60)</span>
+                </div>
+                <div class="bar">
+                    <div style="height: 90px;"></div>
+                    <span>Пользователь 3 (90)</span>
+                </div>
+                <div class="bar">
+                    <div style="height: 120px;"></div>
+                    <span>Пользователь 2 (120)</span>
+                </div>
+                <div class="bar">
+                    <div style="height: 150px;"></div>
+                    <span>Пользователь 1 (150)</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="chart">
+            <h2>Рейтинг за период 2025-2026</h2>
+            <div class="bar-container">
+                <div class="bar">
+                    <div style="height: 50px;"></div>
+                    <span>Пользователь 5 (50)</span>
+                </div>
+                <div class="bar">
+                    <div style="height: 100px;"></div>
+                    <span>Пользователь 4 (100)</span>
+                </div>
+                <div class="bar">
+                    <div style="height: 150px;"></div>
+                    <span>Пользователь 3 (150)</span>
+                </div>
+                <div class="bar">
+                    <div style="height: 180px;"></div>
+                    <span>Пользователь 2 (180)</span>
+                </div>
+                <div class="bar">
+                    <div style="height: 200px;"></div>
+                    <span>Пользователь 1 (200)</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
