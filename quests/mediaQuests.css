@@ -45,6 +45,16 @@
     .block {
         width: 40%; /* Немного увеличим ширину блока */
     }
+    #minigames {
+        width: 80%;
+        margin: 0;
+        margin-bottom: 50px;
+        margin-left: -25px;
+    }
+    #minigame {
+        margin: 0;
+        margin-left: -10px;
+    }
     .quest {
         width: 180px; /* Уменьшим размер квеста */
         height: 180px;
@@ -62,11 +72,21 @@
         width: 100%; /* Контейнер займет всю доступную ширину */
         height: 1000px; /* Еще сильнее уменьшим высоту контейнера */
         flex-direction: column; /* Перестроим блоки вертикально */
-        margin-bottom: 10px;
     }
     .block {
         width: 90%; /* Блоки займут всю ширину */
         margin-bottom: 20px; /* Добавим расстояние между блоками */
+    }
+    #minigames {
+        width: 90%;
+        margin: 0;
+        margin-top: -100px;
+        margin-bottom: 50px;
+        display: none;
+    }
+    #minigame {
+        margin: 0;
+        margin-left: -10px;
     }
     .quest {
         width: 150px; /* Еще меньший размер квеста */
@@ -91,6 +111,16 @@
         width: 100%; /* Блоки займут всю ширину */
         margin-bottom: 10px; /* Расстояние между блоками минимизировано */
         overflow: auto;
+    }
+    #minigames {
+        width: 70%;
+        margin: 0;
+        display: none;
+    }
+
+    #minigame {
+        margin: 0;
+        margin-left: -10px;
     }
     .quest {
         width: 120px; /* Самый маленький размер квеста */
