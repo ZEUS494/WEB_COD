@@ -5,46 +5,84 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Вертикальные диаграммы</title>
     <style>
-        
+        * {
+            font-family: "Anonymous Pro", monospace;
+            font-weight: 700;
+            font-style: normal;
+            box-sizing: border-box;
+            color: white;
+        }
+
         body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f9;
+            background-color: #1f1f1f;
             margin: 0;
             padding: 20px;
+            overflow-x: hidden;
+        }
+        .backdoor-btn {
+            height: 100%;
+            width: 100%;
+            display: flex;
+        }
+        .stars-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        .star {
+            position: absolute;
+            background-color: #ffff00;
+            border-radius: 50%;
+            box-shadow: 0 0 5px #ffff00;
+            animation: twinkle 2s infinite;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.7; }
+            50% { opacity: 1; }
         }
 
         h1 {
             text-align: center;
-            color: #333;
+            color: white;
+            margin-top: 20px;
         }
 
         .chart-container {
             display: flex;
             flex-direction: column;
-            justify-content: center;
             align-items: center;
-            margin-top: 30px;
+            padding: 20px;
+            min-height: 100vh;
+        }
+
+        .chart-wrapper {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            margin: 15px 0;
         }
 
         .chart {
             text-align: center;
-            margin: 7px;
-            width: 45%;
-            background-color: #fff;
+            background-color: #303030;
             border-radius: 10px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             padding: 20px;
-        }
-
-        .chart h2 {
-            text-align: center;
-            margin-bottom: 20px;
-            color: #555;
+            transition: transform 0.2s ease-out;
+            max-width: 800px;
+            width: 90%;
+            margin: 0 auto;
         }
 
         .bar-container {
             display: flex;
-            justify-content: space-between;
+            justify-content: space-around;
             align-items: flex-end;
             height: 250px;
         }
@@ -54,84 +92,223 @@
             flex-direction: column;
             align-items: center;
             justify-content: flex-end;
+            flex: 1;
+            min-width: 40px;
+            margin: 0 10px;
         }
 
         .bar div {
-            width: 40px;
+            width: 100%;
+            max-width: 60px;
             background-color: #6c5ce7;
             border-radius: 5px 5px 0 0;
-            transition: box-shadow ease 0.4s;
+            transition: height 1s ease, box-shadow 0.3s;
         }
 
-        .bar div:hover{
-            box-shadow: 0 0 #6c5ce7;
-        }
         .bar span {
-            margin-top: 5px;
+            margin-top: 8px;
             font-size: 14px;
-            color: #333;
+            color: white;
+            white-space: normal;
+            word-wrap: break-word;
+            max-width: 100px;
         }
 
         .chart:nth-child(2) .bar div {
             background-color: #ff6b6b;
         }
+
+        #backdoor {
+            border-radius: 8px;
+            color: white;
+            background-color: #303030;
+            border-color: #303030;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            height: 55px;
+            width: 250px;
+            cursor: pointer;
+            transition-duration: 1s;
+        }
+
+        #backdoor:hover {
+            height: 75px;
+            width: 290px;
+        }
+
+        @media (max-width: 1024px) {
+            .chart {
+                padding: 15px;
+            }
+            
+            .bar-container {
+                height: 200px;
+            }
+            
+            .bar div {
+                max-width: 50px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 1.5em;
+                margin-top: 10px;
+            }
+            
+            .bar-container {
+                flex-wrap: wrap;
+                justify-content: center;
+                height: auto;
+                padding: 10px;
+            }
+            
+            .bar {
+                margin: 10px 5px;
+                min-width: 30%;
+            }
+            
+            .bar span {
+                font-size: 12px;
+                max-width: 80px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.2em;
+            }
+            
+            .bar-container {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .bar {
+                margin: 15px 0;
+                min-width: 60%;
+            }
+            
+            .bar div {
+                max-width: 80px;
+            }
+        }
     </style>
 </head>
 <body>
+    <div class="stars-background" id="stars"></div>
+    <div class="backdoor-btn"><button id='backdoor' onclick="window.location='#'">Вернуться в личный кабинет</button></div>
     <h1>Вертикальные диаграммы рейтинга пользователей</h1>
-
     <div class="chart-container">
-        <div class="chart">
-            <h2>Рейтинг за период май</h2>
-            <div class="bar-container">
-                <div class="bar">
-                    <div style="height: 30px;"></div>
-                    <span>Пользователь 5 (30)</span>
-                </div>
-                <div class="bar">
-                    <div style="height: 60px;"></div>
-                    <span>Пользователь 4 (60)</span>
-                </div>
-                <div class="bar">
-                    <div style="height: 90px;"></div>
-                    <span>Пользователь 3 (90)</span>
-                </div>
-                <div class="bar">
-                    <div style="height: 120px;"></div>
-                    <span>Пользователь 2 (120)</span>
-                </div>
-                <div class="bar">
-                    <div style="height: 150px;"></div>
-                    <span>Пользователь 1 (150)</span>
+        <div class="chart-wrapper">
+            <div class="chart" data-parallax-factor="0.06">
+                <h2>Рейтинг за период май</h2>
+                <div class="bar-container">
+                    <div class="bar">
+                        <div style="height: 30px;"></div>
+                        <span>Пользователь 5 (30)</span>
+                    </div>
+                    <div class="bar">
+                        <div style="height: 60px;"></div>
+                        <span>Пользователь 4 (60)</span>
+                    </div>
+                    <div class="bar">
+                        <div style="height: 90px;"></div>
+                        <span>Пользователь 3 (90)</span>
+                    </div>
+                    <div class="bar">
+                        <div style="height: 120px;"></div>
+                        <span>Пользователь 2 (120)</span>
+                    </div>
+                    <div class="bar">
+                        <div style="height: 150px;"></div>
+                        <span>Пользователь 1 (150)</span>
+                    </div>
                 </div>
             </div>
         </div>
 
-        <div class="chart">
-            <h2>Рейтинг за период 2025-2026</h2>
-            <div class="bar-container">
-                <div class="bar">
-                    <div style="height: 50px;"></div>
-                    <span>Пользователь 5 (50)</span>
-                </div>
-                <div class="bar">
-                    <div style="height: 100px;"></div>
-                    <span>Пользователь 4 (100)</span>
-                </div>
-                <div class="bar">
-                    <div style="height: 150px;"></div>
-                    <span>Пользователь 3 (150)</span>
-                </div>
-                <div class="bar">
-                    <div style="height: 180px;"></div>
-                    <span>Пользователь 2 (180)</span>
-                </div>
-                <div class="bar">
-                    <div style="height: 200px;"></div>
-                    <span>Пользователь 1 (200)</span>
+        <div class="chart-wrapper">
+            <div class="chart" data-parallax-factor="0.06">
+                <h2>Рейтинг за период 2025-2026</h2>
+                <div class="bar-container">
+                    <div class="bar">
+                        <div style="height: 50px;"></div>
+                        <span>Пользователь 5 (50)</span>
+                    </div>
+                    <div class="bar">
+                        <div style="height: 100px;"></div>
+                        <span>Пользователь 4 (100)</span>
+                    </div>
+                    <div class="bar">
+                        <div style="height: 150px;"></div>
+                        <span>Пользователь 3 (150)</span>
+                    </div>
+                    <div class="bar">
+                        <div style="height: 180px;"></div>
+                        <span>Пользователь 2 (180)</span>
+                    </div>
+                    <div class="bar">
+                        <div style="height: 200px;"></div>
+                        <span>Пользователь 1 (200)</span>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const starCount = 150;
+            const starsContainer = document.getElementById('stars');
+
+            for (let i = 0; i < starCount; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                
+                const size = Math.random() * 3 + 1;
+                star.style.width = `${size}px`;
+                star.style.height = `${size}px`;
+                star.dataset.parallaxFactor = (size / 4).toFixed(2);
+                
+                star.style.left = `${Math.random() * 100}vw`;
+                star.style.top = `${Math.random() * 100}vh`;
+                star.style.animationDelay = `${Math.random() * 2}s`;
+                
+                starsContainer.appendChild(star);
+            }
+
+            document.addEventListener('mousemove', (e) => {
+                const centerX = window.innerWidth / 2;
+                const centerY = window.innerHeight / 2;
+                const deltaX = (e.clientX - centerX) / centerX;
+                const deltaY = (e.clientY - centerY) / centerY;
+
+                document.querySelectorAll('.star').forEach(star => {
+                    const factor = parseFloat(star.dataset.parallaxFactor);
+                    const offsetX = deltaX * factor * 15;
+                    const offsetY = deltaY * factor * 15;
+                    star.style.transform = `translate(${offsetX}px, ${offsetY}px)`;
+                });
+
+                document.querySelectorAll('.chart').forEach(chart => {
+                    const factor = parseFloat(chart.dataset.parallaxFactor);
+                    const offsetX = deltaX * factor * 30;
+                    const offsetY = deltaY * factor * 30;
+                    chart.style.transform = `translate(${offsetX}px, ${offsetY}px)`;
+                });
+            });
+
+            const bars = document.querySelectorAll('.bar div');
+            bars.forEach(bar => {
+                const initialHeight = bar.style.height;
+                bar.style.height = '0';
+                
+                setTimeout(() => {
+                    bar.style.transition = 'height 1s ease';
+                    bar.style.height = initialHeight;
+                }, 100);
+            });
+        });
+    </script>
 </body>
 </html>
