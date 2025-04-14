@@ -1,0 +1,379 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Anonymous Pro', sans-serif;
+}
+
+body {
+    height: 100vh;
+    width: 99vw;
+    background-color: #141414;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.box {
+    position: relative;
+    width: 80%;
+    height: 100%;
+}
+
+.header {
+    margin: 20px;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    position: relative;
+    display: flex;
+}
+
+.header-block {
+    display: flex;
+    flex-direction: column;
+}
+
+.header h1 {
+    font-size: 50px;
+}
+
+.header a {
+    font-size: 15px;
+    text-decoration: none;
+    color: #a4a4a4;
+    cursor: pointer;
+}
+
+.container {
+    grid-template-columns: 1fr 3fr;
+    display: grid;
+    height: 100%;
+}
+
+.container-box {
+    background-color: #191919;
+    margin: 5px;
+    height: 70%;
+    padding: 20px;
+    border-radius: 15px;
+    font-size: 18px;
+}
+
+.container-box-profile {
+    display: flex;
+    align-items: center;
+    font-size: 22px;
+    flex-direction: column;
+}
+
+.container-box-other {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 50%;
+}
+
+#container-box-part-2 {
+    display: flex;
+    flex-direction: column;
+    overflow: auto;
+    padding: 30px;
+    height: 68%;
+}
+
+.content1, .content2 {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.subblock {
+    display: flex;
+    flex-direction: column;
+}
+
+
+.subblock label {
+    font-size: 22px;
+    margin: 10px;
+}
+
+.subblock span {
+    width: 90%;
+    height: 500px;
+    background-color: #202020;
+    overflow: auto;
+    display: flex;
+    padding: 5px;
+    padding-left: 15px;
+    border-radius: 10px;
+}
+
+#subblock-part-2 span {
+    height: 30px;
+    display: flex;
+    align-items: center;
+}
+
+.avatar-profile {
+    width: 250px;
+    height: 250px;
+    background-color: #fff;
+    border-radius: 30%;
+    background-image: url(/pictures/account_profile.png);
+    background-size: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    margin-bottom: 5px;
+}
+
+.person-info {
+    font-family: 'Anonymous Pro', sans-serif;
+    color: #a4a4a4;
+    text-align: justify;
+    margin-top: 8%;
+    font-size: 20px;
+}
+
+.person-info p {
+    text-align: center;
+}
+
+.exit-button {
+    position: absolute;
+    bottom: -20px;
+    width: 80%;
+    background-color: rgba(178, 35, 52);
+    height: 40px;
+    display: flex;
+    justify-self: flex-end;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 15px;
+    color: #000;
+    margin-bottom: -10%;
+    border: none;
+    font-size: 20px;
+    display: flex;
+    flex-direction: row;
+}
+
+.exit-button:hover {
+    background-color: rgba(154, 30, 45);
+    cursor: pointer;
+    transition: 0.2s linear;
+}
+
+#exit-logo {
+    width: 16px;
+    height: 16px;
+    background-image: url(/pictures/exit.png);
+    background-size: cover;
+    margin-left: 10px;
+}
+
+.info-block {
+    width: 90%;
+    background-color: #3e3e3e;
+    margin: 10px;
+    padding: 10px;
+    font-size: 18px;
+    border-radius: 5px;
+}
+
+.shine {
+    animation: shine 3s linear infinite;
+    text-decoration: none;
+}
+
+.white {
+    color: #fff;
+    text-decoration: none;
+}
+
+#swith-to-main, #swith-to-cources {
+    width: 48%;
+    height: 40px;
+    padding: 5px;
+    margin: 5px;
+    font-size: 18px;
+    background-color: #202020;
+    border: none;
+    color: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+#swith-to-main:hover, #swith-to-cources:hover {
+    background-color: #353535;
+    transition: 0.2s linear;
+    cursor: pointer;
+}
+
+.lesson-style {
+    width: 95%;
+    background-color: #202020;
+    margin: 10px;
+    border-radius: 15px;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.lesson-style a {
+    text-decoration: none;
+    animation: shine 3s linear infinite;
+}
+
+#loader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #000;
+    opacity: 0.8;
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.loader-icon {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    border: 10px solid transparent;
+    border-top-color: #ffd000;
+    border-right-color: #ffd000;
+    border-bottom-color: #ffd000;
+    border-left-color: transparent;
+    animation: spin 1s linear infinite;
+}
+
+.main-picture {
+    position: absolute;
+    right: 0;
+    top: 22px;
+    width: 300px;
+    height: 41px;
+    background-image: url(/pictures/codologia_full_logo.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    cursor: pointer;
+}
+
+.main-picture:hover {
+    transition: 0.2s;
+    width: 310px;
+    height: 43px;
+    size: scale(1.1);
+}
+
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to   { transform: rotate(360deg); }
+}
+
+.content {
+    filter: blur(5px);
+    transition: filter 0.5s ease-in-out;
+}
+
+.content.blur-off {
+    filter: none !important;
+}
+
+@keyframes shine {
+    0% {
+        color: #ffb108;
+    }
+    50% {
+        color: #f2e01f;
+    }
+    100% {
+        color: #ffb108;
+    }
+}
+
+@media screen and (max-width: 1200px) {
+    #swith-to-main, #swith-to-cources {
+        width: 45%;
+        font-size: 15px;
+    }
+}
+
+@media screen and (max-width: 998px) {
+    body {
+        display: flex;
+        align-items: normal;
+    }
+    .main-picture {
+        display: none;
+    }
+    .header a {
+        font-size: 20px;
+    }
+    .box {
+        width: 90%;
+    }
+    .container-box {
+        width: 100%;
+    }
+    .container {
+        display: flex;
+        flex-direction: column;
+    }
+    .container-box-other {
+        position: static
+    }
+    .exit-button {
+        top: 20px;
+        right: -5.6%;
+        position: absolute;
+        height: 50px;
+        width: 100px;
+    }
+
+    #container-box-part-2 {
+        width: 98%;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .container-box {
+        padding: 3px;
+    }
+
+    #container-box-part-2 {
+        padding: 0px;
+        width: 100%;
+    }
+
+    .info-block {
+        margin: 3px;
+    }
+}
+
+@media screen and (max-width: 360px) {
+    .container-box {
+        padding: 3px;
+    }
+
+    #container-box-part-2 {
+        padding: 0px;
+        width: 100%;
+    }
+
+    .info-block {
+        margin: 3px;
+    }
+
+    .subblock span {
+        width: 80%;
+    }
+    #swith-to-cources {
+        position: absolute;
+    }
+}
