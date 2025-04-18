@@ -43,7 +43,7 @@ document.addEventListener('DOMContentLoaded', function() {
                   console.log("Данные пользователя сохранены в localStorage");
                   console.log("Имя пользователя:", localStorage.getItem('user'));
                   console.log("Остальные данные:", JSON.parse(localStorage.getItem('userData')));
-                  window.location.href = 'account/account.html';
+                  window.location.href = '/account/account.html';
               } else {
                   alert("Неверный пароль");
               }
@@ -57,13 +57,13 @@ document.addEventListener('DOMContentLoaded', function() {
 
   // Автоматическая проверка куки и перенаправление на аккаунт
   const storedUsername = getCookie('user');
-  if (storedUsername && window.location.pathname !== 'account/account.html') {
+  if (storedUsername && window.location.pathname !== '/account/account.html') {
       try {
           const userRef = db.collection("users").doc(storedUsername).get();
           if (userRef.exists) {
               const data = userRef.data();
               localStorage.setItem('userData', JSON.stringify(data));
-              window.location.href = 'account/account.html';
+              window.location.href = '/account/account.html';
           }
       } catch (error) {
           console.error("Ошибка:", error);
@@ -77,7 +77,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
       if (!user || !userDataString) {
           alert("Вы не вошли в систему.");
-          window.location.href = '../login.html';
+          window.location.href = '/index.html';
           return;
       }
 
@@ -119,5 +119,5 @@ document.addEventListener('DOMContentLoaded', function() {
 function logout() {
   eraseCookie('user');
   localStorage.clear();
-  window.location.href = '/login.html';
+  window.location.href = '/index.html';
 }
