@@ -21,6 +21,16 @@ questElements.forEach((element, index) => {
     // Назначаем выбранный цвет элементу
     element.style.backgroundColor = pastelColors[randomIndex];
 });
+const minigame = document.querySelectorAll('#minigame');
+
+// Присваиваем случайные цвета каждому элементу
+minigame.forEach((element, index) => {
+    // Выбираем случайный индекс цвета из массива
+    let randomIndex = Math.floor(Math.random() * pastelColors.length);
+    
+    // Назначаем выбранный цвет элементу
+    element.style.backgroundColor = pastelColors[randomIndex];
+});
 
 // Получаем элементы модального окна
 const modal = document.querySelector('.modal');
@@ -79,3 +89,12 @@ questElements.forEach(quest => {
         openModal(questId);
     });
 });
+const snake = document.querySelector("div.snake").addEventListener('click', function(){
+    window.location.href = "/minigames/snake/snake.html"
+})
+const wolf = document.querySelector("div.wolf").addEventListener('click', function(){
+    window.location.href = "/minigames/wolf/wolf.html"
+})
+const arkanoid = document.querySelector("div.arkanoid").addEventListener('click', function(){
+    window.location.href = "/minigames/arkanoid/arkanoid.html"
+})

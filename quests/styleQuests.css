@@ -14,7 +14,8 @@
 .quest:nth-child(8) { background-color: #ffccdc; } /* Бежевый */
 
 body {
-    width: 100vw;
+    width: auto;
+    height: auto;
     background-color: #000;
     background-position: center;
     background-size: cover;
@@ -59,12 +60,18 @@ h1 {
     background-color: #202020;
     padding: 10px;
     border-radius: 15px;
-    width: 63%;
-    height: 600px;
+    width: 100%;
+    height: 1100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 10px;
+    margin-bottom: 50px;
+}
+#m{
     margin-top: 10px;
     margin-bottom: 50px;
 }
-
 .block {
     width: 50%;
     background-color: #202020;
@@ -75,12 +82,6 @@ h1 {
     display: flex;
     flex-direction: column;
     align-items: center;
-}
-
-#minigame {
-    width: 100%;
-    margin: 10px;
-    padding: 10px;
 }
 
 .quests {
@@ -194,3 +195,148 @@ h1 {
         color: #e8ae00;
     }
 }
+/* Добавьте этот код в конец styleQuests.css */
+
+#minigame {
+    width: 85%;
+    height: 30%;
+    background-color: #333;
+    margin: 25px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: black;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.5s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+#minigame::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.2),
+        transparent
+    );
+    transition: 0.5s;
+}
+
+#minigame:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    background-color: #3a3a3a;
+}
+
+#minigame:hover::before {
+    left: 100%;
+}
+
+/* Анимация для иконки мини-игры */
+#minigame:hover .ico {
+    transform: scale(1.05) rotate(5deg);
+    filter: drop-shadow(0 0 8px rgba(232, 174, 0, 0.7));
+}
+
+.ico{
+    height: 150px;
+    width: 150px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    outline: auto;
+    margin-left: 50px;
+    border-radius: 15px;
+    transition: all 0.3s ease;
+}
+#snake{
+    background-image: url(quests_pictures/icon.png);
+}
+#wolf{
+    background-image: url(quests_pictures/wolf.png);
+}
+#arkanoid{
+    background-image: url(quests_pictures/arkanoidpng.png);
+}
+/* Анимация для текста */
+#minigame:hover .text h2 {
+    color: #e8ae00;
+    text-shadow: 0 0 10px rgba(232, 174, 0, 0.5);
+}
+
+#minigame:hover .text p {
+    transform: translateX(5px);
+}
+
+.text {
+    width: 70%;
+    height: 80%;
+    margin-left: 50px;
+    margin-bottom: 30px;
+    transition: all 0.3s ease;
+}
+
+.text h2 {
+    text-align: center;
+    margin-right: 150px;
+    transition: all 0.3s ease;
+}
+
+.text p {
+    transition: all 0.3s ease;
+}
+h2{
+    text-align: center;
+    margin-right: 150px;
+}
+.cash {
+    position: relative;
+    padding: 15px 50px;
+    font-size: 18px;
+    color: #fff;
+    background: linear-gradient(135deg, #ff6f91, #ff9a8b);
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    overflow: hidden;
+    transition: transform 0.2s, box-shadow 0.3s;
+    box-shadow: 0 6px 15px rgba(255, 111, 145, 0.5);
+    margin-bottom: 20px;
+    position: relative;
+    
+    
+  }
+
+  .cash::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+    transition: left 0.6s ease;
+  }
+
+  .cash:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 20px rgba(255, 111, 145, 0.7);
+  }
+
+  .cash:hover::before {
+    left: 100%;
+  }
+  .cashing{
+    display: flex;
+    margin-left: 10%;
+  justify-content: space-between;
+  align-items: center; /* Для вертикального выравнивания, если нужно */
+  width: 80%;
+  }

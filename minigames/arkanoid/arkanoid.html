@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<link rel="shortcut icon" href="arkanoidpng.png"/>
+<title>Арканоид</title>
+<link rel="stylesheet" href="arkanoid.css">
+</head>
+<body>
+<!-- Стартовый экран -->
+<div id="startScreen" class="modal">
+  <div class="modal-content">
+    <h2>Добро пожаловать в Арканоид!</h2>
+    <h3>Правила игры:</h3>
+    <ul>
+      <li>Управляйте платформой стрелками, мышью или свайпами</li>
+      <li>Разбивайте кирпичи мячиком</li>
+      <li>Собирайте монеты и бонусы</li>
+      <li>Не дайте мячику упасть (у вас 3 жизни)</li>
+    </ul>
+    
+    <h3>Бонусы:</h3>
+    <ul>
+      <li><span class="bonus-icon">↔️</span> Удлинение платформы</li>
+      <li><span class="bonus-icon">⚡</span> Увеличение скорости мяча</li>
+      <li><span class="bonus-icon">💫</span> Многомячик</li>
+      <li><span class="bonus-icon">🛡️</span> Щит (защита от потери мяча)</li>
+    </ul>
+    
+    <button id="startGameButton">Начать игру</button>
+  </div>
+</div>
+
+<div class="game-info">
+  Очки: <span id="score">0</span> | 
+  Монеты: <span id="coins">0</span> | 
+  Уровень: <span id="level">1</span> |
+  Жизни: <span id="lives">3</span>
+</div>
+<div class="bonus-indicator" id="bonusIndicator"></div>
+<canvas id="gameCanvas"></canvas>
+
+<!-- Модальное окно -->
+<div id="gameOverModal" class="modal" style="display: none;">
+  <div class="modal-content">
+    <h2>Игра окончена</h2>
+    <p>Ваш финальный счет: <span id="finalScore">0</span></p>
+    <p>Собрано монет: <span id="finalCoins">0</span></p>
+    <button id="restartButton">Начать заново</button>
+  </div>
+</div>
+<script src="arkanoid.js"></script>
+</body>
+</html>

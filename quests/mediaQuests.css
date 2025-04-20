@@ -1,4 +1,12 @@
 /* Для экранов шириной до 1200px включительно */
+@media screen and (max-width: 1400px) {
+    #minigames{
+        height: 1350px;
+    }
+    #minigame{
+        width: 90%;
+    }
+}
 @media screen and (max-width: 1200px) {
     .header {
         width: 80%; /* Увеличим ширину заголовка */
@@ -13,6 +21,9 @@
         width: 250px; /* Увеличим размер квеста */
         height: 250px;
     }
+    #minigames{
+        height: 1100px;
+    }
 }
 
 /* Для экранов шириной до 998px включительно */
@@ -20,8 +31,15 @@
     .header {
         width: 75%; /* Немного уменьшим ширину заголовка */
     }
+    .header h1{
+        text-align: left;
+    }
     .container {
         width: 70%; /* Уменьшим ширину контейнера */
+        height: 500px;
+    }
+    #m{
+        height: auto;
     }
     .block {
         width: 48%; /* Слегка увеличим ширину блока */
@@ -29,6 +47,41 @@
     .quest {
         width: 220px; /* Немного уменьшим размер квеста */
         height: 220px;
+    }
+    #minigames {
+        width: 100%;
+        margin: 0;
+        margin-top: 20px;
+        margin-bottom: 50px;
+        display: block;
+        height: auto;
+    }
+    #minigame {
+        margin: 15px auto;
+        width: 95%;
+        height: auto;
+        flex-direction: column;
+    }
+    .quest {
+        width: 150px;
+        height: 150px;
+    }
+    .ico {
+        height: 80px;
+        width: 80px;
+        margin: 10px auto 10px;
+    }
+    .text {
+        width: 95%;
+        margin: 0 auto;
+        font-size: 13px;
+    }
+    .text h2 {
+        margin-right: 0;
+        font-size: 18px;
+    }
+    h1{
+        text-align: center;
     }
 }
 
@@ -39,21 +92,14 @@
         padding-left: 30px; /* Уменьшим отступ слева */
     }
     .container {
-        width: 90%; /* Максимально расширим контейнер */
+        width: 80%; /* Максимально расширим контейнер */
         height: 500px; /* Уменьшим высоту контейнера */
+        padding: 10px;    }
+    #m{
+        height: auto;
     }
     .block {
-        width: 40%; /* Немного увеличим ширину блока */
-    }
-    #minigames {
-        width: 80%;
-        margin: 0;
-        margin-bottom: 50px;
-        margin-left: -25px;
-    }
-    #minigame {
-        margin: 0;
-        margin-left: -10px;
+        width: 50%; /* Немного увеличим ширину блока */
     }
     .quest {
         width: 180px; /* Уменьшим размер квеста */
@@ -69,28 +115,31 @@
         margin-top: 10px;
     }
     .container {
-        width: 100%; /* Контейнер займет всю доступную ширину */
-        height: 1000px; /* Еще сильнее уменьшим высоту контейнера */
+        width: 90%; /* Контейнер займет всю доступную ширину */
+        height: auto; /* Еще сильнее уменьшим высоту контейнера */
         flex-direction: column; /* Перестроим блоки вертикально */
+        margin-left: -40px;
+        padding: 0;
     }
     .block {
-        width: 90%; /* Блоки займут всю ширину */
+        width: 100%; /* Блоки займут всю ширину */
         margin-bottom: 20px; /* Добавим расстояние между блоками */
     }
-    #minigames {
-        width: 90%;
-        margin: 0;
-        margin-top: -100px;
-        margin-bottom: 50px;
-        display: none;
-    }
-    #minigame {
-        margin: 0;
-        margin-left: -10px;
-    }
+
     .quest {
         width: 150px; /* Еще меньший размер квеста */
         height: 150px;
+    }
+
+    .quest {
+        width: 150px;
+        height: 150px;
+    }
+    #m{
+        margin-top: -10px;
+        margin-left: -20px;
+        width: 90%;
+        padding: 0;
     }
 }
 
@@ -112,18 +161,9 @@
         margin-bottom: 10px; /* Расстояние между блоками минимизировано */
         overflow: auto;
     }
-    #minigames {
-        width: 70%;
-        margin: 0;
-        display: none;
-    }
-
-    #minigame {
-        margin: 0;
-        margin-left: -10px;
-    }
     .quest {
         width: 120px; /* Самый маленький размер квеста */
         height: 120px;
     }
+
 }
