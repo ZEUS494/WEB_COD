@@ -4,6 +4,77 @@
     font-family: 'Anonymous Pro', sans-serif;
 }
 
+/*=============== МЕНЮ =================*/
+
+.menu {
+    position: absolute;
+    left: 1%;
+    top: 22%;
+    height: 40%;
+    width: 70px;
+    background-color: #191919;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.move-to {
+    width: 60px;
+    height: 60px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    background-color: #202020;
+    background-position: center;
+    background-size: 85%;
+    background-repeat: no-repeat;
+}
+
+.move-to:hover {
+    scale: 1.06;
+    background-color: #303030;
+}
+
+#current-page {
+    border: #ffd000 2px solid;
+    cursor: not-allowed;
+}
+
+@media screen and (max-width: 1200px) {
+    .menu {
+        width: 70px;
+    }
+}
+
+@media screen and (max-width: 998px) {
+    .menu {
+        top: 1%;
+        left: 25%;
+        width: 50%;
+        height: 50px;
+        border-radius: 15px;
+        flex-direction: row;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .menu {
+        width: 75%;
+        left: 10%;
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .menu {
+        width: 85%;
+        left: 7%;
+    }
+}
+
+/*====================================*/
+
 body {
     height: 100vh;
     width: 99vw;
@@ -173,6 +244,37 @@ body {
     margin-left: 10px;
 }
 
+.shop-button {
+    position: absolute;
+    height: 40px;
+    font-size: 20px;
+    border-radius: 15px;
+    color: #000;
+    bottom: 0px;
+    background-color: #2ce2b8;
+    width: 80%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    cursor: pointer;
+}
+
+.shop-button:hover {
+    scale: 1.06;
+    background-color: #24bc99;
+    transition: 0.2s linear;
+}
+
+#shop-logo {
+    width: 19px;
+    height: 19px;
+    background-image: url(../images/shopbtn.png);
+    background-size: cover;
+    margin-left: 10px;
+}
+
 .info-block {
     width: 90%;
     background-color: #3e3e3e;
@@ -316,7 +418,8 @@ body {
         font-size: 20px;
     }
     .box {
-        width: 90%;
+        width: 95%;
+        margin-top: 80px;
     }
     .container-box {
         width: 100%;
@@ -330,10 +433,11 @@ body {
     }
     .exit-button {
         top: 20px;
-        right: -5.6%;
+        right: 0;
         position: absolute;
-        height: 50px;
-        width: 100px;
+        height: 60px;
+        width: 120px;
+        font-size: 25px;
     }
 
     #container-box-part-2 {
@@ -353,6 +457,16 @@ body {
 
     .info-block {
         margin: 3px;
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .header-block {
+        width: 40%;
+    }
+
+    .header-block h1 {
+        margin-top: 25px;
     }
 }
 

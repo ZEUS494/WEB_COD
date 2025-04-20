@@ -5,6 +5,77 @@
     color: #fff;
 }
 
+/*=============== МЕНЮ =================*/
+
+.menu {
+    position: absolute;
+    left: 1%;
+    top: 22%;
+    height: 40%;
+    width: 70px;
+    background-color: #191919;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.move-to {
+    width: 60px;
+    height: 60px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    background-color: #202020;
+    background-position: center;
+    background-size: 85%;
+    background-repeat: no-repeat;
+}
+
+.move-to:hover {
+    scale: 1.06;
+    background-color: #303030;
+}
+
+#current-page {
+    border: #ffd000 2px solid;
+    cursor: not-allowed;
+}
+
+@media screen and (max-width: 1200px) {
+    .menu {
+        width: 70px;
+    }
+}
+
+@media screen and (max-width: 998px) {
+    .menu {
+        top: 1%;
+        left: 25%;
+        width: 50%;
+        height: 50px;
+        border-radius: 15px;
+        flex-direction: row;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .menu {
+        width: 75%;
+        left: 10%;
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .menu {
+        width: 85%;
+        left: 7%;
+    }
+}
+
+/*====================================*/
+
 body {
     width: 100vw;
     height: 100vh;
