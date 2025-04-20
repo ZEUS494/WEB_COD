@@ -50,7 +50,7 @@ body {
 }
 
 #block-2 {
-    background-image: url(/images/filler.webp);
+    background-image: url(../images/filler.webp);
     background-size: 100%;
     background-position: center;
     width: 100%;
