@@ -11,10 +11,13 @@
 </head>
 <body class="min-h-screen flex flex-col items-center justify-center p-4">
     <!-- Модальное окно -->
+    <button onclick="window.history.back();" class="back-button">
+        
+      </button>
     <div id="start-modal" class="fixed top-0 left-0 w-full h-full bg-black bg-opacity-75 flex items-center justify-center z-50">
         <div class="bg-gray-800 p-8 rounded-lg text-center">
             <h2 class="text-3xl font-bold text-green-400 mb-4">Добро пожаловаться в игру Змейка!</h2>
-            <p class="text-gray-300 mb-6">Собирайте Кодкоины и улучшайте свою змею!</p>
+            <p class="text-gray-300 mb-6">Собирайте Кодкоины и улучшайте свою змею! <br> Используйте стрелки на клавиатуре, кнопки на экране или свайпы</p>
             <button id="start-game-btn" class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-6 rounded-full text-lg transition">
                 Начать игру
             </button>
@@ -57,7 +60,7 @@
         <button class="control-btn" id="right-btn"><i class="fas fa-arrow-right"></i></button>
     </div>
     <div class="mt-6 text-center text-gray-400">
-        <p class="mb-2">Используйте стрелки на клавиатуре или кнопки на экране</p>
+        <p class="mb-2">Используйте стрелки на клавиатуре, кнопки на экране или свайпы</p>
         <p>Соберите 10 Кодкоинов для увеличения скорости!</p>
     </div>
     <script src="snake.js"></script>

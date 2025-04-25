@@ -384,33 +384,43 @@ function bonusCollection() {
                         activeBonuses = activeBonuses.filter(b => b.type !== 'extend');
                     }, duration);
                     break;
-                case 'speed':
-                    balls.forEach(ball => {
-                        // Гарантируем, что скорость не станет меньше базовой
-                        ball.dx = Math.sign(ball.dx) * Math.max(Math.abs(ball.dx) * 1.5, baseBallSpeed);
-                        ball.dy = Math.sign(ball.dy) * Math.max(Math.abs(ball.dy) * 1.5, baseBallSpeed);
-                    });
-                    activeBonuses.push({type: 'speed', endTime});
-                    setTimeout(() => {
+                    case 'speed':
+                        // Сохраняем текущее направление каждого мяча
                         balls.forEach(ball => {
-                            // Возвращаем к базовой скорости, но не ниже
-                            ball.dx = Math.sign(ball.dx) * baseBallSpeed;
-                            ball.dy = Math.sign(ball.dy) * baseBallSpeed;
+                            // Вычисляем текущий угол направления
+                            const angle = Math.atan2(ball.dy, ball.dx);
+                            // Увеличиваем скорость, сохраняя направление
+                            const newSpeed = baseBallSpeed * 1.5;
+                            ball.dx = newSpeed * Math.cos(angle);
+                            ball.dy = newSpeed * Math.sin(angle);
                         });
-                        activeBonuses = activeBonuses.filter(b => b.type !== 'speed');
-                    }, duration);
-                    break;
-                case 'multiball':
-                    for (let i = 0; i < 2; i++) {
-                        const angle = Math.random() * Math.PI/2 - Math.PI/4;
-                        balls.push({
-                            x: paddleX + paddleWidth/2,
-                            y: canvas.height - paddleHeight - ballRadius,
-                            dx: baseBallSpeed * Math.cos(angle),
-                            dy: -baseBallSpeed * Math.sin(angle)
+                        activeBonuses.push({type: 'speed', endTime});
+                        setTimeout(() => {
+                            // Возвращаем к базовой скорости, сохраняя направление
+                            balls.forEach(ball => {
+                                const angle = Math.atan2(ball.dy, ball.dx);
+                                ball.dx = baseBallSpeed * Math.cos(angle);
+                                ball.dy = baseBallSpeed * Math.sin(angle);
+                            });
+                            activeBonuses = activeBonuses.filter(b => b.type !== 'speed');
+                        }, duration);
+                        break;
+                    case 'multiball':
+                        // Создаем 3 мяча с углами 45°, 90° и 135°
+                        const angles = [
+                            Math.PI/4,     // 45°
+                            Math.PI/2,     // 90°
+                            3*Math.PI/4    // 135°
+                        ];
+                        angles.forEach(angle => {
+                            balls.push({
+                                x: paddleX + paddleWidth/2,
+                                y: canvas.height - paddleHeight - ballRadius,
+                                dx: baseBallSpeed * Math.cos(angle),
+                                dy: -baseBallSpeed * Math.sin(angle)
+                            });
                         });
-                    }
-                    break;
+                        break;
                 case 'shield':
                     activeBonuses.push({type: 'shield', endTime});
                     setTimeout(() => {
@@ -468,11 +478,13 @@ function checkLevelComplete() {
 
 function resetBall() {
     balls.length = 1;
+    // Генерируем случайный угол между 45° (π/4) и 135° (3π/4)
+    const startAngle = Math.PI/4 + Math.random() * Math.PI/2;
     balls[0] = {
         x: canvas.width / 2,
         y: canvas.height - 50,
-        dx: baseBallSpeed,
-        dy: -baseBallSpeed
+        dx: baseBallSpeed * Math.cos(startAngle),
+        dy: -baseBallSpeed * Math.sin(startAngle) // Отрицательное значение для движения вверх
     };
 }
 

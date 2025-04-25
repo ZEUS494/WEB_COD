@@ -311,3 +311,11 @@ document.addEventListener('DOMContentLoaded', () => {
     // Инициализация баланса при загрузке
     balanceElement.textContent = balance;
 });
+document.querySelector('.back-button').addEventListener('click', function(e) {
+    e.preventDefault();
+    // Анимация перед возвратом
+    this.style.transform = 'scale(0.95)';
+    setTimeout(() => {
+      window.history.back();
+    }, 200);
+  });

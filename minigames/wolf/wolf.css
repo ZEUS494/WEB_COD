@@ -108,6 +108,10 @@ body {
     color: #000;
     transform: scale(1.05);
 }
+#adv p {
+    position: relative;
+    top: -20px;
+}
 .title {
     font-size: 2.25rem;
     margin-bottom: 30px;
@@ -116,6 +120,9 @@ body {
     text-align: center;
     width: 90%;
     text-align: center;
+}
+#title{
+    margin-top: 30px;
 }
 @media (max-width: 640px) {
     .title {
@@ -227,3 +234,72 @@ p{
         margin: 10px;
     }
 }
+.pixel-back-button {
+    /* Основные стили */
+    display: inline-block;
+    padding: 10px 20px 10px 35px; /* Больше слева для стрелки */
+    background-color: #FFB347; /* Светло-оранжевый */
+    color: #5E3A00; /* Тёмно-коричневый текст */
+    border: none;
+    font-family: 'Courier New', monospace; /* Пиксельный шрифт */
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 1000;
+    
+    /* Пиксельные эффекты */
+    box-shadow: 
+      4px 4px 0px 0px #E68A2E, /* Тень для 3D-эффекта */
+      inset -2px -2px 0px 0px rgba(0, 0, 0, 0.2), /* Внутренняя тень */
+      inset 2px 2px 0px 0px rgba(255, 255, 255, 0.2); /* Внутренний свет */
+    
+    /* Анимация нажатия */
+    transition: all 0.1s ease;
+  }
+  
+  /* Стрелка в виде пикселя */
+  .pixel-back-button::before {
+    content: '←';
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 18px;
+  }
+  
+  /* Эффект наведения */
+  .pixel-back-button:hover {
+    background-color: #FFA01C; /* Более насыщенный оранжевый */
+    transform: translateY(-1px);
+    box-shadow: 
+      5px 5px 0px 0px #E68A2E,
+      inset -3px -3px 0px 0px rgba(0, 0, 0, 0.2),
+      inset 3px 3px 0px 0px rgba(255, 255, 255, 0.2);
+  }
+  
+  /* Эффект нажатия */
+  .pixel-back-button:active {
+    background-color: #E68A2E;
+    transform: translateY(2px) translateX(2px);
+    box-shadow: 
+      2px 2px 0px 0px #E68A2E,
+      inset -1px -1px 0px 0px rgba(0, 0, 0, 0.2),
+      inset 1px 1px 0px 0px rgba(255, 255, 255, 0.2);
+  }
+  
+  /* Адаптация для мобильных */
+  @media (max-width: 768px) {
+    .pixel-back-button {
+      padding: 8px 15px 8px 30px;
+      font-size: 14px;
+      top: 10px;
+      left: 10px;
+    }
+    .pixel-back-button::before {
+      left: 10px;
+      font-size: 16px;
+    }
+  }

@@ -30,18 +30,55 @@ document.addEventListener('DOMContentLoaded', () => {
 
     wolf.style.left = `${wolfPosition}px`;
 
-    document.addEventListener('keydown', (e) => {
+    let keysPressed = {
+        ArrowLeft: false,
+        ArrowRight: false
+    };
+    const wolfSpeed = 5; // Скорость движения волка
+    let animationFrameId = null;
+
+    function handleKeyDown(e) {
         if (!isGameRunning) return;
-        const wolfWidth = wolf.offsetWidth;
-        const speed = 20;
-        if (e.key === 'ArrowLeft' && wolfPosition > 0) {
-            wolfPosition = Math.max(0, wolfPosition - speed);
-            wolf.style.left = `${wolfPosition}px`;
-        } else if (e.key === 'ArrowRight' && wolfPosition < containerWidth - wolfWidth) {
-            wolfPosition = Math.min(containerWidth - wolfWidth, wolfPosition + speed);
-            wolf.style.left = `${wolfPosition}px`;
+        if (e.key in keysPressed) {
+            keysPressed[e.key] = true;
+            if (!animationFrameId) {
+                animationFrameId = requestAnimationFrame(moveWolf);
+            }
         }
-    });
+    }
+
+    function handleKeyUp(e) {
+        if (e.key in keysPressed) {
+            keysPressed[e.key] = false;
+            if (!keysPressed.ArrowLeft && !keysPressed.ArrowRight) {
+                cancelAnimationFrame(animationFrameId);
+                animationFrameId = null;
+            }
+        }
+    }
+
+    function moveWolf() {
+        if (!isGameRunning) return;
+        
+        const wolfWidth = wolf.offsetWidth;
+        if (keysPressed.ArrowLeft && wolfPosition > 0) {
+            wolfPosition = Math.max(0, wolfPosition - wolfSpeed);
+        } else if (keysPressed.ArrowRight && wolfPosition < containerWidth - wolfWidth) {
+            wolfPosition = Math.min(containerWidth - wolfWidth, wolfPosition + wolfSpeed);
+        }
+        
+        wolf.style.left = `${wolfPosition}px`;
+        
+        if (keysPressed.ArrowLeft || keysPressed.ArrowRight) {
+            animationFrameId = requestAnimationFrame(moveWolf);
+        } else {
+            animationFrameId = null;
+        }
+    }
+    document.removeEventListener('keydown', handleKeyDown);
+    document.removeEventListener('keyup', handleKeyUp);
+    document.addEventListener('keydown', handleKeyDown);
+    document.addEventListener('keyup', handleKeyUp);
 
     gameContainer.addEventListener('touchmove', (e) => {
         if (!isGameRunning) return;
