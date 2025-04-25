@@ -161,6 +161,7 @@ body {
 .subblock {
     display: flex;
     flex-direction: column;
+    height: 500px;
 }
 
 
@@ -171,13 +172,23 @@ body {
 
 .subblock span {
     width: 90%;
-    height: 500px;
+    height: 3%;
     background-color: #202020;
     overflow: auto;
     display: flex;
     padding: 5px;
     padding-left: 15px;
     border-radius: 10px;
+    background-color: #202020;
+}
+
+#completed-cources {
+    height: 500px;
+    flex-direction: column;
+    background-color: #202020;
+    overflow: auto;
+    border-radius: 10px;
+    width: 95%;
 }
 
 #subblock-part-2 span {
@@ -190,12 +201,30 @@ body {
     width: 250px;
     height: 250px;
     background-color: #fff;
-    border-radius: 30%;
-    background-image: url(../images/account_profile.png);
-    background-size: 100%;
+    border-radius: 50%;
+    background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     margin-bottom: 5px;
+}
+
+#imageInput {
+    display: none;
+}
+
+#uploadImage {
+    cursor: pointer;
+}
+
+#uploadImage:hover {
+    text-decoration: underline;
+}
+
+#img-info {
+    margin-top: 0px;
+    font-size: 16px;
+    text-align: center;
+    color: #a4a4a4;
 }
 
 .person-info {
@@ -212,7 +241,7 @@ body {
 
 .exit-button {
     position: absolute;
-    bottom: -20px;
+    bottom: 60px;
     width: 80%;
     background-color: rgba(178, 35, 52);
     height: 40px;
@@ -486,8 +515,5 @@ body {
 
     .subblock span {
         width: 80%;
-    }
-    #swith-to-cources {
-        position: absolute;
     }
 }

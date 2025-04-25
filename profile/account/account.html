@@ -33,8 +33,10 @@
         <div class="container">
             <div class="container-box" id="container-box-part-1">
                 <div class="container-box-profile">
-                    <div class="avatar-profile"></div>
-                    <!--<a href="" class="shine">Загрузить аватар</a>-->
+                    <div class="avatar-profile" id="imagePreview"></div>
+                    <label for="imageInput" class="shine" id="uploadImage">Загрузить аватар</label>
+                    <input type="file" accept="image/*" id="imageInput">
+                    <p id="img-info">Рекомендуются изображения с соотношением сторон 1:1</p><br>
                     <div><strong id="username"></strong></div>
                 </div>
                 <div class="container-box-other">
@@ -52,15 +54,15 @@
                 </div>
                 <div class="content1" id="content1" style="display: grid;">
                     <div class="subblock" id="subblock-part-1">
-                        <label for="compeleted-cources">Завершенные курсы</label>
-                        <span class="subblock-span" name="compeleted-cources" id="compeleted-cources">Отсутствуют</span>
+                        <label for="completed-cources">Завершенные курсы</label>
+                        <div class="subblock-span" name="completed-cources" id="completed-cources">Отсутствуют</div>
                     </div>
                     <div class="subblock" id="subblock-part-2">
-                        <label for="compeleted-tasks">Сделанных домашних заданий:</label>
-                        <span class="subblock-span" name="compeleted-tasks" id="compeleted-tasks">0</span>
+                        <label for="completed-tasks">Сделанных домашних заданий:</label>
+                        <span class="subblock-span" name="completed-tasks" id="completed-tasks">0</span>
     
-                        <label for="uncompeleted-tasks">Невыполненных домашних заданий:</label>
-                        <span class="subblock-span" name="uncompeleted-tasks" id="uncompeleted-tasks">0</span>
+                        <label for="uncompleted-tasks">Невыполненных домашних заданий:</label>
+                        <span class="subblock-span" name="uncompleted-tasks" id="uncompleted-tasks">0</span>
                     </div>
                 </div>
                 <div class="content2" id="content2" style="display: none;">
@@ -78,54 +80,51 @@
                             <a href="">- Ссылка на файлы с урока</a>
                         </div>
                     </div>
-                    <div class="lesson-style">
-                        <div class="lesson">3. Lelele</div>
-                        <div class="lesson-preview" style="display: none;">
-                            <div id="lesson-name">asksadkasd</div>
-                            <a href="">- Ссылка на файлы с урока</a>
-                        </div>
-                    </div>
-                    <div class="lesson-style">
-                        <div class="lesson">4. ZZZ</div>
-                        <div class="lesson-preview" style="display: none;">
-                            <div id="lesson-name">ov</div>
-                            <a href="">- Ссылка на файлы с урока</a>
-                        </div>
-                    </div>
-                    <div class="lesson-style">
-                        <div class="lesson">5. LLALALA</div>
-                        <div class="lesson-preview" style="display: none;">
-                            <div id="lesson-name">LALAL</div>
-                            <a href="">- Ссылка на файлы с урока</a>
-                        </div>
-                    </div>
-                    <div class="lesson-style">
-                        <div class="lesson">6. js python</div>
-                        <div class="lesson-preview" style="display: none;">
-                            <div id="lesson-name">html css</div>
-                            <a href="">- Ссылка на файлы с урока</a>
-                        </div>
-                    </div>
-                    <div class="lesson-style">
-                        <div class="lesson">7. Minecraft</div>
-                        <div class="lesson-preview" style="display: none;">
-                            <div id="lesson-name">Geometry dash</div>
-                            <a href="">- Ссылка на файлы с урока</a>
-                        </div>
-                    </div>
-                    <div class="lesson-style">
-                        <div class="lesson">8. Sigma</div>
-                        <div class="lesson-preview" style="display: none;">
-                            <div id="lesson-name">Alpha beta gamma</div>
-                            <a href="">- Ссылка на файлы с урока</a>
-                        </div>
-                    </div>
                 </div>        
         </div>
     </div>
     <script src="../app.js"></script>
     <script src="../scripts/cookie.js"></script>
+    <script src="../scripts/uploadimage.js"></script>
     <script src="../scripts/script.js"></script>
     <script src="../scripts/load.js"></script>
+
+    <script>
+        const firebaseConfig = {
+          apiKey: "AIzaSyBeCuMUazd-l9D0vPqfBrNJYSxCgOG6DeY",
+          authDomain: "codweb-4d1aa.firebaseapp.com",
+          projectId: "codweb-4d1aa",
+          storageBucket: "codweb-4d1aa.firebasestorage.app",
+          messagingSenderId: "892570211314",
+          appId: "1:892570211314:web:4888edb47d69cbd809d16b",
+          measurementId: "G-57GYQLP328"
+        };
+        
+        firebase.initializeApp(firebaseConfig);
+        const db = firebase.firestore();
+        
+        // Проверка авторизованности пользователя при загрузке страницы
+        document.addEventListener('DOMContentLoaded', function () {
+          const storedUsername = getCookie('user'); // Получение имени пользователя из cookie
+        
+          if (!storedUsername) { // Пользователь не залогинен
+            alert("Вам необходимо войти в аккаунт.");
+            window.location.href = "../index.html"; // Перенаправляем на форму входа
+            return;
+          }
+      
+          // Логика вывода данных аккаунта...
+        });
+        
+        // Вспомогательная функция для чтения cookies
+        function getCookie(name) {
+          let matches = document.cookie.match(new RegExp(
+            "(?:^|; )" +
+            name.replace(/([\.$?*|{}$$$$$$\\\/^+])/g, '\\$1') +
+            "=([^;]*)"
+          ));
+          return matches ? decodeURIComponent(matches[1]) : undefined;
+        }
+    </script>
 </body>
 </html>
