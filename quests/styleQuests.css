@@ -340,4 +340,38 @@ h2{
   justify-content: space-between;
   align-items: center; /* Для вертикального выравнивания, если нужно */
   width: 80%;
+  }.menu {
+    position: absolute;
+    left: 1%;
+    top: 22%;
+    height: 40%;
+    width: 70px;
+    background-color: #191919;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  .move-to {
+    width: 60px;
+    height: 60px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    background-color: #202020;
+    background-position: center;
+    background-size: 85%;
+    background-repeat: no-repeat;
+  }
+  
+  .move-to:hover {
+    scale: 1.06;
+    background-color: #303030;
+  }
+  
+  #current-page {
+    border: #ffd000 2px solid;
+    cursor: not-allowed;
   }

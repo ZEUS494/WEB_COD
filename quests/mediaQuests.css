@@ -167,3 +167,39 @@
     }
 
 }
+@media screen and (max-width: 1200px) {
+    .menu {
+        width: 70px;
+    }
+  }
+  
+  @media screen and (max-width: 998px) {
+    .menu {
+        top: 1%;
+        left: 25%;
+        width: 50%;
+        height: 50px;
+        border-radius: 15px;
+        flex-direction: row;
+    }
+    body{
+        padding-top: 30px;
+    }
+  }
+  
+  @media screen and (max-width: 768px) {
+    .menu {
+        width: 75%;
+        left: 10%;
+    }
+  }
+  
+  @media screen and (max-width: 576px) {
+    .menu {
+        width: 85%;
+        left: 7%;
+    }
+    body{
+        padding-top: 60px;
+    }
+  }
