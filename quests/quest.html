@@ -82,8 +82,8 @@
                         <p style="margin: 0 0 15px 0; font-size: 16px; line-height: 1.5; opacity: 0.9;">
                             Весёлая игра на реакцию и скорость!<br>
                             - Управляйте волком с помощью мыши или тапа.<br>
-                            - Ловите падающие <strong style="color: #b39a10;">монеты (💰)</strong> для получения очков.<br>
-                            - Каждые 50 монет = <strong>+1 к балансу</strong> в вашем профиле.<br>
+                            - Ловите падающие <strong style="color: #b39a10;">кодкоины (💰)</strong> для получения очков.<br>
+                            - Каждые 1000 кодкоинов = <strong>+1 к балансу</strong> в вашем профиле.<br>
                             - Избегайте падающих камней — они отнимают очки.<br>
                             - Специальные золотые монеты дают в 2 раза больше чем обычные!<br>
                             <span style="font-style: italic; color: #81C784;">Чем выше счёт, тем ценнее награда!</span>
@@ -124,6 +124,20 @@
             </div>
         </div>
     </div>
+    <!-- Добавить перед закрывающим тегом body -->
+<div class="modal-game" id="modalGame" style="display: none;">
+    <div class="modal-game-container">
+        <button class="close-modal-game">X</button>
+        <div class="modal-game-content">
+            <h1 class="modal-game-title">Начать игру?</h1>
+            <p class="modal-game-description">Вы можете играть только один раз в день. Хотите начать сейчас?</p>
+            <div class="modal-game-buttons">
+                <button class="modal-game-confirm">Да, начать</button>
+                <button class="modal-game-cancel">Отмена</button>
+            </div>
+        </div>
+    </div>
+</div>
     <div class="menu">
         <a href="../../main/main.html" class="move-to" style="background-image: url('../../imgformenu/home.png');"></a>
         <a href="" class="move-to" style="background-image: url('../../imgformenu/profile.png');"></a>

@@ -1,3 +1,5 @@
+document.addEventListener('DOMContentLoaded', () => {
+    // Весь ваш код здесь
 // Массив пастельных цветов
 const pastelColors = [
     '#ffb3ba', // Розовый
@@ -89,12 +91,67 @@ questElements.forEach(quest => {
         openModal(questId);
     });
 });
-const snake = document.querySelector("div.snake").addEventListener('click', function(){
-    window.location.href = "/minigames/snake/snake.html"
-})
-const wolf = document.querySelector("div.wolf").addEventListener('click', function(){
-    window.location.href = "/minigames/wolf/wolf.html"
-})
-const arkanoid = document.querySelector("div.arkanoid").addEventListener('click', function(){
-    window.location.href = "/minigames/arkanoid/arkanoid.html"
-})
+// Добавить в начало файла
+const modalGame = document.getElementById('modalGame');
+const closeButtonGame = document.querySelector('.close-modal-game');
+const confirmButton = document.querySelector('.modal-game-confirm');
+const cancelButton = document.querySelector('.modal-game-cancel');
+let currentGameUrl = '';
+let lastPlayDate = 1;
+console.log(lastPlayDate)
+// Функция для открытия модального окна игры
+function openGameModal(gameUrl) {
+    if (lastPlayDate === 1) {
+        currentGameUrl = gameUrl;
+        modalGame.style.display = 'block';
+    } else {
+        alert('Вы уже играли сегодня. Возвращайтесь завтра!');
+    }
+}
+
+// Функция для начала игры
+function startGame() {
+    console.log('Подождите 24 часа предже чем снова начать игру')
+    setcookie(lastPlayDate, 0, time() + 86400,"/");
+    window.location.href = currentGameUrl;
+    modalGame.style.display = 'none';
+}
+
+// Закрытие модального окна игры
+function closeGameModal() {
+    modalGame.style.display = 'none';
+    currentGameUrl = '';
+}
+
+// Обработчики событий
+closeButtonGame.addEventListener('click', closeGameModal);
+cancelButton.addEventListener('click', closeGameModal);
+confirmButton.addEventListener('click', startGame);
+
+// Обработка кликов вне модального окна
+document.addEventListener('click', function(event) {
+    if (modalGame.style.display === 'block' && !event.target.closest('.modal-game-container')) {
+        closeGameModal();
+    }
+});
+
+// Обработка нажатия Escape
+document.addEventListener('keydown', function(event) {
+    if (event.key === 'Escape' && modalGame.style.display === 'block') {
+        closeGameModal();
+    }
+});
+
+// Обновляем обработчики для мини-игр
+document.querySelector("div.snake").addEventListener('click', function() {
+    openGameModal("/minigames/snake/snake.html");
+});
+
+document.querySelector("div.wolf").addEventListener('click', function() {
+    openGameModal("/minigames/wolf/wolf.html");
+});
+
+document.querySelector("div.arkanoid").addEventListener('click', function() {
+    openGameModal("/minigames/arkanoid/arkanoid.html");
+});
+});
