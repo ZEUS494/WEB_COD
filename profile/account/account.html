@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+    <link rel="stylesheet" href="../styles/account_style.css">
+    <link rel="icon" href="../images/codologialogo.png">
+    <title>CODOLOGIA | Личный кабинет</title>
+</head>
+<body>
+    <div id="loader">
+        <div class="loader-icon"></div>
+    </div>
+    <!--========== МЕНЮ ============-->
+    <div class="menu">
+        <a href="../../main/main.html" class="move-to" style="background-image: url('../../imgformenu/home.png');"></a>
+        <a href="" class="move-to" style="background-image: url('../../imgformenu/profile.png');" id="current-page"></a>
+        <a href="../../shop/shop.html" class="move-to" style="background-image: url('../../imgformenu/shop.png');"></a>
+        <a href="" class="move-to" style="background-image: url('../../imgformenu/minigames.png');"></a>
+        <a href="../../chart.html" class="move-to" style="background-image: url('../../imgformenu/rating.png');"></a>
+    </div>
+    <!--==========================-->
+    <div class="box">
+        <div class="header" id="header">
+            <div class="header-block">
+                <a class="shine" id="back-to-main" href="../../main/main.html">Вернуться на главную</a>
+                <h1>Личный кабинет</h1>
+                <div id="main-picture" class="main-picture" onclick="location.href='https://codologia.ru/'"></div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="container-box" id="container-box-part-1">
+                <div class="container-box-profile">
+                    <div class="avatar-profile" id="imagePreview"></div>
+                    <label for="imageInput" class="shine" id="uploadImage">Загрузить аватар</label>
+                    <input type="file" accept="image/*" id="imageInput">
+                    <p id="img-info">Рекомендуются изображения с соотношением сторон 1:1</p><br>
+                    <div><strong id="username"></strong></div>
+                </div>
+                <div class="container-box-other">
+                    <div class="person-info">
+                        <p>Баланс кодкоинов: <br><span class="white" id="codcoins">0</span></p><br>
+                        <p>Текущий курс: <br><span class="white" id="currentcourse">Отсутствует</span></p>
+                    </div>
+                    <button onclick="logout()" class="exit-button">Выйти<div id="exit-logo"></div></button>
+                </div>
+            </div>
+            <div class="container-box" id="container-box-part-2">
+                <div class="always-content">
+                    <button id="swith-to-main" style="border: 3px solid #ffd000;">Основное</button>
+                    <button id="swith-to-cources" style="color: #a4a4a4;">Материалы с уроков</button>
+                </div>
+                <div class="content1" id="content1" style="display: grid;">
+                    <div class="subblock" id="subblock-part-1">
+                        <label for="completed-cources">Завершенные курсы</label>
+                        <div class="subblock-span" name="completed-cources" id="completed-cources"><span>Отсутствуют</span></div>
+                    </div>
+                    <div class="subblock" id="subblock-part-2">
+                        <label for="completed-tasks">Сделанных домашних заданий:</label>
+                        <span class="subblock-span" name="completed-tasks" id="completed-tasks">0</span>
+    
+                        <label for="uncompleted-tasks">Невыполненных домашних заданий:</label>
+                        <span class="subblock-span" name="uncompleted-tasks" id="uncompleted-tasks">0</span>
+                    </div>
+                </div>
+                <div class="content2" id="content2" style="display: none;">
+                    <div class="lesson-style">
+                        <div class="lesson">1. Тестовый урок</div>
+                        <div class="lesson-preview" style="display: none;">
+                            <div id="lesson-name">Ваше пробное название</div>
+                            <a href="">- Ссылка на файлы с урока</a>
+                        </div>
+                    </div>
+                    <div class="lesson-style">
+                        <div class="lesson">2. Бебебе</div>
+                        <div class="lesson-preview" style="display: none;">
+                            <div id="lesson-name">Юеюеюее</div>
+                            <a href="">- Ссылка на файлы с урока</a>
+                        </div>
+                    </div>
+                </div>        
+        </div>
+    </div>
+    <script src="../app.js"></script>
+    <script src="../scripts/cookie.js"></script>
+    <script src="../scripts/uploadimage.js"></script>
+    <script src="../scripts/script.js"></script>
+    <script src="../scripts/load.js"></script>
+
+    <script>
+        const firebaseConfig = {
+          apiKey: "AIzaSyBeCuMUazd-l9D0vPqfBrNJYSxCgOG6DeY",
+          authDomain: "codweb-4d1aa.firebaseapp.com",
+          projectId: "codweb-4d1aa",
+          storageBucket: "codweb-4d1aa.firebasestorage.app",
+          messagingSenderId: "892570211314",
+          appId: "1:892570211314:web:4888edb47d69cbd809d16b",
+          measurementId: "G-57GYQLP328"
+        };
+        
+        firebase.initializeApp(firebaseConfig);
+        const db = firebase.firestore();
+        
+        // Проверка авторизованности пользователя при загрузке страницы
+        document.addEventListener('DOMContentLoaded', function () {
+          const storedUsername = getCookie('user'); // Получение имени пользователя из cookie
+        
+          if (!storedUsername) { // Пользователь не залогинен
+            alert("Вам необходимо войти в аккаунт.");
+            window.location.href = "../index.html"; // Перенаправляем на форму входа
+            return;
+          }
+      
+          // Логика вывода данных аккаунта...
+        });
+        
+        // Вспомогательная функция для чтения cookies
+        function getCookie(name) {
+          let matches = document.cookie.match(new RegExp(
+            "(?:^|; )" +
+            name.replace(/([\.$?*|{}$$$$$$\\\/^+])/g, '\\$1') +
+            "=([^;]*)"
+          ));
+          return matches ? decodeURIComponent(matches[1]) : undefined;
+        }
+    </script>
+</body>
+</html>

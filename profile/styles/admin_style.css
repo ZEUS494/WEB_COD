@@ -1,0 +1,333 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Anonymous Pro', sans-serif;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    width: 99vw;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    background-color: #141414;
+    color: #fff;
+}
+
+.container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+a {
+    text-decoration: none;
+    font-size: 20px;
+}
+
+.editbtn {
+    color: #00ff00;
+}
+
+.editbtn:hover {
+    color: #21c221;
+    transition: 0.3s linear;
+}
+
+.deletebtn {
+    color: #c33131;
+}
+
+.deletebtn:hover {
+    color: #9d1f1f;
+    transition: 0.3s linear;
+}
+
+#right {
+    background-color: #191919;
+    position: relative;
+    overflow: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: normal;
+}
+
+#main {
+    font-size: 4.5vw;
+    text-align: center;
+}
+
+.picture {
+    width: 80%;
+    height: 150px;
+    background-image: url(../images/codologia_full_logo.png);
+    background-size: 90%;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+#backtomain {
+    animation: shine 3s linear infinite;
+    position: absolute;
+    left: 20px;
+    top: 20px;
+    font-size: 18px;
+}
+
+@keyframes shine {
+    0% {
+        color: #ffb108;
+    }
+    50% {
+        color: #f2e01f;
+    }
+    100% {
+        color: #ffb108;
+    }
+}
+
+.formContainer {
+    position: absolute;
+    overflow: auto;
+    left: 14vw;
+    height: 600px;
+    top: 7vw;
+    width: 50%;
+    padding: 20px;
+    margin: 20px;
+    border-radius: 15px;
+    background-color: #202020;
+    z-index: 1000;
+}
+
+.former {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.formContainer input, .formContainer textarea {
+    width: 90%;
+    height: 20px;
+    border-radius: 10px;
+    border: none;
+    padding: 5px;
+    background-color: #303030;
+    color: #fff;
+    justify-self: center;
+    font-size: 18px;
+}
+
+.formContainer h2 {
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.formContainer label {
+    font-size: 22px;
+}
+
+.buttons {
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.buttons button {
+    width: 200px;
+    height: 30px;
+    margin: 5px;
+    cursor: pointer;
+    border-radius: 10px;
+    border: none;
+    font-size: 20px;
+    background-color: #00ff00;
+}
+
+.buttons button:hover {
+    background-color: #21c221;
+    transition: 0.2s linear;
+}
+
+#cancelButton, #editCancelButton {
+    background-color: #c33131;
+}
+
+#cancelButton:hover, #editCancelButton:hover {
+    background-color: #9d1f1f;
+    transition: 0.2s linear;
+}
+
+.ptext {
+    font-size: 22px;
+    margin: 20px;
+}
+
+#addUserButton {
+    background-color: #202020;
+    color: #fff;
+    padding: 10px;
+    margin: 10px;
+    width: 50%;
+    border: #fdd000 3px solid;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+#addUserButton:hover {
+    transition: 0.2s linear;
+    border: #ac8e09 3px solid;
+    color: #dddddd;
+}
+
+#searchBox {
+    width: 50%;
+    margin: 10px;
+    padding: 10px;
+    border-radius: 10px;
+    border: #fdd000 3px solid;
+    color: #fff;
+    background-color: #202020;
+    font-size: 18px;
+}
+
+#usersList {
+    width: 70%;
+    list-style: none;
+}
+
+.username {
+    border: #fff 1px solid;
+    margin: 20px;
+    padding: 10px;
+    border-radius: 15px;
+}
+
+.btns {
+    display: flex;
+    flex-direction: row;
+    width: 90%;
+}
+
+.switch-btns {
+    width: 48%;
+    height: 40px;
+    padding: 5px;
+    margin: 5px;
+    font-size: 18px;
+    background-color: #202020;
+    border: none;
+    color: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.switch-btns:hover {
+    background-color: #353535;
+    transition: 0.2s linear;
+    cursor: pointer;
+}
+
+.content1, .content2 {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.exit-button {
+    left: 10px;
+    top: 93%;
+    position: absolute;
+    width: 10%;
+    background-color: rgba(178, 35, 52);
+    height: 40px;
+    display: flex;
+    justify-self: flex-end;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 15px;
+    color: #000;
+    margin-bottom: -10%;
+    border: none;
+    font-size: 20px;
+    display: flex;
+    flex-direction: row;
+    z-index: 1000;
+}
+
+.exit-button:hover {
+    background-color: rgba(154, 30, 45);
+    cursor: pointer;
+    transition: 0.2s linear;
+}
+
+#exit-logo {
+    width: 16px;
+    height: 16px;
+    background-image: url(../images/exit.png);
+    background-size: cover;
+    margin-left: 10px;
+}
+
+.confirm {
+    color: #fdd000;
+}
+
+.confirm:hover {
+    color: #cfab0d;
+}
+
+@media screen and (max-width: 1200px) {
+    #right {
+        display: flex;
+        flex-direction: column;
+        justify-content: normal;
+        align-items: normal;
+    }
+    #usersList {
+        width: 95%;
+    }
+    .username {
+        width: 100%;
+        margin: 0;
+        margin-top: 20px;
+        font-size: 15px;
+    }
+    #addUserButton, #searchBox {
+        width: 95%;
+        font-size: 15px;
+    }
+}
+
+@media screen and (max-width: 998px) {
+    body {
+        grid-template-columns: none;
+        grid-template-rows: 1fr 1fr;
+    }
+
+    #main {
+        font-size: 6vw;
+    }
+
+    .exit-button {
+        top: 10px;
+        right: 10px;
+        width: 100px;
+    }
+
+    .formContainer {
+        left: 5%;
+        width: 85vw;
+        margin: 0;
+    }
+}
