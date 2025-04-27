@@ -15,19 +15,8 @@
         <a id="backtomain" href="../../main/main.html">Вернуться на главную</a>
         <p id="main">Админ-панель системы</p>
         <div class="picture"></div>
-    </div>
-    <div class="container" id="right">
-        <h1>Панель управления</h1><br><br>
 
-        <div class="btns">
-            <button class="switch-btns" id="switch-to-edit" style="border: 3px solid #ffd000;">Редактировать</button>
-            <button class="switch-btns" id="switch-to-addition" style="color: #a4a4a4;">Добавить</button>
-        </div>
-
-        <div class="content1" id="content1">
-            <p class="ptext">Поиск пользователей: </p>
-            <input type="search" id="searchBox" placeholder="Имя / Курс" />
-
+        <div class="formsContainer">
             <!-- Форма полного редактирования пользователя -->
             <div style="display:none;" id="fullEditFormContainer" class="formContainer">
                 <h2>Редактирование пользователя</h2>
@@ -53,14 +42,6 @@
                 </form>
             </div>
 
-            <p class="ptext">Список пользователей:</p>
-            <ul id="usersList"></ul>
-        </div>
-
-        <div class="content2" id="content2" style="display: none;">
-            <p class="ptext">Добавление пользователей:</p>
-            <button id="addUserButton">Добавить пользователя</button>
-    
             <!-- Формы добавления и редактирования пользователя -->
             <div style="display:none;" id="userFormContainer" class="formContainer">
                 <h2>Создание нового пользователя</h2>
@@ -80,6 +61,27 @@
                     </div>
                 </form>
             </div>
+        </div>
+    </div>
+    <div class="container" id="right">
+        <h1>Панель управления</h1><br><br>
+
+        <div class="btns">
+            <button class="switch-btns" id="switch-to-edit" style="border: 3px solid #ffd000;">Редактировать</button>
+            <button class="switch-btns" id="switch-to-addition" style="color: #a4a4a4;">Добавить</button>
+        </div>
+
+        <div class="content1" id="content1">
+            <p class="ptext">Поиск пользователей: </p>
+            <input type="search" id="searchBox" placeholder="Имя / Курс" />
+
+            <p class="ptext">Список пользователей:</p>
+            <ul id="usersList"></ul>
+        </div>
+
+        <div class="content2" id="content2" style="display: none;">
+            <p class="ptext">Добавление пользователей:</p>
+            <button id="addUserButton">Добавить пользователя</button>
         </div>
     </div>
 

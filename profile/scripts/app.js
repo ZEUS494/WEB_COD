@@ -17,7 +17,6 @@ window.onload = function() {
 };
 
 // Извлекаем всех пользователей из Firebase
-// Извлекаем всех пользователей из Firebase
 function fetchUsers(searchTerm = '') {
     db.collection("users").get()
         .then(function(querySnapshot) {
@@ -94,6 +93,12 @@ document.getElementById("searchBox").onkeyup = function() {
 
 // Открытие полной формы редактирования пользователя
 function showFullEditForm(username) {
+    const addUserFormVisible = document.getElementById("userFormContainer").style.display !== "none";
+    
+    if (addUserFormVisible) { // Если форма добавления открыта — сначала закроем её
+        hideUserForm();
+    }
+
     document.getElementById("fullEditFormContainer").style.display = "block"; // показываем контейнер
     db.collection("users").doc(username).get()
         .then(function(doc) {
@@ -157,6 +162,12 @@ function hideFullEditForm() {
 
 // Открытие формы добавления пользователя
 function showUserForm() {
+    const fullEditFormVisible = document.getElementById("fullEditFormContainer").style.display !== "none";
+    
+    if (fullEditFormVisible) { // Если полная форма редактирования открыта — сначала закроем её
+        hideFullEditForm();
+    }
+
     document.getElementById("userFormContainer").style.display = "block"; // показываем контейнер
     document.getElementById("userForm").reset(); // сбрасываем форму
 }
@@ -176,7 +187,7 @@ function submitUserForm() {
     var currentCourse = document.getElementById("currentCourseField").value;
     var completedCourses = document.getElementById("completedCoursesField").value.split("\n");
 
-    // Сначала проверим, существует ли такой пользователь
+    // Проверяем наличие такого пользователя
     db.collection("users").doc(username).get()
         .then(function(doc) {
             if (doc.exists) {
@@ -184,9 +195,9 @@ function submitUserForm() {
                 document.getElementById("errorMessage").style.display = "block";
                 setTimeout(function() {
                     document.getElementById("errorMessage").style.display = "none";
-                }, 3000); // Сообщение исчезнет через 3 секунды
+                }, 3000); // сообщение исчезает через 3 секунды
             } else {
-                // По умолчанию устанавливаем нулевые значения
+                // Устанавливаем начальные значения
                 var defaultValues = {
                     codcoins: 0,
                     donehws: 0,
@@ -199,7 +210,7 @@ function submitUserForm() {
                     completedcources: completedCourses
                 });
 
-                // Создание нового пользователя
+                // Создаем нового пользователя
                 db.collection("users").doc(username).set(userData)
                     .then(function() {
                         console.log("Новый пользователь создан!");
@@ -221,18 +232,109 @@ function hideUserForm() {
     document.getElementById("userFormContainer").style.display = "none";
 }
 
-// Удаление пользователя
-function removeUser(username) {
-    if (confirm("Вы действительно хотите удалить пользователя?")) {
+// Основной обработчик клика для каждого пользователя
+function setupDeleteHandler(linkElement, username) {
+    linkElement.onclick = function(event) {
+        event.preventDefault();
+        removeUser(username, this); // Передача имени пользователя и текущего элемента
+    };
+}
+
+// Функция удаления пользователя с временным подтверждением
+function removeUser(username, linkElement) {
+    let initialText = linkElement.textContent.trim(); // Сохраняем исходный текст
+    let originalClickHandler = linkElement.onclick; // Сохраняем оригинальный обработчик клика
+    let counter = 5;
+    let intervalID;
+
+    // Переопределение обработчика клика на кнопку во время ожидания подтверждения
+    function resetButton() {
+        clearInterval(intervalID);
+        linkElement.textContent = initialText;
+        linkElement.classList.remove('confirm');
+        linkElement.onclick = originalClickHandler; // Восстанавливаем стандартный обработчик
+    }
+
+    // Первый клик активирует режим ожидания подтверждения
+    linkElement.classList.add('confirm');
+    linkElement.textContent = `(подтвердить ${counter} с.)`;
+
+    // Обратный отсчет
+    intervalID = setInterval(() => {
+        counter--;
+        linkElement.textContent = `(подтвердить ${counter} с.)`;
+
+        if (counter <= 0) {
+            clearInterval(intervalID);
+            resetButton(); // Восстановление исходного вида кнопки
+        }
+    }, 1000);
+
+    // Второй клик подтверждает удаление
+    linkElement.onclick = function confirmDeletion() {
+        clearInterval(intervalID);
+        resetButton(); // Вернуть первоначальный вид кнопки
+
+        // Удаляем пользователя
         db.collection("users").doc(username).delete()
             .then(function() {
                 console.log("Пользователь успешно удалён!");
-                fetchUsers(); // перезагружаем список пользователей
+                fetchUsers(); // Перезагрузка списка пользователей
             })
             .catch(function(error) {
                 console.error("Ошибка:", error);
             });
-    }
+    };
+}
+
+// Генерация списка пользователей
+function fetchUsers(searchTerm = '') {
+    db.collection("users").get()
+        .then(function(querySnapshot) {
+            var list = document.getElementById("usersList");
+            list.innerHTML = ''; // Очистка старого списка
+
+            querySnapshot.forEach(function(doc) {
+                var username = doc.id;
+                if (username === "admin") return;
+
+                var li = document.createElement("li");
+                li.className = "username";
+                li.innerHTML = `<strong>Логин: </strong>${username}` ;
+
+                // Инфоблок
+                var infoDiv = document.createElement("div");
+                infoDiv.className = "info";
+                infoDiv.innerHTML = ` <strong>Пароль:</strong> ${doc.data().password}<br> <strong>Текущий курс:</strong> ${doc.data().currentcourse || '-'}<br> <strong>Завершенные курсы:</strong> ${doc.data().completedcources ? doc.data().completedcources.join(', ') : '-'}<br> <strong>Кодкоины:</strong> ${doc.data().codcoins || 0}<br> <strong>Выполненные задания:</strong> ${doc.data().donehws || 0}<br> <strong>Невыполненные задания:</strong> ${doc.data().notdonehws || 0} `;
+                li.appendChild(infoDiv);
+
+                // Ссылка на редактирование
+                var editLink = document.createElement("a");
+                editLink.href = '#';
+                editLink.textContent = '(ред.)';
+                editLink.className = 'editbtn';
+                editLink.style.marginLeft = '10px';
+                editLink.onclick = function(event) {
+                    event.preventDefault();
+                    showFullEditForm(username);
+                };
+                li.appendChild(editLink);
+
+                // Ссылка на удаление
+                var delLink = document.createElement("a");
+                delLink.href = '#';
+                delLink.textContent = '(удалить)';
+                delLink.className = 'deletebtn';
+                delLink.style.marginLeft = '10px';
+                setupDeleteHandler(delLink, username); // Установка обработчика удаления
+                li.appendChild(delLink);
+
+                list.appendChild(li);
+            });
+        })
+        .catch(function(error) {
+            console.error("Ошибка:", error);
+        });
 }
 
 // Регистрация обработчиков событий

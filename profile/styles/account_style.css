@@ -127,6 +127,7 @@ body {
     padding: 20px;
     border-radius: 15px;
     font-size: 18px;
+    overflow: auto;
 }
 
 .container-box-profile {
