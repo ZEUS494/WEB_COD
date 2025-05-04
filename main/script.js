@@ -3,5 +3,5 @@ document.addEventListener("DOMContentLoaded", () => {
     function openSlidingSection() {
         slidingSection.classList.add("visible");
     }
-    setTimeout(openSlidingSection, 3000);
+    setTimeout(openSlidingSection, 1000);
 });
