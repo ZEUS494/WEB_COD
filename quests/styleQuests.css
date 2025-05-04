@@ -1,0 +1,469 @@
+* {
+    font-family: "Anonymous Pro", monospace;
+    z-index: 0;
+}
+
+/* Пастельные цвета для каждого задания */
+.quest:nth-child(1) { background-color: #ffb3ba; } /* Розовый */
+.quest:nth-child(2) { background-color: #ffdfba; } /* Персиковый */
+.quest:nth-child(3) { background-color: #ffffba; } /* Лимонный */
+.quest:nth-child(4) { background-color: #baffc9; } /* Мятный */
+.quest:nth-child(5) { background-color: #bae1ff; } /* Голубой */
+.quest:nth-child(6) { background-color: #d7aefb; } /* Лавандовый */
+.quest:nth-child(7) { background-color: #ffbaec; } /* Сиреневый */
+.quest:nth-child(8) { background-color: #ffccdc; } /* Бежевый */
+
+body {
+    width: auto;
+    height: auto;
+    background-color: #000;
+    background-position: center;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #fff;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.header {
+    color: #fff;
+    width: 65%;
+    padding-left: 40px;
+    margin-top: 40px;
+}
+
+h1 {
+    font-size: 22px;
+}
+
+.header h1 {
+    margin-top: 5px;
+}
+
+.header a {
+    text-decoration: none;
+    animation: shine 3s linear infinite;
+    border-radius: 5px;
+}
+
+.container {
+    display: flex;
+    width: 65%;
+    height: 600px;
+}
+
+#minigames {
+    background-color: #202020;
+    padding: 10px;
+    border-radius: 15px;
+    width: 100%;
+    height: 1100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 10px;
+    margin-bottom: 50px;
+}
+#m{
+    margin-top: 10px;
+    margin-bottom: 50px;
+}
+.block {
+    width: 50%;
+    background-color: #202020;
+    margin: 10px;
+    border-radius: 15px;
+    padding: 10px;
+    overflow: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.quests {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.block h1 {
+    margin: 10px;
+}
+
+.quest {
+    background-color: #333;
+    color: #000;
+    width: 200px;
+    height: 200px;
+    margin: 10px;
+    border-radius: 10px;
+    cursor: pointer;
+    overflow: hidden;
+}
+
+/* Основной стиль для .quest */
+.quest {
+    transition: background-color 0.3s ease; /* Переход цвета фона */
+}
+
+/* Темнеющий эффект при наведении */
+.quest:hover {
+    filter: brightness(80%);
+}
+
+.questinfo {
+    margin: 10px;
+}
+
+.modal {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0%;
+    left: 0%;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7); /* Полупрозрачный черный фон */
+    color: #000;
+    z-index: 9999; /* Модальное окно над всеми элементами */
+}
+
+/* Обновленные стили для контейнера внутри модального окна */
+.modal-container {
+    background-color: #202020;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
+    text-align: center;
+    min-width: 250px;
+    max-width: 500px;
+    position: relative; /* Важно установить относительное позиционирование */
+    transform: translate(-50%, -50%); /* Центрируем контейнер */
+    top: 50%; /* Сдвигаем вверх на половину высоты окна */
+    left: 50%; /* Сдвигаем вправо на половину ширины окна */
+}
+
+/* Стиль кнопки закрытия */
+.close-modal {
+    cursor: pointer;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 18px;
+    width: 24px;
+    height: 24px;
+    line-height: 22px;
+    text-align: center;
+    border: none;
+    background-color: #d9534f;
+    color: white;
+    border-radius: 50%;
+}
+
+.close-modal:hover {
+    background-color: #c9302c;
+}
+
+/* Содержимое модального окна */
+.modal-content {
+    margin-top: 20px;
+}
+
+.modal-title {
+    font-size: 24px;
+    margin-bottom: 12px;
+}
+
+.modal-description {
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+@keyframes shine {
+    0% {
+        color: #e8ae00;
+    }
+    50% {
+        color: #f3eacf;
+    }
+    100% {
+        color: #e8ae00;
+    }
+}
+/* Добавьте этот код в конец styleQuests.css */
+
+#minigame {
+    width: 85%;
+    height: 30%;
+    background-color: #333;
+    margin: 25px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: black;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.5s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+}
+
+#minigame::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.2),
+        transparent
+    );
+    transition: 0.5s;
+}
+
+#minigame:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    background-color: #3a3a3a;
+}
+
+#minigame:hover::before {
+    left: 100%;
+}
+
+/* Анимация для иконки мини-игры */
+#minigame:hover .ico {
+    transform: scale(1.05) rotate(5deg);
+    filter: drop-shadow(0 0 8px rgba(232, 174, 0, 0.7));
+}
+
+.ico{
+    height: 150px;
+    width: 150px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    outline: auto;
+    margin-left: 50px;
+    border-radius: 15px;
+    transition: all 0.3s ease;
+}
+#snake{
+    background-image: url(quests_pictures/icon.png);
+}
+#wolf{
+    background-image: url(quests_pictures/wolf.png);
+}
+#arkanoid{
+    background-image: url(quests_pictures/arkanoidpng.png);
+}
+/* Анимация для текста */
+#minigame:hover .text h2 {
+    color: #e8ae00;
+    text-shadow: 0 0 10px rgba(232, 174, 0, 0.5);
+}
+
+#minigame:hover .text p {
+    transform: translateX(5px);
+}
+
+.text {
+    width: 70%;
+    height: 80%;
+    margin-left: 50px;
+    margin-bottom: 30px;
+    transition: all 0.3s ease;
+}
+
+.text h2 {
+    text-align: center;
+    margin-right: 150px;
+    transition: all 0.3s ease;
+}
+
+.text p {
+    transition: all 0.3s ease;
+}
+h2{
+    text-align: center;
+    margin-right: 150px;
+}
+.cash {
+    position: relative;
+    padding: 15px 50px;
+    font-size: 18px;
+    color: #fff;
+    background: linear-gradient(135deg, #ff6f91, #ff9a8b);
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    overflow: hidden;
+    transition: transform 0.2s, box-shadow 0.3s;
+    box-shadow: 0 6px 15px rgba(255, 111, 145, 0.5);
+    margin-bottom: 20px;
+    position: relative;
+    
+    
+  }
+
+  .cash::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+    transition: left 0.6s ease;
+  }
+
+  .cash:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 20px rgba(255, 111, 145, 0.7);
+  }
+
+  .cash:hover::before {
+    left: 100%;
+  }
+  .cashing{
+    display: flex;
+    margin-left: 10%;
+  justify-content: space-between;
+  align-items: center; /* Для вертикального выравнивания, если нужно */
+  width: 80%;
+  }.menu {
+    position: absolute;
+    left: 1%;
+    top: 22%;
+    height: 40%;
+    width: 70px;
+    background-color: #191919;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  .move-to {
+    width: 60px;
+    height: 60px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    background-color: #202020;
+    background-position: center;
+    background-size: 85%;
+    background-repeat: no-repeat;
+  }
+  
+  .move-to:hover {
+    scale: 1.06;
+    background-color: #303030;
+  }
+  
+  #current-page {
+    border: #ffd000 2px solid;
+    cursor: not-allowed;
+  }
+  /* Добавить в конец файла */
+.modal-game {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+
+    z-index: 9999;
+}
+
+.modal-game-container {
+    background-color: #202020;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
+    text-align: center;
+    min-width: 250px;
+    max-width: 400px;
+    position: relative;
+}
+
+.close-modal-game {
+    cursor: pointer;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 18px;
+    width: 24px;
+    height: 24px;
+    line-height: 22px;
+    text-align: center;
+    border: none;
+    background-color: #d9534f;
+    color: white;
+    border-radius: 50%;
+}
+
+.close-modal-game:hover {
+    background-color: #c9302c;
+}
+
+.modal-game-content {
+    margin-top: 20px;
+}
+
+.modal-game-title {
+    font-size: 24px;
+    margin-bottom: 12px;
+    color: #fff;
+}
+
+.modal-game-description {
+    font-size: 16px;
+    line-height: 1.5;
+    color: #ccc;
+    margin-bottom: 20px;
+}
+
+.modal-game-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.modal-game-confirm, .modal-game-cancel {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: all 0.3s ease;
+}
+
+.modal-game-confirm {
+    background-color: #5cb85c;
+    color: white;
+}
+
+.modal-game-confirm:hover {
+    background-color: #4cae4c;
+}
+
+.modal-game-cancel {
+    background-color: #d9534f;
+    color: white;
+}
+
+.modal-game-cancel:hover {
+    background-color: #c9302c;
+}

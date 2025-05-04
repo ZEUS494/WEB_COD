@@ -1,0 +1,205 @@
+/* Для экранов шириной до 1200px включительно */
+@media screen and (max-width: 1400px) {
+    #minigames{
+        height: 1350px;
+    }
+    #minigame{
+        width: 90%;
+    }
+}
+@media screen and (max-width: 1200px) {
+    .header {
+        width: 80%; /* Увеличим ширину заголовка */
+    }
+    .container {
+        width: 85%; /* Увеличим ширину контейнера */
+    }
+    .block {
+        width: 45%; /* Уменьшим ширину блока */
+    }
+    .quest {
+        width: 250px; /* Увеличим размер квеста */
+        height: 250px;
+    }
+    #minigames{
+        height: 1100px;
+    }
+}
+
+/* Для экранов шириной до 998px включительно */
+@media screen and (max-width: 998px) {
+    .header {
+        width: 75%; /* Немного уменьшим ширину заголовка */
+    }
+    .header h1{
+        text-align: left;
+    }
+    .container {
+        width: 70%; /* Уменьшим ширину контейнера */
+        height: 500px;
+    }
+    #m{
+        height: auto;
+    }
+    .block {
+        width: 48%; /* Слегка увеличим ширину блока */
+    }
+    .quest {
+        width: 220px; /* Немного уменьшим размер квеста */
+        height: 220px;
+    }
+    #minigames {
+        width: 100%;
+        margin: 0;
+        margin-top: 20px;
+        margin-bottom: 50px;
+        display: block;
+        height: auto;
+    }
+    #minigame {
+        margin: 15px auto;
+        width: 95%;
+        height: auto;
+        flex-direction: column;
+    }
+    .quest {
+        width: 150px;
+        height: 150px;
+    }
+    .ico {
+        height: 80px;
+        width: 80px;
+        margin: 10px auto 10px;
+    }
+    .text {
+        width: 95%;
+        margin: 0 auto;
+        font-size: 13px;
+    }
+    .text h2 {
+        margin-right: 0;
+        font-size: 18px;
+    }
+    h1{
+        text-align: center;
+    }
+}
+
+/* Для экранов шириной до 768px включительно */
+@media screen and (max-width: 768px) {
+    .header {
+        width: 95%; /* Увеличим ширину заголовка */
+        padding-left: 30px; /* Уменьшим отступ слева */
+    }
+    .container {
+        width: 80%; /* Максимально расширим контейнер */
+        height: 500px; /* Уменьшим высоту контейнера */
+        padding: 10px;    }
+    #m{
+        height: auto;
+    }
+    .block {
+        width: 50%; /* Немного увеличим ширину блока */
+    }
+    .quest {
+        width: 180px; /* Уменьшим размер квеста */
+        height: 180px;
+    }
+}
+
+/* Для экранов шириной до 576px включительно */
+@media screen and (max-width: 576px) {
+    .header {
+        width: 100%; /* Полностью растянем заголовок */
+        padding-left: 20px; /* Еще меньше отступ слева */
+        margin-top: 10px;
+    }
+    .container {
+        width: 90%; /* Контейнер займет всю доступную ширину */
+        height: auto; /* Еще сильнее уменьшим высоту контейнера */
+        flex-direction: column; /* Перестроим блоки вертикально */
+        margin-left: -40px;
+        padding: 0;
+    }
+    .block {
+        width: 100%; /* Блоки займут всю ширину */
+        margin-bottom: 20px; /* Добавим расстояние между блоками */
+    }
+
+    .quest {
+        width: 150px; /* Еще меньший размер квеста */
+        height: 150px;
+    }
+
+    .quest {
+        width: 150px;
+        height: 150px;
+    }
+    #m{
+        margin-top: -10px;
+        margin-left: -20px;
+        width: 90%;
+        padding: 0;
+    }
+}
+
+/* Для экранов шириной до 360px включительно */
+@media screen and (max-width: 360px) {
+    .header {
+        width: 100%; /* Заголовок займет всю ширину */
+        padding-left: 10px; /* Минимизируем отступ слева */
+    }
+    .container {
+        width: 70%; /* Контейнер займет всю ширину */
+        height: 800px; /* Еще сильнее уменьшим высоту контейнера */
+        flex-direction: column; /* Блоки останутся вертикальными */
+        font-size: 12px;
+        margin-left: -40px;
+    }
+    .block {
+        width: 100%; /* Блоки займут всю ширину */
+        margin-bottom: 10px; /* Расстояние между блоками минимизировано */
+        overflow: auto;
+    }
+    .quest {
+        width: 120px; /* Самый маленький размер квеста */
+        height: 120px;
+    }
+
+}
+@media screen and (max-width: 1200px) {
+    .menu {
+        width: 70px;
+    }
+  }
+  
+  @media screen and (max-width: 998px) {
+    .menu {
+        top: 1%;
+        left: 25%;
+        width: 50%;
+        height: 50px;
+        border-radius: 15px;
+        flex-direction: row;
+    }
+    body{
+        padding-top: 30px;
+    }
+  }
+  
+  @media screen and (max-width: 768px) {
+    .menu {
+        width: 75%;
+        left: 10%;
+    }
+  }
+  
+  @media screen and (max-width: 576px) {
+    .menu {
+        width: 85%;
+        left: 7%;
+    }
+    body{
+        padding-top: 60px;
+    }
+  }
