@@ -341,7 +341,7 @@ h2{
   align-items: center; /* Для вертикального выравнивания, если нужно */
   width: 80%;
   }.menu {
-    position: absolute;
+    position: fixed;
     left: 1%;
     top: 22%;
     height: 40%;
@@ -352,6 +352,12 @@ h2{
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
+  }
+
+  @media screen and (max-width: 998px) {
+    .menu {
+        position: absolute;
+    }
   }
   
   .move-to {

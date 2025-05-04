@@ -13,6 +13,82 @@
             color: white;
         }
 
+        /*=============== МЕНЮ =================*/
+
+        .menu {
+            position: fixed;
+            left: 1%;
+            top: 22%;
+            height: 40%;
+            width: 70px;
+            background-color: #191919;
+            border-radius: 15px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .move-to {
+            width: 60px;
+            height: 60px;
+            margin-top: 10px;
+            margin-bottom: 10px;
+            border-radius: 10px;
+            background-color: #202020;
+            background-position: center;
+            background-size: 85%;
+            background-repeat: no-repeat;
+        }
+
+        .move-to:hover {
+            scale: 1.06;
+            background-color: #303030;
+        }
+
+        #current-page {
+            border: #ffd000 2px solid;
+            cursor: not-allowed;
+        }
+
+        @media screen and (max-width: 1200px) {
+            .menu {
+                width: 70px;
+            }
+        }
+
+        @media screen and (max-width: 998px) {
+            .menu {
+                position: absolute;
+                top: 1%;
+                left: 25%;
+                width: 50%;
+                height: 50px;
+                border-radius: 15px;
+                flex-direction: row;
+            }
+
+            #verticaldiagramm {
+                margin-top: 100px;
+            }
+        }
+
+        @media screen and (max-width: 768px) {
+            .menu {
+                width: 75%;
+                left: 10%;
+            }
+        }
+
+        @media screen and (max-width: 576px) {
+            .menu {
+                width: 85%;
+                left: 7%;
+            }
+        }
+
+        /*====================================*/
+
         body {
             background-color: #1f1f1f;
             margin: 0;
@@ -195,9 +271,17 @@
     </style>
 </head>
 <body>
+    <!--========== МЕНЮ ============-->
+    <div class="menu">
+        <a href="../main.html" class="move-to" style="background-image: url('../../imgformenu/home.png');"></a>
+        <a href="../profile/account/account.html" class="move-to" style="background-image: url('../../imgformenu/profile.png');"></a>
+        <a href="../shop/shop.html" class="move-to" style="background-image: url('../../imgformenu/shop.png');"></a>
+        <a href="../quests/quest.html" class="move-to" style="background-image: url('../../imgformenu/minigames.png');"></a>
+        <a href="../chart.html" class="move-to" style="background-image: url('../../imgformenu/rating.png');" id="current-page"></a>
+    </div>
+    <!--==========================-->
     <div class="stars-background" id="stars"></div>
-    <div class="backdoor-btn"><button id='backdoor' onclick="window.location='#'">Вернуться в личный кабинет</button></div>
-    <h1>Вертикальные диаграммы рейтинга пользователей</h1>
+    <h1 id="verticaldiagramm">Вертикальные диаграммы рейтинга пользователей</h1>
     <div class="chart-container">
         <div class="chart-wrapper">
             <div class="chart" data-parallax-factor="0.06">
