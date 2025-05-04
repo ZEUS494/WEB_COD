@@ -64,7 +64,6 @@ document.addEventListener('DOMContentLoaded', function () {
     const user = getCookie('user');
 
     if (!user) {
-      alert("Вы не вошли в систему.");
       window.location.href = '../index.html';
       return;
     }
@@ -72,7 +71,6 @@ document.addEventListener('DOMContentLoaded', function () {
     // Чтение данных пользователя из Firestore
     db.collection("users").doc(user).get().then(doc => {
       if (!doc.exists) {
-        alert("Пользователь не найден.");
         window.location.href = '../index.html';
         return;
       }
@@ -93,7 +91,7 @@ document.addEventListener('DOMContentLoaded', function () {
       }
 
       // Выгружаем начальные данные на экран
-      document.getElementById('username').innerText = user;
+      document.getElementById('username').innerText = userData.fullname;
       document.getElementById('codcoins').innerText = userData.codcoins;
       document.getElementById('currentcourse').innerText = userData.currentcourse;
 

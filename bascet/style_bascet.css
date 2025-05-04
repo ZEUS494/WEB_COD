@@ -5,6 +5,79 @@ body {
     margin: 0;
     padding: 0;
   }
+
+  /*=============== МЕНЮ =================*/
+
+.menu {
+  position: fixed;
+  left: 1%;
+  top: 22%;
+  height: 40%;
+  width: 70px;
+  background-color: #191919;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.move-to {
+  width: 60px;
+  height: 60px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  border-radius: 10px;
+  background-color: #202020;
+  background-position: center;
+  background-size: 85%;
+  background-repeat: no-repeat;
+}
+
+.move-to:hover {
+  scale: 1.06;
+  background-color: #303030;
+}
+
+#current-page {
+  border: #ffd000 2px solid;
+  cursor: not-allowed;
+}
+
+@media screen and (max-width: 1200px) {
+  .menu {
+      width: 70px;
+  }
+}
+
+@media screen and (max-width: 998px) {
+  .menu {
+      position: absolute;
+      top: 1%;
+      left: 25%;
+      width: 50%;
+      height: 50px;
+      border-radius: 15px;
+      flex-direction: row;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .menu {
+      width: 75%;
+      left: 10%;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .menu {
+      width: 85%;
+      left: 7%;
+  }
+}
+
+/*====================================*/
+
   .cart-container {
     max-width: 800px;
     margin: 50px auto;
@@ -175,7 +248,9 @@ body {
     position: absolute;
     width: 10px;
     height: 10px;
-    background: rgba(255, 255, 255, 0.2);
+    background-image: url(../imgformenu/coin.png);
+    background-size: cover;
+    background-position: center;
     border-radius: 50%;
     animation: float 10s infinite ease-in-out;
   }
@@ -198,7 +273,9 @@ body {
     position: absolute;
     width: 2px;
     height: 2px;
-    background: rgba(255, 255, 255, 0.8);
+    background-image: url(../imgformenu/coin.png);
+    background-size: cover;
+    background-position: center;
     border-radius: 50%;
     animation: twinkle 3s infinite ease-in-out;
   }
@@ -221,7 +298,9 @@ body {
     position: absolute;
     width: 20px;
     height: 20px;
-    background: rgba(187, 134, 252, 0.3);
+    background-image: url(../imgformenu/coin.png);
+    background-size: cover;
+    background-position: center;
     border-radius: 50%;
     animation: pulse-effect 5s infinite ease-in-out;
   }
@@ -244,7 +323,9 @@ body {
     position: absolute;
     width: 50px;
     height: 50px;
-    background: rgba(255, 255, 255, 0.1);
+    background-image: url(../imgformenu/coin.png);
+    background-size: cover;
+    background-position: center;
     border-radius: 50%;
     animation: wave-motion 8s infinite linear;
   }
@@ -343,20 +424,21 @@ body {
   height: 16px;
   fill: #e0e0e0;
 }
+
+@media screen and (max-width: 998px) {
+  .cart-container {
+    margin-top: 160px;
+  }
+  .balance-container {
+    top: 100px;
+  }
+}
 @media screen and (max-width: 768px) {
   .back-to-menu-btn {
       padding: 8px 12px;
       font-size: 12px;
   }
   
-  .balance-container {
-      padding: 8px 12px;
-      font-size: 14px;
-  }
-  
-  .cart-container {
-      margin-top: 100px; /* Увеличьте отступ сверху */
-  }
 }
 @media screen and (max-width: 400px) {
   .back-to-menu-btn {
@@ -370,18 +452,6 @@ body {
   .back-to-menu-btn svg {
     width: 14px;
     height: 14px;
-  }
-
-  .balance-container {
-    top: 10px;
-    right: 10px;
-    padding: 6px 10px;
-    font-size: 12px;
-  }
-
-  .cart-container {
-    margin: 70px 10px 20px;
-    padding: 15px;
   }
 
   .cart-header {

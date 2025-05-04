@@ -2,6 +2,189 @@
     font-family: "Roboto";
     color: white;
 }
+
+/*=============== МЕНЮ =================*/
+
+.menu {
+    position: fixed;
+    left: 1%;
+    top: 22%;
+    height: 40%;
+    width: 70px;
+    background-color: #191919;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.move-to {
+    width: 60px;
+    height: 60px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    background-color: #202020;
+    background-position: center;
+    background-size: 85%;
+    background-repeat: no-repeat;
+}
+
+.move-to:hover {
+    scale: 1.06;
+    background-color: #303030;
+}
+
+#current-page {
+    border: #ffd000 2px solid;
+    cursor: not-allowed;
+}
+
+@media screen and (max-width: 1200px) {
+    .menu {
+        width: 70px;
+    }
+}
+
+@media screen and (max-width: 998px) {
+    .menu {
+        position: absolute;
+        top: 1%;
+        left: 25%;
+        width: 50%;
+        height: 50px;
+        border-radius: 15px;
+        flex-direction: row;
+    }
+    #shopName {
+        padding-top: 50px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .menu {
+        width: 75%;
+        left: 10%;
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .menu {
+        width: 85%;
+        left: 7%;
+    }
+}
+
+/*====================================*/
+
+.background-animation {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    overflow: hidden;
+}
+
+.wave {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    background-image: url(../imgformenu/coin.png);
+    background-size: cover;
+    background-position: center;
+    border-radius: 50%;
+    animation: wave-motion 8s infinite linear;
+}
+
+@keyframes wave-motion {
+    0% {
+      transform: translateX(-100vw) translateY(0) rotate(0deg);
+    }
+    100% {
+      transform: translateX(100vw) translateY(100vh) rotate(360deg);
+    }
+}
+
+.particle {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background-image: url(../imgformenu/coin.png);
+    background-size: cover;
+    background-position: center;
+    border-radius: 50%;
+    animation: float 10s infinite ease-in-out;
+}
+
+@keyframes float {
+    0% {
+      transform: translateY(0) translateX(0);
+      opacity: 0.2;
+    }
+    50% {
+      opacity: 1;
+    }
+    100% {
+      transform: translateY(-100vh) translateX(calc(100vw * var(--direction)));
+      opacity: 0.2;
+    }
+}
+
+.star {
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    background-image: url(../imgformenu/coin.png);
+    background-size: cover;
+    background-position: center;
+    border-radius: 50%;
+    animation: twinkle 3s infinite ease-in-out;
+}
+
+@keyframes twinkle {
+    0% {
+      opacity: 0.5;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 1;
+      transform: scale(1.5);
+    }
+    100% {
+      opacity: 0.5;
+      transform: scale(1);
+    }
+}
+
+.pulse-circle {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background-image: url(../imgformenu/coin.png);
+    background-size: cover;
+    background-position: center;
+    border-radius: 50%;
+    animation: pulse-effect 5s infinite ease-in-out;
+}
+
+@keyframes pulse-effect {
+    0% {
+      transform: scale(0.5);
+      opacity: 0.8;
+    }
+    50% {
+      transform: scale(1.5);
+      opacity: 0;
+    }
+    100% {
+      transform: scale(0.5);
+      opacity: 0.8;
+    }
+}
+
 body{
     background: #181818;
     width: 99vw;
@@ -383,18 +566,6 @@ h3{
     }
 }
 
-@media screen and (max-width: 400px) {
-    
-}
-
-/* Адаптация для мобильных устройств */
-@media screen and (max-width: 768px) {
-    
-}
-
-@media screen and (max-width: 400px) {
-    
-}
 @media screen and (max-width: 1200px) {
     body{
         width: auto;
@@ -446,7 +617,7 @@ h3{
 
     h1 {
         font-size: 35px; /* Уменьшаем размер заголовка */
-        margin-top: 60px; /* Уменьшаем отступ сверху */
+        margin-top: 50px; /* Уменьшаем отступ сверху */
     }
 
     p {
@@ -518,12 +689,6 @@ h3{
         transition: 0.2s linear; /* Плавный эффект при наведении */
     }
 
-    .tovari {
-        font-size: 23px; /* Уменьшаем размер текста кнопки */
-        padding: 15px; /* Уменьшаем внутренний отступ кнопки */
-        top: -8px;
-        right: -5px;
-    }
     h3{
         font-size: 23px;
     }
@@ -551,6 +716,12 @@ h3{
 
     margin: 0 85px 50px 0;
 }
+
+@media screen and (max-width: 998px) {
+    .tovari {
+        position: relative;
+    }
+}
 @media screen and (max-width: 768px) and (min-width: 577px) {
     body {
         width: auto;
@@ -573,13 +744,6 @@ h3{
         width: auto; /* Синхронизируем ширину с .post */
         height: 35%; /* Увеличиваем высоту нижней части */
         padding: 15px; /* Уменьшаем внутренний отступ */
-    }
-
-    .tovari {
-        font-size: 20px; /* Уменьшаем размер текста кнопки */
-        padding: 10px; /* Уменьшаем внутренний отступ кнопки */
-        top: -12px;
-        right: -5px;
     }
 
     h1 {
@@ -696,12 +860,6 @@ h3{
         top: 10px;
         left: 10px;
     }
-    .tovari{
-        font-size: 20px; /* Уменьшаем размер текста кнопки */
-        padding: 10px; /* Уменьшаем внутренний отступ кнопки */
-        top: -8px;
-        right: -5px;
-    }
     .post{
         margin-top: 20px;
         left: 10px;
@@ -768,14 +926,6 @@ h3{
     h1{
         width: 250px;
         font-size: 26px;
-    }
-    .tovari{
-        width: auto;
-        height: auto;
-        font-size: 12px;
-        top: -12px;
-        right: -12px;
-        padding:10px;
     }
     ::-webkit-scrollbar {
         width: 0px;
