@@ -13,14 +13,51 @@
     <title>CODOLOGIA | Магазин кодкоинов</title>
 </head>
 <body>
-    <div class="menu-container">
-        <a href="/account/account.html" class="menu-item" id="item2" data-tooltip="Профиль"></a>
-        <a href="/shop/shop.html" class="menu-item" id="item3" data-tooltip="Магазин"></a>
-        <a href="/bascet/bascet.html" class="menu-item" id="item4" data-tooltip="Корзина"></a>
-        <a href="/quests/quest.html" class="menu-item" id="item5" data-tooltip="Задания"></a>
+    <!--========== МЕНЮ ============-->
+    <div class="menu">
+        <a href="../../main.html" class="move-to" style="background-image: url('../../imgformenu/home.png');"></a>
+        <a href="../profile/account/account.html" class="move-to" style="background-image: url('../../imgformenu/profile.png');"></a>
+        <a href="../../shop/shop.html" class="move-to" style="background-image: url('../../imgformenu/shop.png');" id="current-page"></a>
+        <a href="../../quests/quest.html" class="move-to" style="background-image: url('../../imgformenu/minigames.png');"></a>
+        <a href="../../chart/chart.html" class="move-to" style="background-image: url('../../imgformenu/rating.png');"></a>
     </div>
-    <h1>Магазин кодкоинов</h1>
-    <a class="tovari" href="/bascet/bascet.html">Перейти в корзину</a>
+    <!--==========================-->
+    <div class="background-animation">
+        <!-- Частицы -->
+        <div class="particle" style="--direction: 1; top: 5%; left: 10%;"></div>
+        <div class="particle" style="--direction: -1; top: 15%; left: 25%;"></div>
+        <div class="particle" style="--direction: 1; top: 25%; left: 40%;"></div>
+        <div class="particle" style="--direction: -1; top: 35%; left: 55%;"></div>
+        <div class="particle" style="--direction: 1; top: 45%; left: 70%;"></div>
+        <div class="particle" style="--direction: -1; top: 55%; left: 85%;"></div>
+        <div class="particle" style="--direction: 1; top: 65%; left: 10%;"></div>
+        <div class="particle" style="--direction: -1; top: 75%; left: 25%;"></div>
+        <div class="particle" style="--direction: 1; top: 85%; left: 40%;"></div>
+        <div class="particle" style="--direction: -1; top: 95%; left: 55%;"></div>
+        <div class="particle" style="--direction: 1; top: 5%; left: 70%;"></div>
+        <div class="particle" style="--direction: -1; top: 15%; left: 85%;"></div>
+        <div class="particle" style="--direction: 1; top: 25%; left: 10%;"></div>
+        <div class="particle" style="--direction: -1; top: 35%; left: 25%;"></div>
+    
+        <!-- Звезды -->
+        <div class="star" style="top: 10%; left: 20%;"></div>
+        <div class="star" style="top: 30%; left: 50%;"></div>
+        <div class="star" style="top: 70%; left: 10%;"></div>
+        <div class="star" style="top: 50%; left: 80%;"></div>
+        <div class="star" style="top: 90%; left: 40%;"></div>
+    
+        <!-- Пульсирующие круги -->
+        <div class="pulse-circle" style="top: 20%; left: 30%;"></div>
+        <div class="pulse-circle" style="top: 60%; left: 70%;"></div>
+        <div class="pulse-circle" style="top: 40%; left: 10%;"></div>
+    
+        <!-- Волны -->
+        <div class="wave" style="top: 10%; left: 50%;"></div>
+        <div class="wave" style="top: 30%; left: 20%;"></div>
+        <div class="wave" style="top: 70%; left: 80%;"></div>
+    </div>
+    <h1 id="shopName">Магазин кодкоинов</h1>
+    <a class="tovari" href="../bascet/bascet.html">Перейти в корзину</a>
     <div class="products">
         <div id="c1" class="chil">
             <div class="post">
