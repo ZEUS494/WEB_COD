@@ -17,14 +17,17 @@
         <div class="picture"></div>
 
         <div class="formsContainer">
-            <!-- Форма полного редактирования пользователя -->
             <div style="display:none;" id="fullEditFormContainer" class="formContainer">
                 <h2>Редактирование пользователя</h2>
                 <form id="fullEditForm" class="former">
-                    <label>Имя пользователя:</label><br>
-                    <input type="text" id="editUsernameField" readonly /><br> <!-- Имя пользователя читать только -->
+                    <label>ФИО:</label><br>
+                    <input type="text" id="editFullnameField" required /><br>
+                    <label>Логин (неизменяемый):</label><br>
+                    <input type="text" id="editUsernameField" readonly / ><br>
+                    <label>Возраст:</label><br>
+                    <input type="number" id="editAgeField" min="0" max="150" required /><br>
                     <label>Пароль:</label><br>
-                    <input type="text" id="editPasswordField" required /><br> <!-- Видимый пароль -->
+                    <input type="text" id="editPasswordField" required /><br> <!-- Пароль видим -->
                     <label>Текущий курс:</label><br>
                     <input type="text" id="editCurrentCourseField" /><br>
                     <label>Завершенные курсы:</label><br>
@@ -42,19 +45,23 @@
                 </form>
             </div>
 
-            <!-- Формы добавления и редактирования пользователя -->
             <div style="display:none;" id="userFormContainer" class="formContainer">
                 <h2>Создание нового пользователя</h2>
                 <form id="userForm" class="former">
-                    <label>Имя пользователя:</label><br>
+                    <label>Логин:</label><br>
                     <input type="text" id="usernameField" required/><br> <!-- Поле для имени пользователя доступно при создании -->
+                    <label>ФИО:</label><br>
+                    <input type="text" id="fullnameField" required /><br>
+                    <label>Возраст:</label><br>
+                    <input type="number" id="ageField" min="0" max="150" required /><br>
                     <label>Пароль:</label><br>
                     <input type="text" id="passwordField" required /><br> <!-- Видимый пароль -->
                     <label>Текущий курс:</label><br>
                     <input type="text" id="currentCourseField" /><br>
                     <label>Завершенные курсы:</label><br>
                     <textarea id="completedCoursesField" style="height: 150px;"></textarea><br>
-                    <span id="errorMessage" style="color: red; display: none;">Пользователь с таким именем уже существует!</span><br>
+                    <span id="errorMessage" style="color:red; display:none;"></span><br>
+
                     <div class="buttons">
                         <button type="submit">Добавить</button>
                         <button type="button" id="cancelButton">Отменить</button>
@@ -69,11 +76,12 @@
         <div class="btns">
             <button class="switch-btns" id="switch-to-edit" style="border: 3px solid #ffd000;">Редактировать</button>
             <button class="switch-btns" id="switch-to-addition" style="color: #a4a4a4;">Добавить</button>
+            <button class="switch-btns" id="switch-to-tables" style="color: #a4a4a4;">Таблица</button>
         </div>
 
         <div class="content1" id="content1">
             <p class="ptext">Поиск пользователей: </p>
-            <input type="search" id="searchBox" placeholder="Имя / Курс" />
+            <input type="search" id="searchBox" placeholder="Логин / Курс" />
 
             <p class="ptext">Список пользователей:</p>
             <ul id="usersList"></ul>
@@ -82,6 +90,15 @@
         <div class="content2" id="content2" style="display: none;">
             <p class="ptext">Добавление пользователей:</p>
             <button id="addUserButton">Добавить пользователя</button>
+        </div>
+        
+        <div class="content3" id="content3" style="display: none;">
+            <p class="ptext">Таблица пользователей по курсам:</p>
+            <select id="coursesSelect" class="courses-select">
+                <option value="all"><strong>Все курсы</strong></option>
+                <!-- Курсы будут добавлены динамически -->
+            </select>
+            <div id="tableList"></div>
         </div>
     </div>
 
@@ -121,7 +138,6 @@
           const storedUsername = getCookie('user'); // получаем имя пользователя из cookie
         
           if (!storedUsername || storedUsername !== 'admin') { // проверяем, что залогиненный пользователь именно админ
-            alert("Доступ запрещён. Вам необходимо войти как администратор.");
             window.location.href = "../index.html";
             return;
           }
