@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styleQuests.css">
+    <link rel="stylesheet" href="mediaQuests.css">
+    <link rel="shortcut icon" href="quests_pictures/codologialogo.png"/>
+    <title>CODOLOGIA | Задания</title>
+</head>
+<body>
+    <div class="header">
+        <a href="/account/account.html">Вернуться в личный кабинет</a>
+        <h1>Задания и миниигры</h1>
+    </div>
+    <div class="container">
+        <div class="block" id="daily">
+            <h1>Ежедневные задания</h1>
+            <div class="quests">
+                <div class="quest" data-quest-id="dquest1">
+                    <h1>Задание №1</h1>
+                    <p class="questinfo">Описание ежедневного задания 1</p>
+                </div>
+                <div class="quest" data-quest-id="dquest2">
+                    <h1>Задание №2</h1>
+                    <p class="questinfo">Описание ежедневного задания 2</p>
+                </div>
+                <div class="quest" data-quest-id="dquest3">
+                    <h1>Задание №3</h1>
+                    <p class="questinfo">Описание ежедневного задания 3</p>
+                </div>
+                <div class="quest" data-quest-id="dquest4">
+                    <h1>Задание №4</h1>
+                    <p class="questinfo">Описание ежедневного задания 4</p>
+                </div>
+            </div>
+        </div>
+        <div class="block" id="weekly">
+            <h1>Еженедельные задания</h1>
+            <div class="quests">
+                <div class="quest" data-quest-id="wquest1">
+                    <h1>Задание №1</h1>
+                    <p class="questinfo">Описание еженедельного задания 1</p>
+                </div>
+                <div class="quest" data-quest-id="wquest2">
+                    <h1>Задание №2</h1>
+                    <p class="questinfo">Описание еженедельного задания 2</p>
+                </div>
+                <div class="quest" data-quest-id="wquest3">
+                    <h1>Задание №3</h1>
+                    <p class="questinfo">Описание еженедельного задания 3</p>
+                </div>
+                <div class="quest" data-quest-id="wquest4">
+                    <h1>Задание №4</h1>
+                    <p class="questinfo">Описание еженедельного задания 4</p>
+                </div>
+            </div>
+        </div>
+    </div>
+            <div class="container" id="m">
+                <div id="minigames">
+                    <h1>Миниигры</h1>
+
+                <div class="snake" id="minigame">
+                    <div id="snake" class="ico"></div>
+                    <div class="text">
+                        <h2>Змейка</h2>
+                        <p style="margin: 0 0 15px 0; font-size: 16px; line-height: 1.5; opacity: 0.9;">
+                             Классическая змейка с крипто-твистом!<br>
+                            - Управляйте змейкой с помощью клавиш WASD или стрелок.<br>
+                            - Собирайте <strong style="color: #b39a10;">кодкоины (🟡)</strong> для роста и очков.<br>
+                            - Каждые 100 кодкоинов = <strong>+1 к балансу</strong> в вашем профиле.<br>
+                            - Избегайте стен и своего хвоста — игра окончена при столкновении.<br>
+                            <span style="font-style: italic; color: #81C784;">Обменивайте кодкоины на бонусы в магазине!</span>
+                        </p>
+                    </div>
+                </div>
+                <div class="wolf" id="minigame">
+                        <div id = "wolf" class="ico"></div>
+                    <div class="text">
+                        <h2>Волк ловит монеты</h2>
+                        <p style="margin: 0 0 15px 0; font-size: 16px; line-height: 1.5; opacity: 0.9;">
+                            Весёлая игра на реакцию и скорость!<br>
+                            - Управляйте волком с помощью мыши или тапа.<br>
+                            - Ловите падающие <strong style="color: #b39a10;">кодкоины (💰)</strong> для получения очков.<br>
+                            - Каждые 1000 кодкоинов = <strong>+1 к балансу</strong> в вашем профиле.<br>
+                            - Избегайте падающих камней — они отнимают очки.<br>
+                            - Специальные золотые монеты дают в 2 раза больше чем обычные!<br>
+                            <span style="font-style: italic; color: #81C784;">Чем выше счёт, тем ценнее награда!</span>
+                        </p>
+                    </div>
+                </div>
+                <div class="arkanoid" id="minigame">
+                    <div id="arkanoid" class="ico"></div>
+                    <div class="text">
+                        <h2>Арканоид</h2>
+                        <p style="margin: 0 0 15px 0; font-size: 16px; line-height: 1.5; opacity: 0.9;">
+                            Классический арканоид с программистским уклоном!<br>
+                            - Управляйте платформой с помощью мыши или стрелок.<br>
+                            - Разбивайте блоки с <strong style="color: #b39a10;">кодкоинами</strong> для получения очков.<br>
+                            - Каждые 100 кодкоинов = <strong>+1 к балансу</strong> в вашем профиле.<br>
+                            - Специальные бонусы: расширение платформы, ускорение мяча.<br>
+                            - Босс-уровень после каждых 5 уровней с особыми наградами.<br>
+                            <span style="font-style: italic; color: #81C784;">Соберите все блоки и станьте мастером кода!</span>
+                        </p>
+                    </div>
+                </div>
+                <div class="cashing">
+                    <h3>Баланс: 0 монет = 0 кодкоинов</h3>
+                    <button class="cash">Вывести</button>
+                </div>
+                
+                </div>
+                
+            </div>
+
+    <!-- Модальное окно -->
+    <div class="modal" style="display: none;">
+        <div class="modal-container">
+            <button class="close-modal">X</button>
+            <div class="modal-content">
+                <h1 class="modal-title">Заголовок</h1>
+                <p class="modal-description">Описание</p>
+            </div>
+        </div>
+    </div>
+    <!-- Добавить перед закрывающим тегом body -->
+<div class="modal-game" id="modalGame" style="display: none;">
+    <div class="modal-game-container">
+        <button class="close-modal-game">X</button>
+        <div class="modal-game-content">
+            <h1 class="modal-game-title">Начать игру?</h1>
+            <p class="modal-game-description">Вы можете играть только один раз в день. Хотите начать сейчас?</p>
+            <div class="modal-game-buttons">
+                <button class="modal-game-confirm">Да, начать</button>
+                <button class="modal-game-cancel">Отмена</button>
+            </div>
+        </div>
+    </div>
+</div>
+    <div class="menu">
+        <a href="../../main/main.html" class="move-to" style="background-image: url('../../imgformenu/home.png');"></a>
+        <a href="" class="move-to" style="background-image: url('../../imgformenu/profile.png');"></a>
+        <a href="../../shop/shop.html" class="move-to" style="background-image: url('../../imgformenu/shop.png');"></a>
+        <a href="" class="move-to" style="background-image: url('../../imgformenu/minigames.png');" id="current-page"></a>
+        <a href="../../chart.html" class="move-to" style="background-image: url('../../imgformenu/rating.png');"></a>
+    </div>
+    <script src="questsScript.js"></script>
+</body>
+</html>
