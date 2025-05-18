@@ -10,7 +10,6 @@ let initialBrickColumnCount = Math.floor(window.innerWidth / (window.innerWidth 
 let brickRowCount = 15; // Можно также сделать настраиваемым
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
-
 let gameStarted = false;
 
 // Состояние игры
@@ -19,8 +18,11 @@ let coins = 0;
 let level = 1;
 let lives = 3;
 let activeBonuses = [];
+let isGameOver = false; // Добавьте эту строку
+let coinsAwarded = false; // Добавьте эту строку
 
 function updateUI() {
+    if (lives < 0) lives = 0; // Дополнительная проверка
     document.getElementById('score').innerText = score;
     document.getElementById('coins').innerText = coins;
     document.getElementById('level').innerText = level;
@@ -489,10 +491,32 @@ function resetBall() {
 }
 
 function showGameOverScreen() {
+    if (isGameOver) return;
+    
+    isGameOver = true;
     cancelAnimationFrame(animationFrame);
     gameOverModal.style.display = 'flex';
     finalScore.innerText = score;
     finalCoins.innerText = coins;
+
+    // Начисляем монеты только если они еще не были начислены
+    if (!coinsAwarded) {
+        let totalBalanceArkanoid = parseInt(localStorage.getItem('totalBalanceArkanoid')) || 0;
+        totalBalanceArkanoid += coins;
+        localStorage.setItem('totalBalanceArkanoid', totalBalanceArkanoid);
+        document.getElementById('totalCoins').innerText = totalBalanceArkanoid;
+        codcoin = 1000;
+        div(totalBalanceArkanoid, codcoin);
+        
+        // Помечаем, что монеты были начислены
+        coinsAwarded = true;
+        
+        // Сохраняем ID текущей игровой сессии
+        localStorage.setItem('currentGameSessionId', Date.now().toString());
+    }
+
+    // Всегда обновляем отображение общего количества монет
+    document.getElementById('totalCoins').innerText = parseInt(localStorage.getItem('totalBalanceArkanoid')) || 0;
 }
 
 function checkBallLoss() {
@@ -516,14 +540,22 @@ function checkBallLoss() {
     }
     if (balls.length === 0) {
         lives--;
-        if (lives <= 0) {
+        updateUI(); // Обновляем UI сразу после изменения жизней
+        if (lives < 0) { // Проверяем, чтобы жизни не ушли в минус
+            lives = 0;
+            updateUI();
+            showGameOverScreen();
+        } else if (lives === 0) {
             showGameOverScreen();
         } else {
             resetBall();
         }
     }
 }
-
+function div(val, by){
+            codcoins = (val - val % by) / by;
+            localStorage.setItem('Arkanoid', codcoins);
+        }
 // Главный игровой цикл
 let animationFrame;
 function draw() {
@@ -570,12 +602,17 @@ function startGame() {
 }
 
 updateUI();
-
+function back(){
+        window.location.href = "/quests/quest.html"
+    }
 // Обработчики событий
 startGameButton.addEventListener('click', startGame);
 restartButton.addEventListener('click', () => {
+    isGameOver = false;
+    coinsAwarded = false; // Сбрасываем флаг начисления монет
     gameOverModal.style.display = 'none';
-    document.location.reload();
+    localStorage.removeItem('currentGameSessionId');
+    back()
 });
 
 window.addEventListener('resize', () => {
