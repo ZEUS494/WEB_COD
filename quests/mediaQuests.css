@@ -203,3 +203,203 @@
         padding-top: 60px;
     }
   }
+  /* Добавьте в mediaQuests.css */
+
+/* Для экранов шириной до 998px включительно */
+@media screen and (max-width: 998px) {
+    /* Модальные окна */
+    .modal-container {
+        width: 80%;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        padding: 20px;
+    }
+    
+    .modal-game-container {
+        width: 80%;
+        max-width: none;
+        left: 50% !important;
+        transform: translateX(-50%);
+        top: 40% !important;
+    }
+    
+    #infoModal .modal-content {
+        width: 85%;
+        margin: 20% auto;
+    }
+}
+
+/* Для экранов шириной до 768px включительно */
+@media screen and (max-width: 768px) {
+    .modal-container {
+        width: 85%;
+        padding: 15px;
+    }
+    
+    .modal-game-container {
+        width: 85%;
+        padding: 20px;
+    }
+    
+    .modal-game-title {
+        font-size: 20px;
+    }
+    
+    .modal-game-description {
+        font-size: 14px;
+    }
+    
+    .modal-game-buttons {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .modal-game-confirm, 
+    .modal-game-cancel {
+        width: 100%;
+    }
+    
+    #infoModal h2 {
+        margin-left: 0;
+        width: 100%;
+        font-size: 20px;
+    }
+}
+
+/* Для экранов шириной до 576px включительно */
+@media screen and (max-width: 576px) {
+    .modal-container {
+        width: 90%;
+        padding: 10px;
+    }
+    
+    .modal-game-container {
+        width: 90%;
+        padding: 15px;
+        top: 30% !important;
+    }
+    
+    .modal-title {
+        font-size: 20px;
+    }
+    
+    .modal-description {
+        font-size: 14px;
+    }
+    
+    #infoModal .modal-content {
+        width: 90%;
+        padding: 15px;
+    }
+    
+    #infoModal .game-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 5px;
+    }
+    
+    #infoModal .game-item.total {
+        flex-direction: row;
+    }
+}
+
+/* Для экранов шириной до 360px включительно */
+@media screen and (max-width: 360px) {
+    .modal-container {
+        width: 95%;
+    }
+    
+    .modal-game-container {
+        width: 95%;
+        padding: 10px;
+    }
+    
+    .modal-game-title {
+        font-size: 18px;
+    }
+    
+    .modal-game-description {
+        font-size: 13px;
+    }
+    
+    #infoModal .modal-content {
+        width: 95%;
+    }
+}
+/* Добавьте в mediaQuests.css */
+
+/* Для экранов шириной до 998px включительно */
+@media screen and (max-width: 998px) {
+    .cashing {
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+        width: 100%;
+        padding: 10px 0;
+    }
+    #block{
+        justify-self: center;
+        align-items: center;
+        width: 75%;
+        flex-direction: row-reverse;
+    }
+    .cashing h3 {
+        margin-right: 15%;
+        text-align: center;
+        order: 1;
+        font-size: 18px;
+    }
+    
+    .info-btn {
+        order: 2;
+        margin-right: 30%;
+    }
+    
+    .cash {
+        order: 3;
+        width: 80%;
+        padding: 12px 0;
+        font-size: 16px;
+    }
+}
+
+/* Для экранов шириной до 768px включительно */
+@media screen and (max-width: 768px) {
+    .cashing {
+        gap: 10px;
+    }
+    
+    .cashing h3 {
+        font-size: 16px;
+    }
+    
+    .cash {
+        width: 90%;
+        padding: 10px 0;
+        font-size: 15px;
+    }
+}
+
+/* Для экранов шириной до 576px включительно */
+@media screen and (max-width: 576px) {
+    .cashing {
+        padding: 5px 0;
+    }
+    
+    .cashing h3 {
+        font-size: 15px;
+    }
+    
+    .cash {
+        width: 95%;
+        padding: 8px 0;
+        font-size: 14px;
+    }
+    
+    .info-btn {
+        width: 32px;
+        height: 32px;
+        font-size: 14px;
+    }
+}

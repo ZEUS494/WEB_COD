@@ -97,16 +97,20 @@
                             Классический арканоид с программистским уклоном!<br>
                             - Управляйте платформой с помощью мыши или стрелок.<br>
                             - Разбивайте блоки с <strong style="color: #b39a10;">кодкоинами</strong> для получения очков.<br>
-                            - Каждые 100 кодкоинов = <strong>+1 к балансу</strong> в вашем профиле.<br>
+                            - Каждые 1000 кодкоинов = <strong>+1 к балансу</strong> в вашем профиле.<br>
                             - Специальные бонусы: расширение платформы, ускорение мяча.<br>
                             - Босс-уровень после каждых 5 уровней с особыми наградами.<br>
                             <span style="font-style: italic; color: #81C784;">Соберите все блоки и станьте мастером кода!</span>
                         </p>
                     </div>
                 </div>
-                <div class="cashing">
+                                <div class="cashing">
+                                    <div id="block">
+                                        <button id="infoBtn" class="info-btn" title="Информация о кодкоинах">i</button>
                     <h3>Баланс: 0 монет = 0 кодкоинов</h3>
-                    <button class="cash">Вывести</button>
+                                    </div>
+                    
+                    <button id="Vbtn" class="cash">Вывести</button>
                 </div>
                 
                 </div>
@@ -114,7 +118,7 @@
             </div>
 
     <!-- Модальное окно -->
-    <div class="modal" style="display: none;">
+    <div class="modal" style="display: none">
         <div class="modal-container">
             <button class="close-modal">X</button>
             <div class="modal-content">
@@ -124,7 +128,7 @@
         </div>
     </div>
     <!-- Добавить перед закрывающим тегом body -->
-<div class="modal-game" id="modalGame" style="display: none;">
+<div class="modal-game" id="modalGame">
     <div class="modal-game-container">
         <button class="close-modal-game">X</button>
         <div class="modal-game-content">
@@ -136,6 +140,52 @@
             </div>
         </div>
     </div>
+</div>
+<div class="modal-game" id="modalV">
+    <div class="modal-game-container">
+        <button id="closeV" class="close-modal-game">X</button>
+        <div class="modal-game-content">
+            <h1 class="modal-game-title">Вывести кодкоины?</h1>
+            <p class="modal-game-description">Вы можете выводить кодкоины только один раз в неделю. Хотите вывести сейчас?</p>
+            <div class="modal-game-buttons">
+                <button id="confirmV" class="modal-game-confirm">Да, вывести</button>
+                <button id="cancelV" class="modal-game-cancel">Отмена</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal-game" id="modalGameAfter">
+    <div class="modal-game-container">
+        <button id="close" class="close-modal-game">X</button>
+        <div class="modal-game-content">
+            <h1 class="modal-game-title">Действие невозможно</h1>
+            <p class="modal-game-description">Вы уже играли сегодня. Возвращайтесь завтра!</p>
+        </div>
+    </div>
+</div>
+<div id="infoModal" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <h2>Кодкоины в играх</h2>
+    <div class="games-list">
+      <div class="game-item">
+        <span class="game-name">Змейка:</span>
+        <span class="coins-count">150 кодкоинов</span>
+      </div>
+      <div class="game-item">
+        <span class="game-name">Волк ловит монеты:</span>
+        <span class="coins-count">200 кодкоинов</span>
+      </div>
+      <div class="game-item">
+        <span class="game-name">Арканоид:</span>
+        <span class="coins-count">180 кодкоинов</span>
+      </div>
+      <div class="game-item total">
+        <span class="game-name">Всего:</span>
+        <span class="coins-count">530 кодкоинов</span>
+      </div>
+    </div>
+  </div>
 </div>
     <div class="menu">
         <a href="../../index.html" class="move-to" style="background-image: url('../../imgformenu/home.png');"></a>

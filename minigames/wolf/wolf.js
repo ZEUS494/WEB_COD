@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let combo = 0;
     let lastCatchTime = 0;
     let wolfPosition = containerWidth / 2 - 40;
-    let totalBalance = parseInt(localStorage.getItem('totalBalance')) || 0;
+    let totalBalance = parseInt(localStorage.getItem('totalBalanceWolf')) || 0;
     let scoreMultiplier = 1;
     let multiplierTimeout = null;
 
@@ -260,19 +260,12 @@ function catchCoin(coin, coinFall) {
         coinInterval = setInterval(createCoin, 800);
     }
 
-    function endGame() {
-        isGameRunning = false;
-        clearInterval(coinInterval);
-        clearInterval(timerInterval);
-        totalBalance += score;
-        localStorage.setItem('totalBalance', totalBalance);
-        totalBalanceDisplay.textContent = `Общий баланс: ${totalBalance} кодкоинов`;
-        finalScoreDisplay.textContent = `Вы собрали: ${score} кодкоинов`;
-        gameOverScreen.style.display = 'flex';
-    }
 
+    function back(){
+        window.location.href = "/quests/quest.html"
+    }
     startBtn.addEventListener('click', startGame);
-    restartBtn.addEventListener('click', startGame);
+    restartBtn.addEventListener('click', back);
 
     // Очистить таймер множителя при завершении игры
 function endGame() {
@@ -283,8 +276,10 @@ function endGame() {
     scoreMultiplier = 1;
     scoreDisplay.style.color = '#FFD700';
     totalBalance += score;
-    localStorage.setItem('totalBalance', totalBalance);
+    localStorage.setItem('totalBalanceWolf', totalBalance);
     totalBalanceDisplay.textContent = `Общий баланс: ${totalBalance} кодкоинов`;
+    codcoin = 1000;
+    div(totalBalance, codcoin);
     finalScoreDisplay.textContent = `Вы собрали: ${score} кодкоинов`;
     gameOverScreen.style.display = 'flex';
 }
@@ -293,3 +288,7 @@ function endGame() {
         createControls();
     }
 });
+function div(val, by){
+            codcoins = (val - val % by) / by;
+            localStorage.setItem('Wolf', codcoins);
+        }
