@@ -1,4 +1,10 @@
 document.addEventListener('DOMContentLoaded', function() {
+    const currentUser = getCookie('user');
+    if (!currentUser) {
+        window.location.href = '../profile/index.html';
+        return;
+    }
+
     const addToCartButtons = document.querySelectorAll('.btn-new');
     const cart = JSON.parse(localStorage.getItem('cart')) || [];
     const modal = document.getElementById('modal');

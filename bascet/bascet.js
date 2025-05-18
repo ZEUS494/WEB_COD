@@ -1,9 +1,40 @@
 document.addEventListener('DOMContentLoaded', function() {
+    // Инициализация Firebase (только если не была инициализирована ранее)
+    if (!firebase.apps.length) {
+        const firebaseConfig = {
+            apiKey: "AIzaSyBeCuMUazd-l9D0vPqfBrNJYSxCgOG6DeY",
+            authDomain: "codweb-4d1aa.firebaseapp.com",
+            projectId: "codweb-4d1aa",
+            storageBucket: "codweb-4d1aa.firebasestorage.app",
+            messagingSenderId: "892570211314",
+            appId: "1:892570211314:web:4888edb47d69cbd809d16b",
+            measurementId: "G-57GYQLP328"
+        };
+        firebase.initializeApp(firebaseConfig);
+    }
+    const db = firebase.firestore();
+
     const cart = JSON.parse(localStorage.getItem('cart')) || [];
     const cartContainer = document.querySelector('.cart-container');
     const cartItemsContainer = cartContainer.querySelector('.cart-items');
     const cartHeader = cartContainer.querySelector('.cart-header span');
     const clearCartBtn = cartContainer.querySelector('.clear-cart-btn');
+    const checkoutBtn = document.getElementById('checkout-btn');
+    const balanceAmount = document.getElementById('balance-amount');
+
+    function loadUserBalance() {
+        const currentUser = getCookie('user');
+        if (!currentUser) return;
+
+        db.collection("users").doc(currentUser).get().then(doc => {
+            if (doc.exists) {
+                const userData = doc.data();
+                balanceAmount.textContent = userData.codcoins || 0;
+            }
+        }).catch(err => {
+            console.error("Ошибка загрузки баланса:", err);
+        });
+    }
 
     function renderCart() {
         cartItemsContainer.innerHTML = '';
@@ -31,7 +62,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
             const minusBtn = cartItem.querySelector('.minus-btn');
             const plusBtn = cartItem.querySelector('.plus-btn');
-            const quantitySpan = cartItem.querySelector('.item-quantity span');
 
             minusBtn.addEventListener('click', () => {
                 if (item.quantity > 1) {
@@ -75,6 +105,9 @@ document.addEventListener('DOMContentLoaded', function() {
                     <small>Вернитесь в магазин, чтобы добавить товары</small>
                 </div>
             `;
+            checkoutBtn.disabled = true;
+        } else {
+            checkoutBtn.disabled = false;
         }
     }
 
@@ -83,12 +116,61 @@ document.addEventListener('DOMContentLoaded', function() {
         cart.length = 0;
         renderCart();
     });
-    // Добавьте в начало bascet.js
-const isMobile = window.matchMedia('(max-width: 400px)').matches;
 
-if (isMobile) {
-    document.querySelector('.background-animation').style.display = 'none';
-    // Другие оптимизации для мобильных устройств
-}
+    checkoutBtn.addEventListener('click', async () => {
+        const currentUser = getCookie('user');
+        if (!currentUser) {
+            window.location.href = '../profile/index.html';
+            return;
+        }
+
+        const totalAmount = parseFloat(cartContainer.querySelector('#total-sum').textContent);
+        
+        try {
+            const userDoc = await db.collection("users").doc(currentUser).get();
+            if (!userDoc.exists) {
+                alert('Ошибка: пользователь не найден');
+                return;
+            }
+
+            const userData = userDoc.data();
+            const currentBalance = userData.codcoins || 0;
+
+            if (currentBalance < totalAmount) {
+                alert('Недостаточно кодкоинов для оформления заказа');
+                return;
+            }
+
+            await db.collection("users").doc(currentUser).update({
+                codcoins: firebase.firestore.FieldValue.increment(-totalAmount)
+            });
+
+            sendOrderToAdmins(currentUser, cart, totalAmount);
+
+            localStorage.removeItem('cart');
+            cart.length = 0;
+            renderCart();
+            
+            loadUserBalance();
+            
+            alert('Заказ успешно оформлен! Кодкоины списаны.');
+        } catch (error) {
+            console.error('Ошибка при оформлении заказа:', error);
+            alert('Произошла ошибка при оформлении заказа');
+        }
+    });
+
+    // Заглушка для отправки заказа в Telegram
+    function sendOrderToAdmins(user, items, total) {
+        console.log(`Новый заказ от ${user}:`, items, `Общая сумма: ${total}`);
+        // Здесь будет код для подключения к Telegram API
+    }
+
+    const isMobile = window.matchMedia('(max-width: 400px)').matches;
+    if (isMobile) {
+        document.querySelector('.background-animation').style.display = 'none';
+    }
+
+    loadUserBalance();
     renderCart();
 });

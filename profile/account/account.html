@@ -87,43 +87,5 @@
     <script src="../scripts/uploadimage.js"></script>
     <script src="../scripts/script.js"></script>
     <script src="../scripts/load.js"></script>
-
-    <script>
-        const firebaseConfig = {
-          apiKey: "AIzaSyBeCuMUazd-l9D0vPqfBrNJYSxCgOG6DeY",
-          authDomain: "codweb-4d1aa.firebaseapp.com",
-          projectId: "codweb-4d1aa",
-          storageBucket: "codweb-4d1aa.firebasestorage.app",
-          messagingSenderId: "892570211314",
-          appId: "1:892570211314:web:4888edb47d69cbd809d16b",
-          measurementId: "G-57GYQLP328"
-        };
-        
-        firebase.initializeApp(firebaseConfig);
-        const db = firebase.firestore();
-        
-        // Проверка авторизованности пользователя при загрузке страницы
-        document.addEventListener('DOMContentLoaded', function () {
-          const storedUsername = getCookie('user'); // Получение имени пользователя из cookie
-        
-          if (!storedUsername) { // Пользователь не залогинен
-            alert("Вам необходимо войти в аккаунт.");
-            window.location.href = "../index.html"; // Перенаправляем на форму входа
-            return;
-          }
-      
-          // Логика вывода данных аккаунта...
-        });
-        
-        // Вспомогательная функция для чтения cookies
-        function getCookie(name) {
-          let matches = document.cookie.match(new RegExp(
-            "(?:^|; )" +
-            name.replace(/([\.$?*|{}$$$$$$\\\/^+])/g, '\\$1') +
-            "=([^;]*)"
-          ));
-          return matches ? decodeURIComponent(matches[1]) : undefined;
-        }
-    </script>
 </body>
 </html>
