@@ -336,11 +336,15 @@ h2{
   }
   .cashing{
     display: flex;
-    margin-left: 10%;
   justify-content: space-between;
   align-items: center; /* Для вертикального выравнивания, если нужно */
   width: 80%;
-  }.menu {
+  }
+  .cashing h3{
+    position: relative;
+    bottom: 12px;
+  }
+  .menu {
     position: fixed;
     left: 1%;
     top: 22%;
@@ -472,4 +476,307 @@ h2{
 
 .modal-game-cancel:hover {
     background-color: #c9302c;
+}.modal-game-container {
+    background-color: #202020;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
+    text-align: center;
+    min-width: 250px;
+    max-width: 400px;
+    position: relative;
+}
+
+.close-modal-game {
+    cursor: pointer;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 18px;
+    width: 24px;
+    height: 24px;
+    line-height: 22px;
+    text-align: center;
+    border: none;
+    background-color: #d9534f;
+    color: white;
+    border-radius: 50%;
+}
+
+.close-modal-game:hover {
+    background-color: #c9302c;
+}
+
+.modal-game-content {
+    margin-top: 20px;
+}
+
+.modal-game-title {
+    font-size: 24px;
+    margin-bottom: 12px;
+    color: #fff;
+}
+
+.modal-game-description {
+    font-size: 16px;
+    line-height: 1.5;
+    color: #ccc;
+    margin-bottom: 20px;
+}
+
+.modal-game-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.modal-game-confirm, .modal-game-cancel {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: all 0.3s ease;
+}
+
+.modal-game-confirm {
+    background-color: #5cb85c;
+    color: white;
+}
+
+.modal-game-confirm:hover {
+    background-color: #4cae4c;
+}
+
+.modal-game-cancel {
+    background-color: #d9534f;
+    color: white;
+}
+
+.modal-game-cancel:hover {
+    background-color: #c9302c;
+}
+.modal-game {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7); /* Полупрозрачный черный фон */
+    z-index: 9999;
+}
+
+.modal-game-container {
+    background-color: #202020;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
+    text-align: center;
+    min-width: 250px;
+    max-width: 400px;
+    position: relative;
+        top: 40%;
+    left: 35%;
+}
+
+.close-modal-game {
+    cursor: pointer;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 18px;
+    width: 24px;
+    height: 24px;
+    line-height: 22px;
+    text-align: center;
+    border: none;
+    background-color: #d9534f;
+    color: white;
+    border-radius: 50%;
+}
+
+.close-modal-game:hover {
+    background-color: #c9302c;
+}
+
+.modal-game-content {
+    margin-top: 20px;
+}
+
+.modal-game-title {
+    font-size: 24px;
+    margin-bottom: 12px;
+    color: #fff;
+}
+
+.modal-game-description {
+    font-size: 16px;
+    line-height: 1.5;
+    color: #ccc;
+    margin-bottom: 20px;
+}
+
+.modal-game-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.modal-game-confirm, .modal-game-cancel {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: all 0.3s ease;
+}
+
+.modal-game-confirm {
+    background-color: #5cb85c;
+    color: white;
+}
+
+.modal-game-confirm:hover {
+    background-color: #4cae4c;
+}
+
+.modal-game-cancel {
+    background-color: #d9534f;
+    color: white;
+}
+
+.modal-game-cancel:hover {
+    background-color: #c9302c;
+}
+/* Стили для кнопки Инфо и модального окна */
+.info-btn {
+  background-color: transparent;
+  color: #4CAF50;
+  border: 2px solid #4CAF50;
+  padding: 8px 12px;
+  border-radius: 50%;
+  font-size: 16px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  transition: all 0.3s;
+  font-weight: bold;
+  font-style: italic;
+  margin-right: 15px;
+    background-color: #4CAF50;
+  color: white;
+  border: none;
+}
+
+.info-btn:hover {
+  background-color: rgba(76, 175, 80, 0.1);
+  transform: scale(1.1);
+}
+
+.info-btn:active {
+  transform: scale(0.95);
+}
+
+/* Альтернативный вариант с иконкой через псевдоэлемент */
+.info-btn.icon-i::before {
+  content: "i";
+  font-style: normal;
+  font-weight: bold;
+  font-family: Arial, sans-serif;
+}
+/* Модальное окно с информацией о кодкоинах */
+#infoModal {
+  display: none;
+  position: fixed;
+  z-index: 9999;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.7);
+}
+
+#infoModal .modal-content {
+  background-color: #202020;
+  margin: 10% auto;
+  padding: 25px;
+  border-radius: 15px;
+  width: 80%;
+  max-width: 500px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+  color: white;
+}
+
+#infoModal .close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+#infoModal .close:hover {
+  color: white;
+}
+
+#infoModal h2 {
+  color: #e8ae00;
+  text-align: center;
+  margin-left: 100px;
+  width: 60%;
+  margin-bottom: 20px;
+  text-align: center;
+  font-size: 24px;
+}
+
+#infoModal .games-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+#infoModal .game-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 12px 15px;
+  background-color: #333;
+  border-radius: 8px;
+  align-items: center;
+}
+
+#infoModal .game-name {
+  font-weight: bold;
+  color: #ccc;
+}
+
+#infoModal .coins-count {
+  color: #e8ae00;
+  font-weight: bold;
+}
+
+#infoModal .game-item.total {
+  background-color: #3a3a3a;
+  margin-top: 20px;
+  padding: 15px;
+  border: 1px solid #e8ae00;
+}
+
+#infoModal .game-item.total .game-name {
+  color: #e8ae00;
+  font-size: 1.1em;
+}
+
+#infoModal .game-item.total .coins-count {
+  color: #e8ae00;
+  font-size: 1.2em;
+}
+#block{
+    display: flex;
+    flex-direction: row;
 }

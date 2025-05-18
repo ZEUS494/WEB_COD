@@ -136,29 +136,58 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Инициализация модального окна для игр
-    function initGameModal() {
+    // Инициализация модальных окон для игр и других функций
+    function initGameModals() {
         const modalGame = document.getElementById('modalGame');
+        const modalGameAfter = document.getElementById('modalGameAfter');
+        const modalV = document.getElementById('modalV');
         const closeButtonGame = document.querySelector('.close-modal-game');
         const confirmButton = document.querySelector('.modal-game-confirm');
         const cancelButton = document.querySelector('.modal-game-cancel');
+        const closeButtonAfter = document.getElementById('close');
+        const closeButtonV = document.getElementById('closeV');
+        const confirmButtonV = document.getElementById('confirmV');
+        const cancelButtonV = document.getElementById('cancelV');
+        const Vbtn = document.getElementById('Vbtn');
+        const infoModal = document.getElementById("infoModal");
+        const infoBtn = document.getElementById("infoBtn");
+        const infoClose = infoModal.querySelector(".close");
+        
         let currentGameUrl = '';
 
+        function canPlayToday() {
+            const lastPlay = getCookie("lastPlayDate");
+            if (!lastPlay) return true;
+            const lastPlayDate = new Date(lastPlay);
+            const today = new Date();
+            return lastPlayDate.getDate() !== today.getDate() ||
+                   lastPlayDate.getMonth() !== today.getMonth() ||
+                   lastPlayDate.getFullYear() !== today.getFullYear();
+        }
+
+        function canWithdrawThisWeek() {
+            const lastWithdraw = getCookie("lastWithdrawDate");
+            if (!lastWithdraw) return true;
+            const lastWithdrawDate = new Date(lastWithdraw);
+            const today = new Date();
+            const diffTime = Math.abs(today - lastWithdrawDate);
+            const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+            return diffDays >= 7;
+        }
+
         function openGameModal(gameUrl) {
-            const lastPlayDate = getCookie('lastPlayDate');
-            const currentDate = new Date().toDateString();
-            
-            if (lastPlayDate !== currentDate) {
+            if (canPlayToday()) {
                 currentGameUrl = gameUrl;
                 modalGame.style.display = 'block';
             } else {
-                alert('Вы уже играли сегодня. Возвращайтесь завтра!');
+                modalGameAfter.querySelector('.modal-game-description').textContent =
+                    'Вы уже играли сегодня. Возвращайтесь завтра!';
+                modalGameAfter.style.display = 'block';
             }
         }
 
         function startGame() {
-            const currentDate = new Date().toDateString();
-            setCookie('lastPlayDate', currentDate, 1); // Кука на 1 день
+            setCookie("lastPlayDate", new Date().toUTCString(), 1);
             window.location.href = currentGameUrl;
             modalGame.style.display = 'none';
         }
@@ -168,34 +197,96 @@ document.addEventListener('DOMContentLoaded', () => {
             currentGameUrl = '';
         }
 
+        function closeModalGameAfter() {
+            modalGameAfter.style.display = 'none';
+        }
+
+        function openModalV() {
+            if (canWithdrawThisWeek()) {
+                modalV.style.display = 'block';
+            } else {
+                modalGameAfter.querySelector('.modal-game-description').textContent =
+                    'Вы уже выводили кодкоины на этой неделе. Возвращайтесь через неделю!';
+                modalGameAfter.style.display = 'block';
+            }
+        }
+
+        function closeModalV() {
+            modalV.style.display = 'none';
+        }
+
+        function confirmWithdraw() {
+            setCookie("lastWithdrawDate", new Date().toUTCString(), 7);
+            console.log('Вывод подтвержден! Следующий вывод будет доступен через неделю.');
+            closeModalV();
+        }
+
+        function updateCoinsInfo() {
+            const snakeCoins = localStorage.getItem('Snake') || 0;
+            const wolfCoins = localStorage.getItem('Wolf') || 0;
+            const arkanoidCoins = localStorage.getItem('Arkanoid') || 0;
+            const totalCoins = parseInt(snakeCoins) + parseInt(wolfCoins) + parseInt(arkanoidCoins);
+
+            document.querySelector('#infoModal .game-item:nth-child(1) .coins-count').textContent = `${snakeCoins} кодкоинов`;
+            document.querySelector('#infoModal .game-item:nth-child(2) .coins-count').textContent = `${wolfCoins} кодкоинов`;
+            document.querySelector('#infoModal .game-item:nth-child(3) .coins-count').textContent = `${arkanoidCoins} кодкоинов`;
+            document.querySelector('#infoModal .game-item.total .coins-count').textContent = `${totalCoins} кодкоинов`;
+
+            document.querySelector('.cashing h3').textContent = `Баланс: ${totalCoins} кодкоинов`;
+        }
+
+        // Обработчики событий для игр
         closeButtonGame.addEventListener('click', closeGameModal);
         cancelButton.addEventListener('click', closeGameModal);
         confirmButton.addEventListener('click', startGame);
+        closeButtonAfter.addEventListener('click', closeModalGameAfter);
+        Vbtn.addEventListener('click', openModalV);
+        closeButtonV.addEventListener('click', closeModalV);
+        cancelButtonV.addEventListener('click', closeModalV);
+        confirmButtonV.addEventListener('click', confirmWithdraw);
+        infoBtn.onclick = () => {
+            infoModal.style.display = "block";
+            updateCoinsInfo();
+        };
+        infoClose.onclick = () => {
+            infoModal.style.display = "none";
+        };
 
-        document.addEventListener('click', function(event) {
+        document.querySelectorAll('div.snake, div.wolf, div.arkanoid').forEach((game) => {
+            game.addEventListener('click', () => {
+                const gameUrl = game.classList.contains('snake') ? "/minigames/snake/snake.html" :
+                                game.classList.contains('wolf') ? "/minigames/wolf/wolf.html" :
+                                "/minigames/arkanoid/arkanoid.html";
+                openGameModal(gameUrl);
+            });
+        });
+
+        document.addEventListener('click', (event) => {
             if (modalGame.style.display === 'block' && !event.target.closest('.modal-game-container')) {
                 closeGameModal();
             }
-        });
-
-        document.addEventListener('keydown', function(event) {
-            if (event.key === 'Escape' && modalGame.style.display === 'block') {
-                closeGameModal();
+            if (modalGameAfter.style.display === 'block' && event.target === modalGameAfter) {
+                closeModalGameAfter();
+            }
+            if (modalV.style.display === 'block' && !event.target.closest('.modal-game-container')) {
+                closeModalV();
+            }
+            if (event.target === infoModal) {
+                infoModal.style.display = "none";
             }
         });
 
-        // Обработчики для мини-игр
-        document.querySelector("div.snake")?.addEventListener('click', function() {
-            openGameModal("../minigames/snake/snake.html");
+        document.addEventListener('keydown', (event) => {
+            if (event.key === 'Escape') {
+                if (modalGame.style.display === 'block') closeGameModal();
+                if (modalGameAfter.style.display === 'block') closeModalGameAfter();
+                if (modalV.style.display === 'block') closeModalV();
+                if (infoModal.style.display === 'block') infoModal.style.display = "none";
+            }
         });
 
-        document.querySelector("div.wolf")?.addEventListener('click', function() {
-            openGameModal("../minigames/wolf/wolf.html");
-        });
-
-        document.querySelector("div.arkanoid")?.addEventListener('click', function() {
-            openGameModal("../minigames/arkanoid/arkanoid.html");
-        });
+        // Инициализация данных
+        updateCoinsInfo();
     }
 
     // Вспомогательные функции для работы с куками
@@ -222,7 +313,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Инициализация всех функций
     loadQuests();
     initModals();
-    initGameModal();
+    initGameModals();
 
     // Присваиваем цвета мини-играм
     document.querySelectorAll('#minigame').forEach((element, index) => {
