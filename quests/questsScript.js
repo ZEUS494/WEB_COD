@@ -108,7 +108,6 @@ document.addEventListener('DOMContentLoaded', () => {
             currentGameUrl = gameUrl;
             ModalFlex();
         } else {
-            alert('asasdc')
             modalGameAfter.querySelector('.modal-game-description').textContent =
                 'Вы уже играли сегодня. Возвращайтесь завтра!';
             ModalAfterFlex()
@@ -189,7 +188,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
             ModalV()
         } else {
-            alert("fsadfas")
             modalGameAfter.querySelector('.modal-game-description').textContent =
                 'Вы уже выводили кодкоины на этой неделе. Возвращайтесь через неделю!';
             modalGameAfter.style.display = 'block';
