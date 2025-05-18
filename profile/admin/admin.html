@@ -110,40 +110,5 @@
     <script src="../scripts/admin.js"></script>
     <script src="../scripts/cookie.js"></script>
     <script src="../app.js"></script>
-
-    <script>
-        // Вспомогательные функции для работы с cookie
-        function getCookie(name) {
-          let matches = document.cookie.match(new RegExp(
-            "(?:^|; )" +
-            name.replace(/([\.$?*|{}$$$$$$\\\/^+])/g, '\\$1') +
-            "=([^;]*)"
-          ));
-          return matches ? decodeURIComponent(matches[1]) : undefined;
-        }
-
-        function eraseCookie(name) {
-          document.cookie = name + '=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
-        }
-
-        // Функция выхода
-        function logout() {
-          eraseCookie('user');
-          localStorage.clear(); // очистка данных профиля
-          window.location.href = '../index.html'; // переходим на главную страницу
-        }
-
-        // Проверка авторизованности пользователя при загрузке страницы
-        document.addEventListener('DOMContentLoaded', function () {
-          const storedUsername = getCookie('user'); // получаем имя пользователя из cookie
-        
-          if (!storedUsername || storedUsername !== 'admin') { // проверяем, что залогиненный пользователь именно админ
-            window.location.href = "../index.html";
-            return;
-          }
-      
-          // Тут можно реализовать специфичную логику для административной панели
-        });
-    </script>
 </body>
 </html>
