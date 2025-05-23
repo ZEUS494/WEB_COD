@@ -262,13 +262,13 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         document.addEventListener('click', (event) => {
-            if (modalGame.style.display === 'block' && !event.target.closest('.modal-game-container')) {
-                closeGameModal();
-            }
             if (modalGameAfter.style.display === 'block' && event.target === modalGameAfter) {
                 closeModalGameAfter();
             }
-            if (modalV.style.display === 'block' && !event.target.closest('.modal-game-container')) {
+            if (modalGame.style.display === 'block' && event.target === modalGame) {
+                closeGameModal();
+            }
+            if (modalV.style.display === 'block' && event.target === modalV) {
                 closeModalV();
             }
             if (event.target === infoModal) {
