@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let gameOver = false;
 
     // Баланс игрока (сохраняется в localStorage)
-    let balance = parseInt(localStorage.getItem('balance')) || 0;
+    let balance = parseInt(localStorage.getItem('totalbalanceSnake')) || 0;
     const balanceElement = document.getElementById('balance');
 
     const canvas = document.getElementById('game-canvas');
@@ -227,9 +227,17 @@ document.addEventListener('DOMContentLoaded', () => {
         // Добавляем счет текущей игры к балансу
         balance += score;
         balanceElement.textContent = balance;
-        localStorage.setItem('balance', balance);
-    }
+        localStorage.setItem('totalbalanceSnake', balance);
+        codcoin = 100;
+        div(balance, codcoin);
+        
 
+        
+    }
+function div(val, by){
+            codcoins = (val - val % by) / by;
+            localStorage.setItem('Snake', codcoins);
+        }
     document.addEventListener('keydown', (e) => {
         switch (e.key.toLowerCase()) {
             case 'w':
@@ -269,8 +277,10 @@ document.addEventListener('DOMContentLoaded', () => {
     rightBtn.addEventListener('click', () => {
         if (direction.x === 0) nextDirection = {x: 1, y: 0};
     });
-
-    restartBtn.addEventListener('click', initGame);
+    function back(){
+        window.location.href = "/quests/quest.html"
+    }
+    restartBtn.addEventListener('click', back);
 
     let touchStartX = 0;
     let touchStartY = 0;
