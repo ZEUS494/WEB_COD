@@ -1,3 +1,5 @@
+const courses = document.getElementById('courses');
+
 const firebaseConfig = {
     apiKey: "AIzaSyBeCuMUazd-l9D0vPqfBrNJYSxCgOG6DeY",
     authDomain: "codweb-4d1aa.firebaseapp.com",
@@ -11,20 +13,16 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 const db = firebase.firestore();
 
-function updateCharts(users) {
+function updatePeriodChart(users) {
     console.log(users)
-    // Фильтруем только тех, у кого есть fullname и codcoins > 0
-    const validUsers = users.filter(u => 
-        u.fullname && 
-        typeof u.codcoins === 'number' && 
+    const validUsers = users.filter(u =>
+        u.fullname &&
+        typeof u.codcoins === 'number' &&
         !isNaN(u.codcoins) &&
         u.codcoins > 0
     );
 
-    // Сортируем по codcoins по убыванию
     const sortedUsers = validUsers.sort((a, b) => b.codcoins - a.codcoins);
-
-    // Берём топ-5
     const top5Users = sortedUsers.slice(0, 5);
 
     if (top5Users.length === 0) {
@@ -34,32 +32,82 @@ function updateCharts(users) {
 
     const maxCoins = top5Users[0].codcoins;
 
-    // Создаем элементы баров
     function createBars(container, usersList) {
-        container.innerHTML = ""; // Очищаем старые данные
-
+        container.innerHTML = "";
         usersList.forEach(user => {
-            const barHeight = Math.max(10, Math.min(250, (user.codcoins / maxCoins) * 250)); // Ограничиваем высоту
-
+            const barHeight = Math.max(10, Math.min(250, (user.codcoins / maxCoins) * 250));
             const bar = document.createElement("div");
             bar.className = "bar";
             bar.innerHTML = `
                 <div style="height: ${barHeight}px;"></div>
-                <span>${user.fullname} (${user.codcoins})</span>
+                <span>${user.fullname.split(' ')[1]}<br>(${user.codcoins})</span>
             `;
             container.appendChild(bar);
         });
     }
 
-    // Обновляем оба графика
     const chart1 = document.querySelector(".chart-wrapper:nth-of-type(1) .bar-container");
-    const chart2 = document.querySelector(".chart-wrapper:nth-of-type(2) .bar-container");
-
     if (chart1) createBars(chart1, top5Users);
-    if (chart2) createBars(chart2, top5Users);
 }
 
-// Загрузка всех пользователей из Firestore
+function updateCoursesChart(users) {
+    console.log(users)
+    const validUsers = users.filter(u =>
+        u.fullname &&
+        typeof u.codcoins === 'number' &&
+        !isNaN(u.codcoins) &&
+        u.codcoins > 0
+    );
+
+    const sortedUsers = validUsers.sort((a, b) => b.codcoins - a.codcoins);
+    const top5Users = sortedUsers.slice(0, 5);
+
+    if (top5Users.length === 0) {
+        console.warn("Нет пользователей с codcoins > 0");
+        return;
+    }
+
+    const maxCoins = top5Users[0].codcoins;
+
+    function createBars(container, usersList) {
+        container.innerHTML = "";
+        usersList.forEach(user => {
+            const barHeight = Math.max(10, Math.min(250, (user.codcoins / maxCoins) * 250));
+            const bar = document.createElement("div");
+            bar.className = "bar";
+            bar.innerHTML = `
+                <div style="height: ${barHeight}px;"></div>
+                <span>${user.fullname.split(' ')[1]}<br>(${user.codcoins})</span>
+            `;
+            container.appendChild(bar);
+        });
+    }
+
+    const chart3 = document.querySelector(".chart-wrapper:nth-of-type(2) .bar-container");
+    if (chart3) createBars(chart3, top5Users);
+}
+
+// Обработка изменения курса
+courses.addEventListener('change', () => {
+    const selectedCourse = courses.value;
+    if (!selectedCourse) return;
+
+    db.collection("users")
+        .where("currentcourse", "==", selectedCourse)
+        .get()
+        .then(snapshot => {
+            const users = snapshot.docs.map(doc => ({
+                id: doc.id,
+                ...doc.data()
+            }));
+            updateCoursesChart(users);
+        })
+        .catch(error => {
+            console.error("Ошибка фильтрации по курсу:", error);
+        });
+});
+
+// Загрузка данных при инициализации
 db.collection("users")
     .get()
     .then(snapshot => {
@@ -68,7 +116,8 @@ db.collection("users")
             ...doc.data()
         }));
 
-        updateCharts(users);
+        updatePeriodChart(users);
+        updateCoursesChart(users); // Изначально отображаем всех пользователей
     })
     .catch(error => {
         console.error("Ошибка загрузки данных из Firestore:", error);
