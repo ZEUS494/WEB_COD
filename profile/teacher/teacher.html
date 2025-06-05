@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+    <link rel="stylesheet" href="../styles/teacher_style.css">
+    <title>CODOLOGIA | Учитель</title>
+</head>
+<body>
+    <div id="loader">
+        <div class="loader-icon"></div>
+    </div>
+    
+    <header>
+        <h1 id="panel">Панель учителя</h1>
+        <button id="logoutBtn">Выйти<div id="exit-logo"></div></button>
+    </header>
+    
+    <main>
+        <div class="teacher-info">
+            <h2 id="teacher-name"></h2>
+            <p><span id="teacher-login"></span></p>
+        </div>
+        
+        <div class="pupils-list">
+            <h3>Список учеников:</h3>
+            <ul id="pupils-container"></ul>
+        </div>
+    </main>
+    
+    <script src="../app.js"></script>
+    <script src="../scripts/cookie.js"></script>
+    <script src="../scripts/load.js"></script>
+    <script src="../scripts/teacher.js"></script>
+</body>
+</html>

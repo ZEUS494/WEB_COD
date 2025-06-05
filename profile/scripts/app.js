@@ -1,4 +1,3 @@
-// Конфигурация Firebase
 const firebaseConfig = {
     apiKey: "AIzaSyBeCuMUazd-l9D0vPqfBrNJYSxCgOG6DeY",
     authDomain: "codweb-4d1aa.firebaseapp.com",
@@ -9,35 +8,21 @@ const firebaseConfig = {
     measurementId: "G-57GYQLP328"
 };
 
-// Инициализация Firebase
 firebase.initializeApp(firebaseConfig);
 const db = firebase.firestore();
 
-// Глобальные переменные
 let currentlyEditingCell = null;
 let activeTimers = {};
 
-// Инициализация при загрузке страницы
 document.addEventListener('DOMContentLoaded', function() {
-    // Проверка авторизации
     checkAdminAuth();
-    
-    // Инициализация интерфейса
     initInterface();
-    
-    // Загрузка пользователей
     fetchUsers();
-    
-    // Инициализация переключения между вкладками
     initTabSwitching();
-
-    // Инициализация формы
     document.getElementById("fullEditForm").addEventListener("submit", submitFullEditForm);
-
     document.getElementById("userForm").addEventListener("submit", submitUserForm);
 });
 
-// Проверка прав администратора
 function checkAdminAuth() {
     const storedUsername = getCookie('user');
     if (!storedUsername || storedUsername !== 'admin') {
@@ -45,39 +30,24 @@ function checkAdminAuth() {
     }
 }
 
-// Инициализация интерфейса
 function initInterface() {
-    // Кнопка добавления пользователя
     document.getElementById('addUserButton').addEventListener('click', showUserForm);
-    
-    // Форма добавления пользователя
     document.getElementById('userForm').addEventListener('submit', function(e) {
         e.preventDefault();
         submitUserForm();
     });
-    
-    // Кнопка отмены в форме добавления
     document.getElementById('cancelButton').addEventListener('click', hideUserForm);
-    
-    // Форма редактирования пользователя
     document.getElementById('fullEditForm').addEventListener('submit', function(e) {
         e.preventDefault();
         submitFullEditForm();
     });
-    
-    // Кнопка отмены в форме редактирования
     document.getElementById('editCancelButton').addEventListener('click', hideFullEditForm);
-    
-    // Поиск пользователей
     document.getElementById('searchBox').addEventListener('input', function() {
         fetchUsers(this.value);
     });
-    
-    // Фильтрация курсов
     document.getElementById('coursesSelect').addEventListener('change', filterCourses);
 }
 
-// Инициализация переключения вкладок
 function initTabSwitching() {
     const tabs = {
         'switch-to-edit': 'content1',
@@ -87,25 +57,16 @@ function initTabSwitching() {
     
     for (const [btnId, contentId] of Object.entries(tabs)) {
         document.getElementById(btnId).addEventListener('click', function() {
-            // Скрываем все контенты
             document.querySelectorAll('[class^="content"]').forEach(el => {
                 el.style.display = 'none';
             });
-            
-            // Показываем нужный контент
             document.getElementById(contentId).style.display = 'block';
-            
-            // Обновляем стили кнопок
             document.querySelectorAll('.switch-btns').forEach(btn => {
                 btn.style.border = 'none';
                 btn.style.color = '#a4a4a4';
             });
-            
-            // Выделяем активную кнопку
             this.style.border = '3px solid #ffd000';
             this.style.color = '#000';
-            
-            // Если переключились на таблицы, обновляем их
             if (contentId === 'content3') {
                 fetchUsers();
             }
@@ -113,48 +74,42 @@ function initTabSwitching() {
     }
 }
 
-// Загрузка пользователей
 function fetchUsers(searchTerm = '') {
-    db.collection("users").get()
-        .then(querySnapshot => {
-            const usersList = document.getElementById("usersList");
-            usersList.innerHTML = '';
-            
-            const courses = {};
-            
-            querySnapshot.forEach(doc => {
-                const username = doc.id;
-                if (username === "admin") return;
-                
-                // Фильтрация по поиску
-                const userData = doc.data();
-                if (searchTerm && 
-                    !username.toLowerCase().includes(searchTerm.toLowerCase()) && 
-                    !(userData.currentcourse || '').toLowerCase().includes(searchTerm.toLowerCase())) {
-                    return;
-                }
-                
-                // Добавление в список пользователей
-                addUserToList(username, userData);
-                
-                // Группировка по курсам для таблицы
-                const course = userData.currentcourse || "Без курса";
-                if (!courses[course]) courses[course] = [];
-                courses[course].push({
-                    username: username,
-                    ...userData
-                });
-            });
-            
-            // Создание таблицы
-            createCoursesTable(courses);
-        })
-        .catch(error => {
-            console.error("Ошибка загрузки пользователей:", error);
+  db.collection("users").get()
+    .then(querySnapshot => {
+      const usersList = document.getElementById("usersList");
+      usersList.innerHTML = '';
+      
+      const courses = {};
+      
+      querySnapshot.forEach(doc => {
+        const username = doc.id;
+        if (username === "admin") return;
+        
+        const userData = doc.data();
+        if (searchTerm && 
+            !username.toLowerCase().includes(searchTerm.toLowerCase()) && 
+            !(userData.currentcourse || '').toLowerCase().includes(searchTerm.toLowerCase())) {
+          return;
+        }
+        
+        addUserToList(username, userData);
+        
+        const course = userData.currentcourse || "Без курса";
+        if (!courses[course]) courses[course] = [];
+        courses[course].push({
+          username: username,
+          ...userData
         });
+      });
+      
+      createCoursesTable(courses);
+    })
+    .catch(error => {
+      console.error("Ошибка загрузки пользователей:", error);
+    });
 }
 
-// Добавление пользователя в список
 function addUserToList(username, userData) {
     const li = document.createElement("li");
     li.className = "username";
@@ -174,7 +129,6 @@ function addUserToList(username, userData) {
     
     li.appendChild(infoDiv);
     
-    // Кнопка редактирования
     const editLink = document.createElement("a");
     editLink.href = "#";
     editLink.textContent = "(ред.)";
@@ -186,7 +140,6 @@ function addUserToList(username, userData) {
     });
     li.appendChild(editLink);
     
-    // Кнопка удаления
     const delLink = document.createElement("a");
     delLink.href = "#";
     delLink.textContent = "(удалить)";
@@ -202,7 +155,6 @@ function addUserToList(username, userData) {
     document.getElementById("usersList").appendChild(li);
 }
 
-// Создание таблицы пользователей по курсам
 function createCoursesTable(courses) {
     const tableList = document.getElementById("tableList");
     const coursesSelect = document.getElementById("coursesSelect");
@@ -210,7 +162,6 @@ function createCoursesTable(courses) {
     tableList.innerHTML = '';
     coursesSelect.innerHTML = '<option value="all">Все курсы</option>';
     
-    // Добавление курсов в выпадающий список
     Object.keys(courses).forEach(course => {
         if (courses[course].length > 0) {
             const option = document.createElement("option");
@@ -218,14 +169,12 @@ function createCoursesTable(courses) {
             option.textContent = course;
             coursesSelect.appendChild(option);
             
-            // Создание таблицы для курса
             const table = document.createElement("table");
             table.style.width = "100%";
             table.style.borderCollapse = "collapse";
             table.style.marginBottom = "30px";
             table.style.tableLayout = "fixed";
             
-            // Заголовок таблицы
             const captionRow = document.createElement("tr");
             const captionCell = document.createElement("th");
             captionCell.textContent = course;
@@ -240,7 +189,6 @@ function createCoursesTable(courses) {
             tempThead.appendChild(captionRow);
             table.appendChild(tempThead);
             
-            // Заголовки столбцов
             const thead = document.createElement("thead");
             const headerRow = document.createElement("tr");
             
@@ -261,7 +209,6 @@ function createCoursesTable(courses) {
             thead.appendChild(headerRow);
             table.appendChild(thead);
             
-            // Тело таблицы
             const tbody = document.createElement("tbody");
             
             courses[course].forEach(student => {
@@ -309,7 +256,6 @@ function createCoursesTable(courses) {
     });
 }
 
-// Фильтрация курсов
 function filterCourses() {
     const selectedCourse = document.getElementById("coursesSelect").value;
     const tables = document.querySelectorAll("#tableList table");
@@ -321,10 +267,8 @@ function filterCourses() {
 }
 
 function makeCellEditable(cell, studentData) {
-    // Если кликаем по уже редактируемой ячейке - ничего не делаем
     if (cell === currentlyEditingCell) return;
     
-    // Закрываем предыдущее редактирование
     if (currentlyEditingCell) {
         cancelEdit(currentlyEditingCell);
     }
@@ -332,21 +276,17 @@ function makeCellEditable(cell, studentData) {
     const field = cell.dataset.field;
     const currentValue = studentData[field] || '';
     
-    // Сохраняем оригинальное содержимое
     cell.dataset.originalContent = cell.innerHTML;
     cell.dataset.originalValue = currentValue;
     
-    // Создаем input
     const input = document.createElement('input');
     input.type = field === 'age' ? 'number' : 'text';
     input.value = currentValue === '-' ? '' : currentValue;
     input.className = 'cell-input';
     
-    // Создаем кнопки
     const buttons = document.createElement('div');
     buttons.className = 'cell-buttons';
     
-    // Кнопка сохранения
     const saveBtn = document.createElement('button');
     saveBtn.className = 'cell-btn save-btn';
     saveBtn.innerHTML = '✓';
@@ -355,7 +295,6 @@ function makeCellEditable(cell, studentData) {
         saveEdit(cell, input.value, studentData.username, field);
     };
     
-    // Кнопка отмены
     const cancelBtn = document.createElement('button');
     cancelBtn.className = 'cell-btn cancel-btn';
     cancelBtn.innerHTML = '✕';
@@ -367,31 +306,25 @@ function makeCellEditable(cell, studentData) {
     buttons.appendChild(saveBtn);
     buttons.appendChild(cancelBtn);
     
-    // Заменяем содержимое ячейки
     cell.innerHTML = '';
     cell.appendChild(input);
     cell.appendChild(buttons);
     
-    // Фокус на input
     input.focus();
     
-    // Сохраняем ссылку на текущую ячейку
     currentlyEditingCell = cell;
 }
 
 function cancelEdit(cell) {
     if (!cell) return;
     
-    // Восстанавливаем оригинальное содержимое
     cell.innerHTML = cell.dataset.originalContent;
     
-    // Восстанавливаем обработчик клика
     const field = cell.dataset.field;
     if (field !== 'username') {
         cell.addEventListener('click', handleCellClick);
     }
     
-    // Сбрасываем текущую ячейку
     currentlyEditingCell = null;
 }
 
@@ -408,16 +341,13 @@ function handleCellClick(e) {
     });
 }
 
-// Инициализация таблицы
 function initTable() {
     const table = document.getElementById('tableList');
     
-    // Делегирование событий
     table.addEventListener('click', function(e) {
         const cell = e.target.closest('.editable-cell');
         if (!cell || cell.dataset.field === 'username') return;
         
-        // Если клик по кнопкам в активной ячейке - игнорируем
         if (currentlyEditingCell && e.target.closest('.cell-btn', currentlyEditingCell)) {
             return;
         }
@@ -450,82 +380,238 @@ function cancelEdit(cell) {
     currentlyEditingCell = null;
 }
 
-// Работа с формами пользователей
 function showUserForm() {
     document.getElementById("userFormContainer").style.display = "block";
     document.getElementById("userForm").reset();
-    document.getElementById("errorMessage").style.display = "none";
+    
+    const now = new Date();
+    document.getElementById("creationTimeField").value = 
+        now.getHours().toString().padStart(2, '0') + ':' + 
+        now.getMinutes().toString().padStart(2, '0');
+    
+    document.getElementById("filialSelect").value = "ПАН";
+    
+    loadTeachers();
 }
+
 
 function hideUserForm() {
     document.getElementById("userFormContainer").style.display = "none";
 }
 
-function submitUserForm() {
-    const username = document.getElementById("usernameField").value;
+async function loadTeachers() {
+    console.log("Загрузка учителей...");
+    const teacherSelect = document.getElementById("teacherSelect");
+    teacherSelect.innerHTML = '<option value="">Выберите учителя</option>';
+
+    try {
+        const querySnapshot = await db.collection("teachers").get();
+        console.log("Получено учителей:", querySnapshot.size);
+        
+        querySnapshot.forEach(doc => {
+            const data = doc.data();
+            if (!data.login) {
+                console.warn("У учителя нет логина:", doc.id);
+                return;
+            }
+            
+            const option = document.createElement("option");
+            option.value = data.login;
+            option.textContent = `${data.fullname || 'Без имени'} (${data.login})`;
+            teacherSelect.appendChild(option);
+        });
+    } catch (error) {
+        console.error("Ошибка загрузки учителей:", error);
+    }
+}
+
+async function addPupilToTeacher(teacherDocId, pupilLogin) {
+  try {
+    const teacherRef = db.collection("teachers").doc(teacherDocId);
+    
+    await db.runTransaction(async (transaction) => {
+      const doc = await transaction.get(teacherRef);
+      if (!doc.exists) {
+        throw new Error("Учитель не найден");
+      }
+
+      const currentPupils = doc.data().pupils || [];
+      if (!currentPupils.includes(pupilLogin)) {
+        transaction.update(teacherRef, {
+          pupils: [...currentPupils, pupilLogin]
+        });
+      }
+    });
+
+    console.log(`Ученик ${pupilLogin} добавлен к учителю ${teacherDocId}`);
+    return true;
+  } catch (error) {
+    console.error("Ошибка при добавлении ученика:", error);
+    throw error;
+  }
+}
+
+async function submitUserForm(e) {
+    e.preventDefault();
+    console.log("Начало создания пользователя");
+    
+    const username = document.getElementById("usernameField").value.trim();
     const password = document.getElementById("passwordField").value;
     const fullname = document.getElementById("fullnameField").value;
     const age = document.getElementById("ageField").value;
     const currentCourse = document.getElementById("currentCourseField").value;
-    const completedCourses = document.getElementById("completedCoursesField").value.split("\n");
-    
-    // Проверка существования пользователя
-    db.collection("users").doc(username).get()
-        .then(doc => {
-            if (doc.exists) {
-                document.getElementById("errorMessage").style.display = "block";
-                setTimeout(() => {
-                    document.getElementById("errorMessage").style.display = "none";
-                }, 3000);
-                return;
-            }
-            
-            // Создание нового пользователя
-            const userData = {
-                password: password,
-                fullname: fullname,
-                age: age,
-                currentcourse: currentCourse,
-                completedcources: completedCourses,
-                codcoins: 0,
-                donehws: 0,
-                notdonehws: 0
-            };
-            
-            return db.collection("users").doc(username).set(userData);
-        })
-        .then(() => {
-            alert("Пользователь успешно создан");
-            hideUserForm();
-            fetchUsers();
-        })
-        .catch(error => {
-            console.error("Ошибка:", error);
-            alert("Ошибка при создании пользователя");
-        });
+    const completedCourses = document.getElementById("completedCoursesField").value.split('\n');
+    const creationTime = document.getElementById("creationTimeField").value;
+    const teacherLogin = document.getElementById("teacherSelect").value;
+    const filial = document.getElementById("filialSelect").value;
+
+    if (!username || !password || !teacherLogin) {
+        const errorMsg = !teacherLogin ? "Не выбран учитель!" : "Логин и пароль обязательны!";
+        alert(errorMsg);
+        return;
+    }
+
+    try {
+        const userDoc = await db.collection("users").doc(username).get();
+        if (userDoc.exists) {
+            alert("Пользователь с таким логином уже существует!");
+            return;
+        }
+
+        // Проверяем существование учителя
+        const teacherQuery = await db.collection("teachers")
+            .where("login", "==", teacherLogin)
+            .limit(1)
+            .get();
+
+        if (teacherQuery.empty) {
+            alert("Выбранный учитель не найден в системе!");
+            return;
+        }
+
+        const userData = {
+            password: password,
+            fullname: fullname,
+            age: age,
+            currentcourse: currentCourse,
+            completedcources: completedCourses.filter(c => c.trim() !== ""),
+            codcoins: 0,
+            donehws: 0,
+            notdonehws: 0,
+            time: creationTime,
+            teacher_login: teacherLogin,
+            filial: filial,
+        };
+
+        await db.collection("users").doc(username).set(userData);
+        alert("Пользователь успешно создан!");
+        hideUserForm();
+        fetchUsers();
+    } catch (error) {
+        console.error("Ошибка:", error);
+        alert("Ошибка: " + error.message);
+    }
 }
 
-// Глобальная переменная для хранения текущего редактируемого пользователя
+async function submitUserForm(e) {
+    e.preventDefault();
+    console.log("Начало создания пользователя");
+    
+    const username = document.getElementById("usernameField").value.trim();
+    const password = document.getElementById("passwordField").value;
+    const fullname = document.getElementById("fullnameField").value;
+    const age = document.getElementById("ageField").value;
+    const currentCourse = document.getElementById("currentCourseField").value;
+    const completedCourses = document.getElementById("completedCoursesField").value.split('\n');
+    const creationTime = document.getElementById("creationTimeField").value;
+    const teacherLogin = document.getElementById("teacherSelect").value;
+    const filial = document.getElementById("filialSelect").value;
+
+    console.log("Полученные данные:", {
+        username, password, fullname, age, currentCourse, 
+        completedCourses, creationTime, teacherLogin
+    });
+
+    if (!username || !password || !teacherLogin) {
+        const errorMsg = !teacherLogin ? "Не выбран учитель!" : "Логин и пароль обязательны!";
+        alert(errorMsg);
+        console.error("Ошибка валидации:", errorMsg);
+        return;
+    }
+
+    try {
+        console.log("Проверка существования пользователя...");
+        const userDoc = await db.collection("users").doc(username).get();
+        if (userDoc.exists) {
+            console.error("Пользователь уже существует:", username);
+            alert("Пользователь с таким логином уже существует!");
+            return;
+        }
+
+        console.log("Поиск учителя с login =", teacherLogin);
+        const teacherQuery = await db.collection("teachers")
+            .where("login", "==", teacherLogin)
+            .limit(1)
+            .get();
+
+        if (teacherQuery.empty) {
+            console.error("Учитель не найден:", teacherLogin);
+            alert("Выбранный учитель не найден в системе!");
+            return;
+        }
+
+        const teacherDocId = teacherQuery.docs[0].id;
+        console.log("Найден учитель:", teacherDocId);
+
+        const userData = {
+            password: password,
+            fullname: fullname,
+            age: age,
+            currentcourse: currentCourse,
+            completedcources: completedCourses.filter(c => c.trim() !== ""),
+            codcoins: 0,
+            donehws: 0,
+            notdonehws: 0,
+            time: creationTime,
+            teacher_login: teacherLogin,
+            filial: filial,
+        };
+
+        console.log("Данные для сохранения:", userData);
+
+        console.log("Сохранение пользователя...");
+        await db.collection("users").doc(username).set(userData);
+        console.log("Пользователь сохранен");
+
+        console.log("Обновление списка учеников учителя...");
+        await db.collection("teachers").doc(teacherDocId).update({
+            pupils: firebase.firestore.FieldValue.arrayUnion(username)
+        });
+        console.log("Учитель обновлен");
+
+        alert("Пользователь успешно создан!");
+        hideUserForm();
+        fetchUsers();
+    } catch (error) {
+        console.error("Полная ошибка:", error);
+        alert("Ошибка: " + error.message);
+    }
+}
+
 let currentEditingUser = null;
 
-// Функция открытия формы редактирования
 function showFullEditForm(username) {
-    // Сохраняем логин пользователя
     currentEditingUser = username;
     
-    // Закрываем форму добавления если открыта
     hideUserForm();
     
-    // Заполняем поле логина (оно readonly)
     const usernameField = document.getElementById("editUsernameField");
     usernameField.value = username;
     usernameField.readOnly = true;
     usernameField.style.backgroundColor = "";
     
-    // Показываем форму
     document.getElementById("fullEditFormContainer").style.display = "block";
     
-    // Загружаем данные пользователя
     db.collection("users").doc(username).get()
         .then(doc => {
             if (!doc.exists) {
@@ -550,73 +636,15 @@ function showFullEditForm(username) {
         });
 }
 
-async function submitUserForm(e) {
-    e.preventDefault();
-    
-    // Получаем данные из формы
-    const username = document.getElementById("usernameField").value.trim();
-    const password = document.getElementById("passwordField").value;
-    const fullname = document.getElementById("fullnameField").value;
-    const age = document.getElementById("ageField").value;
-    const currentCourse = document.getElementById("currentCourseField").value;
-    const completedCourses = document.getElementById("completedCoursesField").value.split('\n');
-    
-    // Проверяем заполнение обязательных полей
-    if (!username || !password) {
-        alert("Логин и пароль обязательны для заполнения!");
-        return;
-    }
-
-    try {
-        // 1. Проверяем существование пользователя
-        const userDoc = await db.collection("users").doc(username).get();
-        
-        if (userDoc.exists) {
-            // Показываем ошибку под полем логина
-            const errorElement = document.getElementById("errorMessage");
-            errorElement.textContent = "Пользователь с таким логином уже существует!";
-            errorElement.style.display = "block";
-            
-            // Подсвечиваем поле с ошибкой
-            document.getElementById("usernameField").style.border = "1px solid red";
-            return;
-        }
-
-        // 2. Создаем нового пользователя
-        const userData = {
-            password: password,
-            fullname: fullname,
-            age: age,
-            currentcourse: currentCourse,
-            completedcources: completedCourses.filter(c => c.trim() !== ""),
-            codcoins: 0,
-            donehws: 0,
-            notdonehws: 0
-        };
-
-        await db.collection("users").doc(username).set(userData);
-        
-        alert("Пользователь успешно создан!");
-        hideUserForm();
-        fetchUsers(); // Обновляем список
-    } catch (error) {
-        console.error("Ошибка создания пользователя:", error);
-        alert("Произошла ошибка: " + error.message);
-    }
-}
-
-// Функция закрытия формы
 function hideFullEditForm() {
     document.getElementById("fullEditFormContainer").style.display = "none";
-    currentEditingUser = null; // Сбрасываем текущего пользователя
+    currentEditingUser = null;
 }
 
-// Обработчики кнопок
 document.getElementById('addUserButton').addEventListener('click', showUserForm);
 document.getElementById('cancelButton').addEventListener('click', hideUserForm);
 document.getElementById('editCancelButton').addEventListener('click', hideFullEditForm);
 
-// Обработчики отправки форм
 document.getElementById("userForm").addEventListener("submit", function(e) {
     e.preventDefault();
     submitUserForm();
@@ -630,14 +658,12 @@ document.getElementById("fullEditForm").addEventListener("submit", function(e) {
 function submitFullEditForm(e) {
     e.preventDefault();
     
-    // 1. Получаем имя пользователя (оно readonly)
     const username = document.getElementById("editUsernameField").value;
     if (!username) {
         alert("Ошибка: не указан пользователь");
         return;
     }
 
-    // 2. Собираем данные из формы
     const userData = {
         password: document.getElementById("editPasswordField").value || "",
         fullname: document.getElementById("editFullnameField").value || "",
@@ -652,15 +678,14 @@ function submitFullEditForm(e) {
         notdonehws: parseInt(document.getElementById("editNotDoneHWsField").value) || 0
     };
 
-    console.log("Попытка сохранения:", { username, userData }); // Отладочная информация
+    console.log("Попытка сохранения:", { username, userData });
 
-    // 3. Сохраняем в Firestore
     db.collection("users").doc(username).update(userData)
         .then(() => {
             console.log("Успешно сохранено в Firestore");
             alert("Изменения успешно сохранены!");
             hideFullEditForm();
-            fetchUsers(); // Обновляем список
+            fetchUsers();
         })
         .catch(error => {
             console.error("Ошибка сохранения:", error);
@@ -668,7 +693,6 @@ function submitFullEditForm(e) {
         });
 }
 
-// Альтернативная версия с таймером подтверждения
 function startDeletionTimer(username, button) {
     clearTimeout(activeTimers[username]);
     
@@ -696,7 +720,6 @@ function startDeletionTimer(username, button) {
     };
 }
 
-// Вспомогательные функции
 function resetDeleteButton(button) {
     button.textContent = '(удалить)';
     button.style.color = '';
@@ -706,18 +729,16 @@ function resetDeleteButton(button) {
     };
 }
 
-// Функция удаления пользователя
 function removeUser(username) {
     db.collection("users").doc(username).delete()
         .then(() => {
-            fetchUsers(); // Просто обновляем список
+            fetchUsers();
         })
         .catch(error => {
             console.error("Ошибка удаления:", error);
         });
 }
 
-// Вспомогательные функции
 function getCookie(name) {
     const matches = document.cookie.match(new RegExp(
         "(?:^|; )" + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)"

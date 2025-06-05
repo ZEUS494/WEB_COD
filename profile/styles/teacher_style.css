@@ -1,0 +1,331 @@
+/* Reset и базовые стили */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Anonymous Pro', sans-serif;
+}
+
+body {
+    width: 100%;
+    min-height: 100vh;
+    background-color: #141414;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    overflow-x: hidden;
+}
+
+#panel {
+    justify-self: center;
+}
+
+/* Блок информации о учителе */
+.teacher-info {
+    width: 100%;
+    text-align: center;
+    padding: 20px 0;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #333;
+}
+
+#teacher-name {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+#teacher-login {
+    color: #ffd000;
+    font-size: 18px;
+}
+
+/* Вкладки филиалов */
+#filial-tabs-container {
+    width: 100vw;
+    margin-bottom: 20px;
+}
+
+.filial-tabs {
+    overflow-x: auto;
+    width: 100%;
+    border-bottom: 1px solid #333;
+}
+
+.filial-tab {
+    padding: 12px 24px;
+    background: none;
+    border: none;
+    border-bottom: 3px solid transparent;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: all 0.3s;
+}
+
+.filial-tab:hover {
+    background-color: #252525;
+}
+
+.filial-tab.active {
+    border-bottom-color: #ffd000;
+    font-weight: bold;
+}
+
+/* Таблица учеников */
+#pupils-container {
+    width: 100%;
+    overflow-x: auto;
+}
+
+.pupils-table {
+    width: 100%;
+    min-width: 800px;
+    border-collapse: collapse;
+}
+
+.pupils-table th, .pupils-table td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #333;
+}
+
+.pupils-table th {
+    background-color: #1e1e1e;
+    position: sticky;
+    top: 0;
+}
+
+.pupils-table tr:nth-child(even) {
+    background-color: #1a1a1a;
+}
+
+.pupils-table tr:hover {
+    background-color: #252525;
+}
+
+/* Кнопка выхода */
+#logoutBtn {
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 120px;
+    padding: 10px;
+    background-color: rgba(178, 35, 52);
+    color: #000;
+    border: none;
+    border-radius: 15px;
+    font-size: 21px;
+    cursor: pointer;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#logoutBtn:hover {
+    background-color: rgba(154, 30, 45);
+}
+
+/* Адаптивные стили */
+@media (max-width: 768px) {
+    .filial-tab {
+        padding: 10px 15px;
+        font-size: 14px;
+    }
+    
+    .pupils-table th, .pupils-table td {
+        padding: 8px 10px;
+        font-size: 14px;
+    }
+    
+    #teacher-name {
+        font-size: 20px;
+    }
+    
+    #teacher-login {
+        font-size: 16px;
+    }
+}
+
+#exit-logo {
+    width: 16px;
+    height: 16px;
+    background-image: url(../images/exit.png);
+    background-size: cover;
+    margin-left: 10px;
+}
+
+.filial-tabs {
+    display: flex;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #ddd;
+    color: #fff;
+    margin-top: 30px;
+    overflow: auto;
+}
+
+.filial-tab {
+    padding: 10px 20px;
+    background: none;
+    border: none;
+    border-bottom: 3px solid transparent;
+    cursor: pointer;
+    font-size: 16px;
+    transition: all 0.3s;
+    color: #fff;
+}
+
+.filial-tab:hover {
+    background-color: #383838;
+}
+
+.filial-tab.active {
+    border-bottom-color: #ffd000;
+    font-weight: bold;
+}
+
+.pupils-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.pupils-table th, .pupils-table td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.pupils-table th {
+    background-color: #2a2a2a;
+    font-weight: 500;
+}
+
+.pupils-table tr:hover {
+    background-color: #2e2e2e;
+}
+
+.pupils-table tr:nth-child(even) {
+    background-color: #2e2e2e;
+}
+
+.filial-filter-dropdown {
+    position: absolute;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    z-index: 1000;
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.filial-filter-option {
+    padding: 8px 12px;
+    cursor: pointer;
+}
+
+.filial-filter-option:hover {
+    background-color: #2e2e2e;
+}
+
+#filial-header {
+    cursor: pointer;
+    position: relative;
+}
+
+#filial-header:hover {
+    background-color: #2e2e2e;
+}
+
+#filial-header::after {
+    content: '▼';
+    font-size: 0.8em;
+    margin-left: 5px;
+    color: #888;
+}
+
+.time-filter-dropdown {
+    position: absolute;
+    background-color: #2e2e2e;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    z-index: 1000;
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.time-filter-option {
+    padding: 8px 12px;
+    cursor: pointer;
+}
+
+.time-filter-option:hover {
+    background-color: #232323;
+}
+
+#time-header {
+    cursor: pointer;
+    position: relative;
+}
+
+#time-header:hover {
+    background-color: #434343;
+}
+
+#time-header::after {
+    content: '▼';
+    font-size: .8em;
+    margin-left: 5px;
+    color: #888;
+}
+
+.editable-cell {
+    cursor: pointer;
+    position: relative;
+}
+
+.editable-cell:hover {
+    background-color: #434343;
+}
+
+.cell-input {
+    width: 60%;
+    padding: 5px;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+}
+
+.cell-buttons {
+    display: inline-block;
+    margin-left: 5px;
+    vertical-align: middle;
+}
+
+.cell-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 2px 5px;
+    font-size: 14px;
+    border-radius: 3px;
+}
+
+.confirm-btn {
+    color: green;
+}
+
+.confirm-btn:hover {
+    background-color: rgba(0, 255, 0, 0.1);
+}
+
+.cancel-btn {
+    color: red;
+}
+
+.cancel-btn:hover {
+    background-color: rgba(255, 0, 0, 0.1);
+}
