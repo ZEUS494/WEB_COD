@@ -1,0 +1,203 @@
+* {
+    font-family: "Anonymous Pro", monospace;
+    font-weight: 700;
+    font-style: normal;
+    box-sizing: border-box;
+    color: white;
+}
+
+body {
+    background-color: #1f1f1f;
+    margin: 0;
+    padding: 20px;
+    overflow-x: hidden;
+}
+.backdoor-btn {
+    height: 100%;
+    width: 100%;
+    display: flex;
+}
+.stars-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    pointer-events: none;
+}
+
+.star {
+    position: absolute;
+    background-color: #ffff00;
+    border-radius: 50%;
+    box-shadow: 0 0 5px #ffff00;
+    animation: twinkle 2s infinite;
+}
+
+@keyframes twinkle {
+    0%, 100% { opacity: 0.7; }
+    50% { opacity: 1; }
+}
+
+h1 {
+    text-align: center;
+    color: white;
+    margin-top: 20px;
+}
+
+.chart-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    min-height: 100vh;
+}
+
+.chart-wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin: 15px 0;
+}
+
+.chart {
+    text-align: center;
+    background-color: #303030;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    transition: transform 0.2s ease-out;
+    max-width: 800px;
+    width: 90%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px; /* Отступ между заголовком и графиком */
+}
+
+.chart h2 {
+    margin: 0;
+    font-size: 1.2em;
+    color: white;
+    background-color: #303030; /* Чтобы текст не просвечивал сквозь столбцы */
+    padding: 0 10px;
+    z-index: 2;
+    text-align: center;
+}
+
+.courses {
+    background-color: #303030;
+    border: none;
+    border-radius: 6px;
+    height: 30px;
+    width: 80px;
+}
+.bar-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-end;
+    height: 250px; /* Фиксированная высота */
+    width: 100%;
+    max-width: 700px;
+    position: relative;
+    z-index: 1;
+    margin-top: 10px;
+    overflow: visible;
+}
+
+.bar div {
+    width: 50px;
+    background-color: #6c5ce7;
+    border-radius: 5px 5px 0 0;
+    transition: height 1s ease, box-shadow 0.3s;
+}
+
+.bar span {
+    margin-top: 8px;
+    font-size: 14px;
+    color: white;
+    white-space: normal;
+    word-wrap: break-word;
+    max-width: 100px;
+}
+
+.chart:nth-child(2) .bar div {
+    background-color: #ff6b6b;
+}
+
+#backdoor {
+    border-radius: 8px;
+    color: white;
+    background-color: #303030;
+    border-color: #303030;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    height: 55px;
+    width: 250px;
+    cursor: pointer;
+    transition-duration: 1s;
+}
+
+#backdoor:hover {
+    height: 75px;
+    width: 290px;
+}
+
+@media (max-width: 1024px) {
+    .chart {
+        padding: 15px;
+    }
+    
+    .bar-container {
+        height: 200px;
+    }
+    
+    .bar div {
+        max-width: 50px;
+    }
+}
+
+@media (max-width: 768px) {
+    h1 {
+        font-size: 1.5em;
+        margin-top: 10px;
+    }
+    
+    .bar-container {
+        flex-wrap: wrap;
+        justify-content: center;
+        height: auto;
+        padding: 10px;
+    }
+    
+    .bar {
+        margin: 10px 5px;
+        min-width: 30%;
+    }
+    
+    .bar span {
+        font-size: 12px;
+        max-width: 80px;
+    }
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 1.2em;
+    }
+    
+    .bar-container {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .bar {
+        margin: 15px 0;
+        min-width: 60%;
+    }
+    
+    .bar div {
+        max-width: 80px;
+    }
+}
