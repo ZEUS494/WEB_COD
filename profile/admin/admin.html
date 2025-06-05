@@ -61,6 +61,24 @@
                     <label>Завершенные курсы:</label><br>
                     <textarea id="completedCoursesField" style="height: 150px;"></textarea><br>
                     <span id="errorMessage" style="color:red; display:none;"></span><br>
+                    <label>Время проведения уроков:</label><br>
+                    <input type="time" id="creationTimeField" /><br>
+                    <label>Учитель:</label><br>
+                    <select id="teacherSelect" class="teacher-select">
+                        <option value="">Не назначать учителя</option>
+                    </select><br>
+                    <label>Филиал:</label><br>
+                    <select id="filialSelect" required>
+                        <option value="">Выберите филиал</option>
+                        <option value="ПАН">ПАН</option>
+                        <option value="ГБР">ГБР</option>
+                        <option value="ГМР">ГМР</option>
+                        <option value="МЛД">МЛД</option>
+                        <option value="КМР">КМР</option>
+                        <option value="ФМР">ФМР</option>
+                        <option value="МСК">МСК</option>
+                        <option value="ЭНКА">ЭНКА</option>
+                    </select><br>
 
                     <div class="buttons">
                         <button type="submit">Добавить</button>
