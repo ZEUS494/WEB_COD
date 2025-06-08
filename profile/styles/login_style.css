@@ -39,7 +39,7 @@
 }
 
 #current-page {
-    border: #ffd000 2px solid;
+    border: #02eef4 2px solid;
     cursor: not-allowed;
 }
 
@@ -140,13 +140,13 @@ body {
 
 @keyframes shine {
     0% {
-        color: #ffb108;
+        color: #04ccfe;
     }
     50% {
-        color: #ffd000;
+        color: #78fdfa;
     }
     100% {
-        color: #ffb108;
+        color: #04ccfe;
     }
 }
 
@@ -166,7 +166,7 @@ input {
 }
 
 input:focus {
-    outline: 3px #ffd000 solid;
+    outline: 3px #02eef4 solid;
     transition: 0.2s;
 }
 
@@ -178,14 +178,14 @@ button {
     border-radius: 15px;
     border: none;
     cursor: pointer;
-    background-color: #ffd000;
+    background-color: #02eef4;
     color: #000;
     font-size: 22px;
 }
 
 button:hover {
     transition: 0.2s linear;
-    background-color: #debb1f;
+    background-color: #04c0c3;
 }
 
 
@@ -208,9 +208,9 @@ button:hover {
     height: 80px;
     border-radius: 50%;
     border: 10px solid transparent;
-    border-top-color: #ffd000;
-    border-right-color: #ffd000;
-    border-bottom-color: #ffd000;
+    border-top-color: #02eef4;
+    border-right-color: #02eef4;
+    border-bottom-color: #02eef4;
     border-left-color: transparent;
     animation: spin 1s linear infinite;
 }

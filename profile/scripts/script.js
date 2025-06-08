@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     main.addEventListener('click', function() {
         content1.style.display = 'grid'
-        main.style.border = '3px solid #ffd000'
+        main.style.border = '3px solid #04ccfe'
         main.style.color = '#fff'
         cources.style.border = 'none'
         cources.style.color = '#a4a4a4'
@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
         main.style.border = 'none'
         main.style.color = '#a4a4a4'
         cources.style.color = '#fff'
-        cources.style.border = '3px solid #ffd000'
+        cources.style.border = '3px solid #04ccfe'
         content2.style.display = 'block'
     })
 });

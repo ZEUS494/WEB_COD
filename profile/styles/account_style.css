@@ -38,7 +38,7 @@
 }
 
 #current-page {
-    border: #ffd000 2px solid;
+    border: #04ccfe 2px solid;
     cursor: not-allowed;
 }
 
@@ -78,12 +78,13 @@
 
 body {
     height: 100vh;
-    width: 99vw;
+    width: 100vw;
     background-color: #141414;
     color: #fff;
     display: flex;
     align-items: center;
     flex-direction: column;
+    overflow-x: hidden;
 }
 
 .box {
@@ -180,6 +181,7 @@ body {
     padding-left: 15px;
     border-radius: 10px;
     background-color: #202020;
+    font-size: 20px;
 }
 
 #completed-cources {
@@ -273,37 +275,6 @@ body {
     margin-left: 10px;
 }
 
-.shop-button {
-    position: absolute;
-    height: 40px;
-    font-size: 20px;
-    border-radius: 15px;
-    color: #000;
-    bottom: 0px;
-    background-color: #2ce2b8;
-    width: 80%;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    border: none;
-    cursor: pointer;
-}
-
-.shop-button:hover {
-    scale: 1.06;
-    background-color: #24bc99;
-    transition: 0.2s linear;
-}
-
-#shop-logo {
-    width: 19px;
-    height: 19px;
-    background-image: url(../images/shopbtn.png);
-    background-size: cover;
-    margin-left: 10px;
-}
-
 .info-block {
     width: 90%;
     background-color: #3e3e3e;
@@ -375,9 +346,9 @@ body {
     height: 80px;
     border-radius: 50%;
     border: 10px solid transparent;
-    border-top-color: #ffd000;
-    border-right-color: #ffd000;
-    border-bottom-color: #ffd000;
+    border-top-color: #78fdfa;
+    border-right-color: #78fdfa;
+    border-bottom-color: #78fdfa;
     border-left-color: transparent;
     animation: spin 1s linear infinite;
 }
@@ -425,13 +396,13 @@ body {
 
 @keyframes shine {
     0% {
-        color: #ffb108;
+        color: #04ccfe;
     }
     50% {
-        color: #f2e01f;
+        color: #78fdfa;
     }
     100% {
-        color: #ffb108;
+        color: #04ccfe;
     }
 }
 
