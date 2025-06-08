@@ -1,5 +1,5 @@
 body {
-    background-color: #121212;
+    background-color: #141414;
     color: #e0e0e0;
     font-family: Arial, sans-serif;
     margin: 0;
@@ -40,7 +40,7 @@ body {
 }
 
 #current-page {
-  border: #ffd000 2px solid;
+  border: #02eef4 2px solid;
   cursor: not-allowed;
 }
 
@@ -91,6 +91,7 @@ body {
     justify-content: space-between;
     align-items: center;
     margin-bottom: 20px;
+    font-size: 22px;
   }
   .cart-header h1 {
     font-size: 24px;
@@ -163,7 +164,7 @@ body {
   }
   
   .checkout-btn {
-    background-color: #bb86fc;
+    background-color: #02eef4;
     color: #121212;
     border: none;
     padding: 10px 20px;
@@ -173,7 +174,7 @@ body {
     transition: background-color 0.3s;
   }
   .checkout-btn:hover {
-    background-color: #9c64f8;
+    background-color: #11bcbe;
   }
   .coin {
     width: 20px;
@@ -215,7 +216,7 @@ body {
 }
 
 .item-total {
-    font-size: 16px;
+    font-size: 20px;
     font-weight: bold;
     display: flex;
     align-items: center;
@@ -338,15 +339,15 @@ body {
     }
   }
   .empty-cart-message {
-    color: #bb86fc;
+    color: #02eef4;
     font-family: 'Arial', sans-serif;
     font-size: 20px;
     text-align: center;
     padding: 40px 0;
     margin: 20px 0;
-    background-color: rgba(30, 30, 30, 0.7);
+    background-color: rgba(30, 30, 30, 0.3);
     border-radius: 8px;
-    border: 1px dashed #bb86fc;
+    border: 1px dashed #02eef4;
     animation: pulse 2s infinite ease-in-out;
 }
 
@@ -366,7 +367,7 @@ body {
   transition: background-color 0.3s;
 }
 .clear-cart-btn:hover {
-  background-color: #cc0000;
+  background-color: #a00c0c;
 }
 .balance-container {
   font-family: 'Arial', sans-serif;

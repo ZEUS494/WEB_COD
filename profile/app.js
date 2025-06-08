@@ -170,6 +170,7 @@ document.addEventListener('DOMContentLoaded', function () {
       document.getElementById('username').innerText = userData.fullname;
       document.getElementById('codcoins').innerText = userData.codcoins;
       document.getElementById('currentcourse').innerText = userData.currentcourse;
+      document.getElementById('worktime').innerText = userData.time;
 
       // Обновляем поля выполненных заданий
       const completedTasksEl = document.getElementById('completed-tasks');

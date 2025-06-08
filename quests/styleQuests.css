@@ -268,8 +268,7 @@ h1 {
 }
 /* Анимация для текста */
 #minigame:hover .text h2 {
-    color: #e8ae00;
-    text-shadow: 0 0 10px rgba(232, 174, 0, 0.5);
+    color: #fff;
 }
 
 #minigame:hover .text p {
@@ -382,7 +381,7 @@ h2{
   }
   
   #current-page {
-    border: #ffd000 2px solid;
+    border: #02eef4 2px solid;
     cursor: not-allowed;
   }
   /* Добавить в конец файла */
@@ -653,8 +652,8 @@ h2{
 /* Стили для кнопки Инфо и модального окна */
 .info-btn {
   background-color: transparent;
-  color: #4CAF50;
-  border: 2px solid #4CAF50;
+  color: #02eef4;
+  border: 2px solid #02eef4;
   padding: 8px 12px;
   border-radius: 50%;
   font-size: 16px;
@@ -668,7 +667,7 @@ h2{
   font-weight: bold;
   font-style: italic;
   margin-right: 15px;
-    background-color: #4CAF50;
+    background-color: #02eef4;
   color: white;
   border: none;
 }
@@ -726,7 +725,7 @@ h2{
 }
 
 #infoModal h2 {
-  color: #e8ae00;
+  color: #02eef4;
   text-align: center;
   margin-left: 100px;
   width: 60%;
@@ -756,7 +755,7 @@ h2{
 }
 
 #infoModal .coins-count {
-  color: #e8ae00;
+  color: #02eef4;
   font-weight: bold;
 }
 
@@ -764,16 +763,16 @@ h2{
   background-color: #3a3a3a;
   margin-top: 20px;
   padding: 15px;
-  border: 1px solid #e8ae00;
+  border: 1px solid #02eef4;
 }
 
 #infoModal .game-item.total .game-name {
-  color: #e8ae00;
+  color: #02eef4;
   font-size: 1.1em;
 }
 
 #infoModal .game-item.total .coins-count {
-  color: #e8ae00;
+  color: #02eef4;
   font-size: 1.2em;
 }
 #block{

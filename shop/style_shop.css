@@ -1,5 +1,5 @@
 *{
-    font-family: "Roboto";
+    font-family: "Anonymous Pro", sans-serif;
     color: white;
 }
 
@@ -37,7 +37,7 @@
 }
 
 #current-page {
-    border: #ffd000 2px solid;
+    border: #04ccfe 2px solid;
     cursor: not-allowed;
 }
 
@@ -202,7 +202,6 @@ body{
     border-radius: 10px;
     margin: 50px;
     padding: 20px;
-    font-family: "Arial Black";
     position: relative;
 }
 .top{
@@ -212,6 +211,9 @@ body{
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+    border-top: #04ccfe 2px solid;
+    border-left: #04ccfe 2px solid;
+    border-right: #04ccfe 2px solid;
 }
 .down{
     width: 300px;
@@ -222,7 +224,9 @@ body{
     flex-direction: column;
     transition: 500ms;
     border-radius: 0 0 10px 10px;
-
+    border-bottom: #04ccfe 2px solid;
+    border-left: #04ccfe 2px solid;
+    border-right: #04ccfe 2px solid;
 }
 
 .products{
@@ -326,7 +330,7 @@ body{
     width: auto;
     height: auto;
     padding: 15px;
-    background-color:rgb(255, 184, 52);
+    background-color:#04ccfe;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -335,7 +339,6 @@ body{
     font-size: 24px;
     color: rgb(255, 255, 255);
     margin: 20px;
-    font-family: "Roboto";
     position: absolute;
     z-index: 12;
     right: 12px;
@@ -368,13 +371,12 @@ body{
 }
 h1{
     color: rgb(255, 255, 255);
-    font-size: 34px;
+    font-size: 50px;
     margin-top: 60px;
-    text-align: center;
+    text-align: left;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    font-family: "Roboto";
 
 }
 .coin {
@@ -403,7 +405,6 @@ h1{
 .coin::after {
     content: 'C';
     position: absolute;
-    font-family: Arial, sans-serif;
     font-size: 8px;
     font-weight: bold;
     color: #fff;
@@ -427,7 +428,7 @@ p{
     border-radius: 10px;
     color: white;
     transition: .2s linear;
-    background: rgb(255, 184, 52);
+    background: #04ccfe;
     border: none;
     position: absolute;
     left: 150px;
@@ -438,10 +439,10 @@ p{
 }
 
 .btn-new:hover {
-    box-shadow: 0 0 0 2px white, 0 0 0 4px rgb(255, 184, 52);
+    box-shadow: 0 0 0 2px #2268fd;
 }
 .tovari:hover {
-    box-shadow: 0 0 0 2px white, 0 0 0 4px rgb(255, 184, 52);
+    box-shadow: 0 0 0 2px #2268fd;
 }
 h3{
     width: 95%;
@@ -468,14 +469,12 @@ h3{
     border-radius: 25px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
     backdrop-filter: blur(5px);
-    border: 1px solid rgba(255, 184, 52, 0.3);
     transition: all 0.3s ease;
 }
 
 .menu-container:hover {
     background: rgba(50, 50, 50, 0.9);
     box-shadow: 0 6px 25px rgba(0, 0, 0, 0.4);
-    border: 1px solid rgba(255, 184, 52, 0.5);
 }
 
 .menu-item {
@@ -497,8 +496,7 @@ h3{
 
 .menu-item:hover {
     transform: scale(1.1);
-    border-color: #ffb834;
-    box-shadow: 0 0 15px rgba(255, 184, 52, 0.5);
+    border-color: #00c6fb;
 }
 
 #item1 {
@@ -532,7 +530,7 @@ h3{
     opacity: 0;
     pointer-events: none;
     transition: opacity 0.3s;
-    border-left: 3px solid #ffb834;
+    border-left: 3px solid #04ccfe;
 }
 
 .menu-item:hover::after {
@@ -651,7 +649,6 @@ h3{
     .coin::after {
         content: 'C';
         position: absolute;
-        font-family: Arial, sans-serif;
         font-size: 10px;
         font-weight: bold;
         color: #fff;
@@ -785,7 +782,6 @@ h3{
     .coin::after {
         content: 'C';
         position: absolute;
-        font-family: Arial, sans-serif;
         font-size: 8px;
         font-weight: bold;
         color: #fff;
@@ -984,7 +980,7 @@ h3{
     transform: translateY(-20px);
     transition: transform 0.3s ease;
     text-align: center;
-    border: 2px solid #ffb834;
+    border: 2px solid #04ccfe;
     position: relative;
     overflow: hidden;
     display: flex;
@@ -998,9 +994,8 @@ h3{
 
 .modal-icon {
     font-size: 70px;
-    color: #ffb834;
+    color: #04ccfe;
     margin: 0 auto 15px;
-    text-shadow: 0 0 10px rgba(255, 184, 52, 0.5);
     flex-shrink: 0;
 }
 
@@ -1034,7 +1029,7 @@ h3{
 }
 
 .modal-button {
-    background: #ffb834;
+    background: #04ccfe;
     color: #000;
     border: none;
     padding: 12px 30px;
@@ -1050,9 +1045,8 @@ h3{
 }
 
 .modal-button:hover {
-    background: #ffcc66;
+    background: #1fa0c1;
     transform: translateY(-3px);
-    box-shadow: 0 7px 15px rgba(255, 184, 52, 0.4);
 }
 
 .modal-button.secondary {
@@ -1062,15 +1056,16 @@ h3{
 
 .modal-button.secondary:hover {
     background: #444;
+    transform: translateY(-3px);
 }
 
 .product-name {
-    color: #ffb834;
+    color: #fff;
     font-weight: bold;
     display: inline-block;
     margin: 5px 0;
     padding: 3px 8px;
-    background: rgba(255, 184, 52, 0.1);
+    background: #0892b4;
     border-radius: 4px;
     word-break: break-word;
 }
@@ -1082,7 +1077,6 @@ h3{
     left: 0;
     right: 0;
     height: 4px;
-    background: linear-gradient(90deg, #ffb834, #ff9500);
 }
 
 @media screen and (max-width: 576px) {
@@ -1187,4 +1181,9 @@ h3{
         font-size: 60px;
         margin-bottom: 10px;
     }
+}
+
+#shopName {
+    width: 69%;
+    text-align: left;
 }

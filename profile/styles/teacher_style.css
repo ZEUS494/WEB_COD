@@ -26,8 +26,7 @@ body {
     width: 100%;
     text-align: center;
     padding: 20px 0;
-    margin-bottom: 20px;
-    border-bottom: 1px solid #333;
+    margin-bottom: 30px;
 }
 
 #teacher-name {
@@ -36,7 +35,7 @@ body {
 }
 
 #teacher-login {
-    color: #ffd000;
+    color: #02eef4;
     font-size: 18px;
 }
 
@@ -69,7 +68,7 @@ body {
 }
 
 .filial-tab.active {
-    border-bottom-color: #ffd000;
+    border-bottom-color: #02eef4;
     font-weight: bold;
 }
 
@@ -161,6 +160,7 @@ body {
 .filial-tabs {
     display: flex;
     margin-bottom: 20px;
+    margin-bottom: 20px;
     border-bottom: 1px solid #ddd;
     color: #fff;
     margin-top: 30px;
@@ -183,7 +183,7 @@ body {
 }
 
 .filial-tab.active {
-    border-bottom-color: #ffd000;
+    border-bottom-color: #02eef4;
     font-weight: bold;
 }
 
@@ -328,4 +328,29 @@ body {
 
 .cancel-btn:hover {
     background-color: rgba(255, 0, 0, 0.1);
+}
+
+h1 {
+    margin-top: 50px;
+}
+
+@keyframes shine {
+    0% {
+        color: #04ccfe;
+    }
+    50% {
+        color: #78fdfa;
+    }
+    100% {
+        color: #04ccfe;
+    }
+}
+
+#backtomain {
+    animation: shine 3s linear infinite;
+    position: absolute;
+    left: 25px;
+    top: 15px;
+    font-size: 18px;
+    text-decoration: none;
 }

@@ -24,35 +24,63 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Массив пастельных цветов
     const pastelColors = [
-        '#ffb3ba', '#ffdfba', '#ffffba', '#baffc9', 
-        '#bae1ff', '#d7aefb', '#ffbaec', '#ffccdc'
+        '#78fdfa', '#02eef4', '#04ccfe', '#598eff', '#7990dd'
     ];
 
-    // Загрузка заданий из Firestore
-    async function loadQuests() {
-        try {
-            // Загружаем ежедневные задания
-            const dailyDoc = await db.collection('quests').doc('daily').get();
-            if (dailyDoc.exists) {
-                const dailyQuests = dailyDoc.data().quests || [];
-                updateQuestElements('daily', dailyQuests);
+async function loadQuests() {
+    try {
+        // Загружаем ежедневные задания
+        const dailyDoc = await db.collection('quests').doc('daily').get();
+        if (dailyDoc.exists) {
+            const dailyData = dailyDoc.data();
+            if (dailyData.quests && Array.isArray(dailyData.quests)) {
+                updateQuestElements('daily', dailyData.quests);
             } else {
-                console.log("Документ 'daily' не найден в Firestore");
+                console.error("Поле 'quests' не найдено или не является массивом в документе 'daily'");
+                showError("Ошибка формата ежедневных заданий");
             }
-
-            // Загружаем еженедельные задания
-            const weeklyDoc = await db.collection('quests').doc('weekly').get();
-            if (weeklyDoc.exists) {
-                const weeklyQuests = weeklyDoc.data().quests || [];
-                updateQuestElements('weekly', weeklyQuests);
-            } else {
-                console.log("Документ 'weekly' не найден в Firestore");
-            }
-        } catch (error) {
-            console.error("Ошибка загрузки заданий:", error);
-            alert("Ошибка загрузки заданий. Попробуйте позже.");
+        } else {
+            console.log("Документ 'daily' не найден в коллекции 'quests'");
+            showError("Ежедневные задания временно недоступны");
         }
+
+        // Загружаем еженедельные задания
+        const weeklyDoc = await db.collection('quests').doc('weekly').get();
+        if (weeklyDoc.exists) {
+            const weeklyData = weeklyDoc.data();
+            if (weeklyData.quests && Array.isArray(weeklyData.quests)) {
+                updateQuestElements('weekly', weeklyData.quests);
+            } else {
+                console.error("Поле 'quests' не найдено или не является массивом в документе 'weekly'");
+                showError("Ошибка формата еженедельных заданий");
+            }
+        } else {
+            console.log("Документ 'weekly' не найден в коллекции 'quests'");
+            showError("Еженедельные задания временно недоступны");
+        }
+    } catch (error) {
+        console.error("Ошибка загрузки заданий:", error);
+        showError("Ошибка соединения с сервером. Проверьте интернет-соединение и попробуйте позже.");
     }
+}
+
+// Функция для отображения ошибки
+function showError(message) {
+    const errorElement = document.createElement('div');
+    errorElement.className = 'error-message';
+    errorElement.textContent = message;
+    errorElement.style.color = 'red';
+    errorElement.style.textAlign = 'center';
+    errorElement.style.padding = '10px';
+    errorElement.style.margin = '20px 0';
+    
+    // Добавляем сообщение об ошибке в оба раздела заданий
+    document.querySelectorAll('.block').forEach(block => {
+        if (!block.querySelector('.error-message')) {
+            block.insertBefore(errorElement.cloneNode(true), block.firstChild);
+        }
+    });
+}
 
     // Обновляем элементы заданий на странице
     function updateQuestElements(type, questsArray) {
