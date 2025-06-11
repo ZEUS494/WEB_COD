@@ -17,8 +17,10 @@ document.addEventListener('DOMContentLoaded', () => {
     let lastRenderTime = 0;
     let gameOver = false;
 
-    // Баланс игрока (сохраняется в localStorage)
+   
     let balance = parseInt(localStorage.getItem('totalbalanceSnake')) || 0;
+
+
     const balanceElement = document.getElementById('balance');
 
     const canvas = document.getElementById('game-canvas');
@@ -223,21 +225,19 @@ document.addEventListener('DOMContentLoaded', () => {
         cancelAnimationFrame(gameLoop);
         finalScoreElement.textContent = score;
         gameOverElement.classList.remove('hidden');
-
-        // Добавляем счет текущей игры к балансу
         balance += score;
         balanceElement.textContent = balance;
         localStorage.setItem('totalbalanceSnake', balance);
         codcoin = 100;
         div(balance, codcoin);
-        
-
-        
     }
-function div(val, by){
-            codcoins = (val - val % by) / by;
-            localStorage.setItem('Snake', codcoins);
-        }
+
+    function div(val, by){
+        codcoins = (val - val % by) / by;
+        localStorage.setItem('Snake', codcoins);
+    }
+
+
     document.addEventListener('keydown', (e) => {
         switch (e.key.toLowerCase()) {
             case 'w':
