@@ -3,7 +3,7 @@ const firebaseConfig = {
   apiKey: "AIzaSyBeCuMUazd-l9D0vPqfBrNJYSxCgOG6DeY",
   authDomain: "codweb-4d1aa.firebaseapp.com",
   projectId: "codweb-4d1aa",
-  storageBucket: "codweb-4d1aa.firebasestorage.app",
+  storageBucket: "codweb-4d1aa.appspot.com",
   messagingSenderId: "892570211314",
   appId: "1:892570211314:web:4888edb47d69cbd809d16b",
   measurementId: "G-57GYQLP328"
@@ -20,12 +20,54 @@ document.addEventListener('DOMContentLoaded', function () {
     loginForm.addEventListener('submit', async e => {
       e.preventDefault();
 
-      const username = document.getElementById('username').value;
-      const password = document.getElementById('password').value;
+      const username = document.getElementById('username').value.trim();
+      const password = document.getElementById('password').value.trim();
 
-      console.log(`Логин: ${username}, Пароль: ${password}`);
+      if (!username || !password) {
+        alert("Пожалуйста, заполните все поля");
+        return;
+      }
 
       try {
+        // 1. Сначала проверяем, является ли пользователь учителем
+        const teachersQuery = await db.collection("teachers")
+          .where("login", "==", username)
+          .limit(1)
+          .get();
+
+        if (!teachersQuery.empty) {
+          const teacherDoc = teachersQuery.docs[0];
+          const teacherData = teacherDoc.data();
+
+          if (teacherData.password === password) {
+            // Успешная авторизация учителя
+            setCookie('teacher', username, 30);
+            localStorage.setItem('teacherData', JSON.stringify({
+              fullname: teacherData.fullname,
+              login: teacherData.login,
+              pupils: teacherData.pupils || []
+            }));
+            window.location.href = './teacher/teacher.html';
+            return;
+          } else {
+            alert("Неверный пароль для учителя");
+            return;
+          }
+        }
+
+        // 2. Проверяем, является ли пользователь администратором
+        if (username === 'admin') {
+          const adminRef = await db.collection("users").doc(username).get();
+          
+          if (adminRef.exists && adminRef.data().password === password) {
+            setCookie('user', username, 30);
+            localStorage.setItem('userData', JSON.stringify(adminRef.data()));
+            window.location.href = './admin/admin.html';
+            return;
+          }
+        }
+
+        // 3. Проверяем обычных пользователей
         const userRef = await db.collection("users").doc(username).get();
 
         if (!userRef.exists) {
@@ -33,30 +75,64 @@ document.addEventListener('DOMContentLoaded', function () {
           return;
         }
 
-        const data = userRef.data();
+        const userData = userRef.data();
 
-        if (data.password === password) {
-          // Установка куков и сохранение данных в Local Storage
-          setCookie('user', username, 30); // Куки будут храниться 30 дней
-          localStorage.setItem('userData', JSON.stringify(data));
-
-          // Проверка, является ли пользователь администратором
-          if (username === 'admin') {
-            // Переадресация на административный интерфейс
-            window.location.href = './admin/admin.html';
-          } else {
-            // Все остальные пользователи направляются на обычную страницу аккаунта
-            window.location.href = './account/account.html';
-          }
+        if (userData.password === password) {
+          setCookie('user', username, 30);
+          localStorage.setItem('userData', JSON.stringify(userData));
+          window.location.href = './account/account.html';
         } else {
           alert("Неверный пароль");
         }
       } catch (error) {
-        console.error("Ошибка:", error);
+        console.error("Ошибка авторизации:", error);
+        alert("Произошла ошибка при авторизации. Попробуйте позже.");
       }
     });
-  } else {
-    console.error("Элемент 'loginForm' не найден!");
+  }
+
+  // Обработка страницы учителя
+  if (window.location.pathname.includes('/teacher.html')) {
+    const teacherLogin = getCookie('teacher');
+    
+    if (!teacherLogin) {
+      window.location.href = '../index.html';
+      return;
+    }
+
+    // Загрузка данных учителя
+    db.collection("teachers")
+      .where("login", "==", teacherLogin)
+      .limit(1)
+      .get()
+      .then(querySnapshot => {
+        if (querySnapshot.empty) {
+          throw new Error("Данные учителя не найдены");
+        }
+        
+        const teacherData = querySnapshot.docs[0].data();
+        document.getElementById('teacher-name').textContent = teacherData.fullname;
+        document.getElementById('teacher-login').textContent = teacherData.login;
+        
+        const pupilsContainer = document.getElementById('pupils-container');
+        pupilsContainer.innerHTML = '';
+        
+        if (teacherData.pupils && teacherData.pupils.length > 0) {
+          teacherData.pupils.forEach(pupil => {
+            const li = document.createElement('li');
+            li.textContent = pupil;
+            pupilsContainer.appendChild(li);
+          });
+        } else {
+          const li = document.createElement('li');
+          li.textContent = 'Нет учеников';
+          pupilsContainer.appendChild(li);
+        }
+      })
+      .catch(error => {
+        console.error("Ошибка загрузки данных:", error);
+        window.location.href = '../index.html';
+      });
   }
 
   // Логи обработки страницы аккаунта (если мы находимся на аккаунте)
@@ -94,6 +170,7 @@ document.addEventListener('DOMContentLoaded', function () {
       document.getElementById('username').innerText = userData.fullname;
       document.getElementById('codcoins').innerText = userData.codcoins;
       document.getElementById('currentcourse').innerText = userData.currentcourse;
+      document.getElementById('worktime').innerText = userData.time;
 
       // Обновляем поля выполненных заданий
       const completedTasksEl = document.getElementById('completed-tasks');

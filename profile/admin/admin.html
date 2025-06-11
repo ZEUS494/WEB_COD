@@ -12,7 +12,7 @@
 <body>
     <div class="container">
         <button onclick="logout()" class="exit-button">Выйти <div id="exit-logo"></div></button>
-        <a id="backtomain" href="../../main/main.html">Вернуться на главную</a>
+        <a id="backtomain" href="../../index.html">Вернуться на главную</a>
         <p id="main">Админ-панель системы</p>
         <div class="picture"></div>
 
@@ -61,6 +61,24 @@
                     <label>Завершенные курсы:</label><br>
                     <textarea id="completedCoursesField" style="height: 150px;"></textarea><br>
                     <span id="errorMessage" style="color:red; display:none;"></span><br>
+                    <label>Время проведения уроков:</label><br>
+                    <input type="time" id="creationTimeField" /><br>
+                    <label>Учитель:</label><br>
+                    <select id="teacherSelect" class="teacher-select">
+                        <option value="">Не назначать учителя</option>
+                    </select><br>
+                    <label>Филиал:</label><br>
+                    <select id="filialSelect" required>
+                        <option value="">Выберите филиал</option>
+                        <option value="ПАН">ПАН</option>
+                        <option value="ГБР">ГБР</option>
+                        <option value="ГМР">ГМР</option>
+                        <option value="МЛД">МЛД</option>
+                        <option value="КМР">КМР</option>
+                        <option value="ФМР">ФМР</option>
+                        <option value="МСК">МСК</option>
+                        <option value="ЭНКА">ЭНКА</option>
+                    </select><br>
 
                     <div class="buttons">
                         <button type="submit">Добавить</button>
@@ -74,7 +92,7 @@
         <h1>Панель управления</h1><br><br>
 
         <div class="btns">
-            <button class="switch-btns" id="switch-to-edit" style="border: 3px solid #ffd000;">Редактировать</button>
+            <button class="switch-btns" id="switch-to-edit" style="border: 3px solid #02eef4;">Редактировать</button>
             <button class="switch-btns" id="switch-to-addition" style="color: #a4a4a4;">Добавить</button>
             <button class="switch-btns" id="switch-to-tables" style="color: #a4a4a4;">Таблица</button>
         </div>
@@ -110,40 +128,5 @@
     <script src="../scripts/admin.js"></script>
     <script src="../scripts/cookie.js"></script>
     <script src="../app.js"></script>
-
-    <script>
-        // Вспомогательные функции для работы с cookie
-        function getCookie(name) {
-          let matches = document.cookie.match(new RegExp(
-            "(?:^|; )" +
-            name.replace(/([\.$?*|{}$$$$$$\\\/^+])/g, '\\$1') +
-            "=([^;]*)"
-          ));
-          return matches ? decodeURIComponent(matches[1]) : undefined;
-        }
-
-        function eraseCookie(name) {
-          document.cookie = name + '=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
-        }
-
-        // Функция выхода
-        function logout() {
-          eraseCookie('user');
-          localStorage.clear(); // очистка данных профиля
-          window.location.href = '../index.html'; // переходим на главную страницу
-        }
-
-        // Проверка авторизованности пользователя при загрузке страницы
-        document.addEventListener('DOMContentLoaded', function () {
-          const storedUsername = getCookie('user'); // получаем имя пользователя из cookie
-        
-          if (!storedUsername || storedUsername !== 'admin') { // проверяем, что залогиненный пользователь именно админ
-            window.location.href = "../index.html";
-            return;
-          }
-      
-          // Тут можно реализовать специфичную логику для административной панели
-        });
-    </script>
 </body>
 </html>

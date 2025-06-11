@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     edits.addEventListener('click', function() {
         content1.style.display = 'flex'
-        edits.style.border = '3px solid #ffd000'
+        edits.style.border = '3px solid #02eef4'
         edits.style.color = '#fff'
         additions.style.border = 'none'
         additions.style.color = '#a4a4a4'
@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
     additions.addEventListener('click', function() {
         content1.style.display = 'none'
         additions.style.color = '#fff'
-        additions.style.border = '3px solid #ffd000'
+        additions.style.border = '3px solid #02eef4'
         edits.style.border = 'none'
         edits.style.color = '#a4a4a4'
         tables.style.border = 'none'
@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', () => {
         additions.style.border = 'none'
         edits.style.border = 'none'
         edits.style.color = '#a4a4a4'
-        tables.style.border = '3px solid #ffd000'
+        tables.style.border = '3px solid #02eef4'
         tables.style.color = '#fff'
         content2.style.display = 'none'
         content3.style.display = 'flex'

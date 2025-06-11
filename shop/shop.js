@@ -1,4 +1,10 @@
 document.addEventListener('DOMContentLoaded', function() {
+    const currentUser = getCookie('user');
+    if (!currentUser) {
+        window.location.href = '../profile/index.html';
+        return;
+    }
+
     const addToCartButtons = document.querySelectorAll('.btn-new');
     const cart = JSON.parse(localStorage.getItem('cart')) || [];
     const modal = document.getElementById('modal');
@@ -42,7 +48,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const productImgId = product.querySelector('div.top').id;
             
             // Формируем корректный URL изображения
-            const productImg = `/shop/images/${productImgId}.jpg`; // Убедитесь, что путь соответствует структуре папок
+            const productImg = `/shop/images/${productImgId}.jpg`;
 
             const productItem = {
                 name: productName,
