@@ -278,7 +278,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (direction.x === 0) nextDirection = {x: 1, y: 0};
     });
     function back(){
-        window.location.href = "/quests/quest.html"
+        window.location.href = "../quests/quest.html"
     }
     restartBtn.addEventListener('click', back);
 
