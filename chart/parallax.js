@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const starCount = 350;
+    const starCount = 50;
     const starsContainer = document.getElementById('stars');
 
     for (let i = 0; i < starCount; i++) {

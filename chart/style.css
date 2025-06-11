@@ -12,11 +12,7 @@ body {
     padding: 20px;
     overflow-x: hidden;
 }
-.backdoor-btn {
-    height: 100%;
-    width: 100%;
-    display: flex;
-}
+
 .stars-background {
     position: fixed;
     top: 0;
@@ -29,9 +25,9 @@ body {
 
 .star {
     position: absolute;
-    background-color: #ffff00;
+    background-color: #6c5ce7;
     border-radius: 50%;
-    box-shadow: 0 0 5px #ffff00;
+    box-shadow: 0 0 5px #6c5ce7;
     animation: twinkle 2s infinite;
 }
 
@@ -51,7 +47,7 @@ h1 {
     flex-direction: column;
     align-items: center;
     padding: 20px;
-    min-height: 100vh;
+    min-height: 50vh;
 }
 
 .chart-wrapper {
@@ -74,14 +70,21 @@ h1 {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 30px; /* Отступ между заголовком и графиком */
+    gap: 30px;
+}
+
+.chart-header {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 15px;
 }
 
 .chart h2 {
     margin: 0;
     font-size: 1.2em;
     color: white;
-    background-color: #303030; /* Чтобы текст не просвечивал сквозь столбцы */
+    background-color: #303030;
     padding: 0 10px;
     z-index: 2;
     text-align: center;
@@ -92,19 +95,39 @@ h1 {
     border: none;
     border-radius: 6px;
     height: 30px;
-    width: 80px;
+    width: 120px;
+    color: white;
+    font-family: "Anonymous Pro", monospace;
+    font-weight: 700;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
 }
+
+.courses:hover {
+    background-color: #444;
+}
+
 .bar-container {
     display: flex;
     justify-content: space-around;
     align-items: flex-end;
-    height: 250px; /* Фиксированная высота */
+    height: 250px;
     width: 100%;
     max-width: 700px;
     position: relative;
     z-index: 1;
     margin-top: 10px;
     overflow: visible;
+}
+
+.bar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: max-content;
+    margin: 0 10px;
+    position: relative;
 }
 
 .bar div {
@@ -121,6 +144,7 @@ h1 {
     white-space: normal;
     word-wrap: break-word;
     max-width: 100px;
+    text-align: center;
 }
 
 .chart:nth-child(2) .bar div {
@@ -144,19 +168,17 @@ h1 {
     width: 290px;
 }
 
-@media (max-width: 1024px) {
-    .chart {
-        padding: 15px;
-    }
-    
-    .bar-container {
-        height: 200px;
-    }
-    
-    .bar div {
-        max-width: 50px;
-    }
+.crown-icon {
+    position: absolute;
+    top: -42px;
+    left: 50%;
+    transform: translateX(-50%); 
+    width: 65px;          
+    height: auto;         
+    z-index: 3;           
+    pointer-events: none;
 }
+
 
 @media (max-width: 768px) {
     h1 {
@@ -180,6 +202,12 @@ h1 {
         font-size: 12px;
         max-width: 80px;
     }
+    
+    .crown-icon {
+        top: -25px;
+        left: -40px;
+        width: 30px;
+    }
 }
 
 @media (max-width: 480px) {
@@ -199,5 +227,9 @@ h1 {
     
     .bar div {
         max-width: 80px;
+    }
+    
+    .crown-icon {
+        display: none;
     }
 }
