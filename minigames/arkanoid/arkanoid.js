@@ -603,7 +603,7 @@ function startGame() {
 
 updateUI();
 function back(){
-        window.location.href = "/quests/quest.html"
+        window.location.href = "../quests/quest.html"
     }
 // Обработчики событий
 startGameButton.addEventListener('click', startGame);
