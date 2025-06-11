@@ -242,88 +242,88 @@ body{
     background: #202020;
 }
 #t1{
-    background-image: url(images/t1.jpg);
+    background-image: url(./images/t1.jpg);
 }
 #t2{
-    background-image: url(images/t2.jpg);
+    background-image: url(./images/t2.jpg);
 }
 #t3{
-    background-image: url(images/t3.png);
+    background-image: url(./images/t3.png);
 }
 #t4{
-    background-image: url(images/t4.jpg);
+    background-image: url(./images/t4.jpg);
 }
 #t5{
-    background-image: url(images/t5.jpg);
+    background-image: url(./images/t5.jpg);
 }
 #t6{
-    background-image: url(images/t6.jpg);
+    background-image: url(./images/t6.jpg);
 }
 #t7{
-    background-image: url(images/t7.jpg);
+    background-image: url(./images/t7.jpg);
 }
 #t8{
-    background-image: url(images/t9.jpg);
+    background-image: url(./images/t9.jpg);
 }
 #t9{
-    background-image: url(images/t8.jpg);
+    background-image: url(./images/t8.jpg);
 }
 #t10{
-    background-image: url(images/t10.jpg);
+    background-image: url(./images/t10.jpg);
 }
 #t11{
-    background-image: url(images/t11.jpg);
+    background-image: url(./images/t11.jpg);
 }
 #t12{
-    background-image: url(images/t12.jpg);
+    background-image: url(./images/t12.jpg);
 }
 #t13{
-    background-image: url(images/t13.jpg);
+    background-image: url(./images/t13.jpg);
 }
 #t14{
-    background-image: url(images/t14.jpg);
+    background-image: url(./images/t14.jpg);
 }
 #t15{
-    background-image: url(images/t15.jpg);
+    background-image: url(./images/t15.jpg);
 }
 #t16{
-    background-image: url(images/t16.jpg);
+    background-image: url(./images/t16.jpg);
 }
 #t17{
-    background-image: url(images/t17.jpg);
+    background-image: url(./images/t17.jpg);
 }
 #t18{
-    background-image: url(images/t18.jpg);
+    background-image: url(./images/t18.jpg);
 }
 #t19{
-    background-image: url(images/t19.jpg);
+    background-image: url(./images/t19.jpg);
 }
 #t20{
-    background-image: url(images/t20.jpg);
+    background-image: url(./images/t20.jpg);
 }
 #t21{
-    background-image: url(images/t21.jpg);
+    background-image: url(./images/t21.jpg);
 }
 #t22{
-    background-image: url(images/t22.jpg);
+    background-image: url(./images/t22.jpg);
 }
 #t23{
-    background-image: url(images/t23.jpg);
+    background-image: url(./images/t23.jpg);
 }
 #t24{
-    background-image: url(images/t24.jpg);
+    background-image: url(./images/t24.jpg);
 }
 #t25{
-    background-image: url(images/t25.jpg);
+    background-image: url(./images/t25.jpg);
 }
 #t26{
-    background-image: url(images/t26.jpg);
+    background-image: url(./images/t26.jpg);
 }
 #t27{
-    background-image: url(images/t27.jpg);
+    background-image: url(./images/t27.jpg);
 }
 #t28{
-    background-image: url(images/t28.jpg);
+    background-image: url(./images/t28.jpg);
 }
 
 .tovari{
@@ -500,7 +500,7 @@ h3{
 }
 
 #item1 {
-    background-image: url(images/home.png);
+    background-image: url(./images/home.png);
     opacity: 1;
     transform: translateY(0);
 }
@@ -511,10 +511,10 @@ h3{
     background-color: #333;
 }
 
-#item2 { background-image: url(images/user.png); }
-#item3 { background-image: url(images/shop.png); }
-#item4 { background-image: url(images/bascet.png); }
-#item5 { background-image: url(images/dz.png); }
+#item2 { background-image: url(./images/user.png); }
+#item3 { background-image: url(./images/shop.png); }
+#item4 { background-image: url(./images/bascet.png); }
+#item5 { background-image: url(./images/dz.png); }
 
 /* Tooltip для кнопок */
 .menu-item::after {
@@ -550,11 +550,11 @@ h3{
         height: 40px;
     }
     
-    #item1 { background-image: url(images/home-s.png); }
-    #item2 { background-image: url(images/user-s.png); }
-    #item3 { background-image: url(images/shop-s.png); }
-    #item4 { background-image: url(images/bascet-s.png); }
-    #item5 { background-image: url(images/dz-s.png); }
+    #item1 { background-image: url(./images/home-s.png); }
+    #item2 { background-image: url(./images/user-s.png); }
+    #item3 { background-image: url(./images/shop-s.png); }
+    #item4 { background-image: url(./images/bascet-s.png); }
+    #item5 { background-image: url(./images/dz-s.png); }
     
     .menu-item::after {
         font-size: 12px;
@@ -581,12 +581,12 @@ h3{
         height: 40px;
     }
 
-    #item1 {  background-image: url(images/menu-s.png);}
-    #item2 {  background-image: url(images/user-s.png);}
-    #item3 {  background-image: url(images/shop-s.png);}
-    #item4 {  background-image: url(images/bascet-s.png);}
-    #item5 {  background-image: url(images/dz-s.png);}
-    .menu-container:hover #item1 { background-image: url(images/home-s.png);}
+    #item1 {  background-image: url(./images/menu-s.png);}
+    #item2 {  background-image: url(./images/user-s.png);}
+    #item3 {  background-image: url(./images/shop-s.png);}
+    #item4 {  background-image: url(./images/bascet-s.png);}
+    #item5 {  background-image: url(./images/dz-s.png);}
+    .menu-container:hover #item1 { background-image: url(./images/home-s.png);}
 }
 @media screen and (max-width: 1150px) and (min-width: 768px) {
     .chil {
@@ -696,12 +696,12 @@ h3{
         height: 50px;
     }
 
-    #item1 {  background-image: url(images/menu.png);}
-    #item2 {  background-image: url(images/user.png);}
-    #item3 {  background-image: url(images/shop.png);}
-    #item4 {  background-image: url(images/bascet.png);}
-    #item5 {  background-image: url(images/dz.png);}
-    .menu-container:hover #item1 { background-image: url(images/home.png);}
+    #item1 {  background-image: url(./images/menu.png);}
+    #item2 {  background-image: url(./images/user.png);}
+    #item3 {  background-image: url(./images/shop.png);}
+    #item4 {  background-image: url(./images/bascet.png);}
+    #item5 {  background-image: url(./images/dz.png);}
+    .menu-container:hover #item1 { background-image: url(./images/home.png);}
 }
 .modal-title {
     margin: 0 0 -20px 0;
@@ -824,13 +824,13 @@ h3{
         height: 40px;
     }
     
-    #item1 { background-image: url(images/menu-s.png); }
-    #item2 { background-image: url(images/user-s.png); }
-    #item3 { background-image: url(images/shop-s.png); }
-    #item4 { background-image: url(images/bascet-s.png); }
-    #item5 { background-image: url(images/dz-s.png); }
+    #item1 { background-image: url(./images/menu-s.png); }
+    #item2 { background-image: url(./images/user-s.png); }
+    #item3 { background-image: url(./images/shop-s.png); }
+    #item4 { background-image: url(./images/bascet-s.png); }
+    #item5 { background-image: url(./images/dz-s.png); }
     
-    .menu-container:hover #item1 { background-image: url(images/home-s.png); }
+    .menu-container:hover #item1 { background-image: url(./images/home-s.png); }
     
     .menu-item::after {
         font-size: 12px;
@@ -866,12 +866,12 @@ h3{
     .menu-container{
         left: 5px;
     }
-    #item1 {  background-image: url(images/menu-s.png);}
-    #item2 {  background-image: url(images/user-s.png);}
-    #item3 {  background-image: url(images/shop-s.png);}
-    #item4 {  background-image: url(images/bascet-s.png);}
-    #item5 {  background-image: url(images/dz-s.png);}
-    .menu-container:hover #item1 { background-image: url(images/home-s.png);}
+    #item1 {  background-image: url(./images/menu-s.png);}
+    #item2 {  background-image: url(./images/user-s.png);}
+    #item3 {  background-image: url(./images/shop-s.png);}
+    #item4 {  background-image: url(./images/bascet-s.png);}
+    #item5 {  background-image: url(./images/dz-s.png);}
+    .menu-container:hover #item1 { background-image: url(./images/home-s.png);}
     
 }
 @media screen and (max-width: 400px) {
@@ -935,13 +935,13 @@ h3{
         height: 35px;
     }
     
-    #item1 { background-image: url(images/menu-ss.png); }
-    #item2 { background-image: url(images/user-ss.png); }
-    #item3 { background-image: url(images/shop-ss.png); }
-    #item4 { background-image: url(images/bascet-ss.png); }
-    #item5 { background-image: url(images/dz-ss.png); }
+    #item1 { background-image: url(./images/menu-ss.png); }
+    #item2 { background-image: url(./images/user-ss.png); }
+    #item3 { background-image: url(./images/shop-ss.png); }
+    #item4 { background-image: url(./images/bascet-ss.png); }
+    #item5 { background-image: url(./images/dz-ss.png); }
     
-    .menu-container:hover #item1 { background-image: url(images/home-ss.png); }
+    .menu-container:hover #item1 { background-image: url(./images/home-ss.png); }
     
     .menu-item::after {
         display: none; /* Скрываем подсказки на очень маленьких экранах */
