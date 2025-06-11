@@ -262,7 +262,7 @@ function catchCoin(coin, coinFall) {
 
 
     function back(){
-        window.location.href = "/quests/quest.html"
+        window.location.href = "../quests/quest.html"
     }
     startBtn.addEventListener('click', startGame);
     restartBtn.addEventListener('click', back);
