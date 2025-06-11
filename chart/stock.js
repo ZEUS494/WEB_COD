@@ -14,7 +14,6 @@ firebase.initializeApp(firebaseConfig);
 const db = firebase.firestore();
 
 function updatePeriodChart(users) {
-    console.log(users)
     const validUsers = users.filter(u =>
         u.fullname &&
         typeof u.codcoins === 'number' &&
@@ -34,11 +33,16 @@ function updatePeriodChart(users) {
 
     function createBars(container, usersList) {
         container.innerHTML = "";
-        usersList.forEach(user => {
+        usersList.forEach((user, index) => {
             const barHeight = Math.max(10, Math.min(250, (user.codcoins / maxCoins) * 250));
             const bar = document.createElement("div");
             bar.className = "bar";
+
+            const crownHTML = index === 0 ? 
+                `<img src="crown.png" alt="Crown" class="crown-icon">` : '';
+
             bar.innerHTML = `
+                ${crownHTML}
                 <div style="height: ${barHeight}px;"></div>
                 <span>${user.fullname.split(' ')[1]}<br>(${user.codcoins})</span>
             `;
@@ -51,7 +55,6 @@ function updatePeriodChart(users) {
 }
 
 function updateCoursesChart(users) {
-    console.log(users)
     const validUsers = users.filter(u =>
         u.fullname &&
         typeof u.codcoins === 'number' &&
@@ -71,11 +74,16 @@ function updateCoursesChart(users) {
 
     function createBars(container, usersList) {
         container.innerHTML = "";
-        usersList.forEach(user => {
+        usersList.forEach((user, index) => {
             const barHeight = Math.max(10, Math.min(250, (user.codcoins / maxCoins) * 250));
             const bar = document.createElement("div");
             bar.className = "bar";
+
+            const crownHTML = index === 0 ? 
+                `<img src="crown.png" alt="Crown" class="crown-icon">` : '';
+
             bar.innerHTML = `
+                ${crownHTML}
                 <div style="height: ${barHeight}px;"></div>
                 <span>${user.fullname.split(' ')[1]}<br>(${user.codcoins})</span>
             `;
@@ -87,7 +95,6 @@ function updateCoursesChart(users) {
     if (chart3) createBars(chart3, top5Users);
 }
 
-// Обработка изменения курса
 courses.addEventListener('change', () => {
     const selectedCourse = courses.value;
     if (!selectedCourse) return;
@@ -107,7 +114,6 @@ courses.addEventListener('change', () => {
         });
 });
 
-// Загрузка данных при инициализации
 db.collection("users")
     .get()
     .then(snapshot => {
@@ -115,9 +121,8 @@ db.collection("users")
             id: doc.id,
             ...doc.data()
         }));
-
         updatePeriodChart(users);
-        updateCoursesChart(users); // Изначально отображаем всех пользователей
+        updateCoursesChart(users);
     })
     .catch(error => {
         console.error("Ошибка загрузки данных из Firestore:", error);

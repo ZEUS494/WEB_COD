@@ -4,15 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script> 
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script> 
     <title>Вертикальные диаграммы</title>
 </head>
 <body>
     <div class="stars-background" id="stars"></div>
-    <div class="backdoor-btn"><button id='backdoor' onclick="window.location='#'">Вернуться в личный кабинет</button></div>
+    <div class="backdoor-btn"><button id='backdoor' onclick="window.location='../profile/index.html'">Вернуться в личный кабинет</button></div>
     <h1>Вертикальные диаграммы рейтинга пользователей</h1>
     <div class="chart-container">
+        <!-- Первая диаграмма -->
         <div class="chart-wrapper">
             <div class="chart" data-parallax-factor="0.06">
                 <h2>Глобальный рейтинг</h2>
@@ -38,18 +39,22 @@
                         <span>Пользователь 1 (150)</span>
                     </div>
                 </div>
-
             </div>
         </div>
-        <select name="courses" class="courses" id="courses">
-            <option value="Python">Python</option>
-            <option value="WEB">WEB</option>
-            <option value="JS">JS</option>
-            <option value="HTML">HTML</option>
-        </select>
+
+        <!-- Вторая диаграмма с объединённым select -->
         <div class="chart-wrapper">
             <div class="chart" data-parallax-factor="0.06">
                 <h2>Рейтинг по курсам</h2>
+                <!-- Объединённый select и диаграмма -->
+                <div class="chart-header">
+                    <select name="courses" class="courses" id="courses">
+                        <option value="Python">Python</option>
+                        <option value="WEB">WEB</option>
+                        <option value="JS">JS</option>
+                        <option value="HTML">HTML</option>
+                    </select>
+                </div>
                 <div class="bar-container">
                     <div class="bar">
                         <div style="height: 50px;"></div>
@@ -75,7 +80,6 @@
             </div>
         </div>
     </div>
-
     <script src="parallax.js"></script>
     <script src="stock.js"></script>
 </body>
