@@ -48,7 +48,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const productImgId = product.querySelector('div.top').id;
             
             // Формируем корректный URL изображения
-            const productImg = `/shop/images/${productImgId}.jpg`; // Убедитесь, что путь соответствует структуре папок
+            const productImg = `/shop/images/${productImgId}.jpg`;
 
             const productItem = {
                 name: productName,

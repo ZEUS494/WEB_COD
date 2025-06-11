@@ -244,24 +244,92 @@ function showError(message) {
         }
 
         function confirmWithdraw() {
-            setCookie("lastWithdrawDate", new Date().toUTCString(), 7);
-            console.log('Вывод подтвержден! Следующий вывод будет доступен через неделю.');
-            closeModalV();
+    const currentUser = getCookie('user');
+    if (!currentUser) {
+        alert('Пользователь не авторизован!');
+        return;
+    }
+
+    const snakeCoins = parseInt(localStorage.getItem('Snake') || 0);
+    const wolfCoins = parseInt(localStorage.getItem('Wolf') || 0);
+    const arkanoidCoins = parseInt(localStorage.getItem('Arkanoid') || 0);
+    const totalCoins = snakeCoins + wolfCoins + arkanoidCoins;
+
+    if (totalCoins <= 0) {
+        alert('Нет кодкоинов для вывода!');
+        return;
+    }
+
+    // Обновляем данные в Firebase
+    const db = firebase.firestore();
+    const userRef = db.collection("users").doc(currentUser);
+
+    db.runTransaction(transaction => {
+        return transaction.get(userRef).then(doc => {
+            if (!doc.exists) {
+                throw new Error("Пользователь не найден!");
+            }
+
+            const currentBalance = parseInt(doc.data().codcoins || 0);
+            const newBalance = currentBalance + totalCoins;
+
+            transaction.update(userRef, {
+                codcoins: newBalance
+            });
+
+            // Очищаем локальные кодкоины
+            localStorage.setItem('Snake', '0');
+            localStorage.setItem('Wolf', '0');
+            localStorage.setItem('Arkanoid', '0');
+
+            return newBalance;
+        });
+    }).then(newBalance => {
+        setCookie("lastWithdrawDate", new Date().toUTCString(), 7);
+        alert(`Успешно! ${totalCoins} кодкоинов добавлены на ваш баланс. Новый баланс: ${newBalance}`);
+        updateCoinsInfo();
+        closeModalV();
+    }).catch(error => {
+        console.error("Ошибка при выводе кодкоинов:", error);
+        alert(`Ошибка при выводе кодкоинов: ${error.message}`);
+    });
+}
+
+        async function updateCoinsInfo() {
+    const currentUser = getCookie('user');
+    if (!currentUser) return;
+
+    const snakeCoins = parseInt(localStorage.getItem('Snake') || 0);
+    const wolfCoins = parseInt(localStorage.getItem('Wolf') || 0);
+    const arkanoidCoins = parseInt(localStorage.getItem('Arkanoid') || 0);
+    const totalLocalCoins = snakeCoins + wolfCoins + arkanoidCoins;
+
+    try {
+        const db = firebase.firestore();
+        const userDoc = await db.collection("users").doc(currentUser).get();
+        
+        if (userDoc.exists) {
+            const userData = userDoc.data();
+            const totalCoins = parseInt(userData.codcoins || 0);
+
+            document.querySelector('#infoModal .game-item:nth-child(1) .coins-count')
+                .textContent = `${snakeCoins} кодкоинов`;
+            document.querySelector('#infoModal .game-item:nth-child(2) .coins-count')
+                .textContent = `${wolfCoins} кодкоинов`;
+            document.querySelector('#infoModal .game-item:nth-child(3) .coins-count')
+                .textContent = `${arkanoidCoins} кодкоинов`;
+            document.querySelector('#infoModal .game-item.total .coins-count')
+                .textContent = `${totalLocalCoins} кодкоинов (доступно для вывода)`;
+            document.querySelector('#infoModal .game-item.balance .coins-count')
+                .textContent = `${totalCoins} кодкоинов (на балансе)`;
+
+            document.querySelector('.cashing h3').textContent 
+                = `Баланс: ${totalCoins} кодкоинов (доступно для вывода: ${totalLocalCoins})`;
         }
-
-        function updateCoinsInfo() {
-            const snakeCoins = localStorage.getItem('Snake') || 0;
-            const wolfCoins = localStorage.getItem('Wolf') || 0;
-            const arkanoidCoins = localStorage.getItem('Arkanoid') || 0;
-            const totalCoins = parseInt(snakeCoins) + parseInt(wolfCoins) + parseInt(arkanoidCoins);
-
-            document.querySelector('#infoModal .game-item:nth-child(1) .coins-count').textContent = `${snakeCoins} кодкоинов`;
-            document.querySelector('#infoModal .game-item:nth-child(2) .coins-count').textContent = `${wolfCoins} кодкоинов`;
-            document.querySelector('#infoModal .game-item:nth-child(3) .coins-count').textContent = `${arkanoidCoins} кодкоинов`;
-            document.querySelector('#infoModal .game-item.total .coins-count').textContent = `${totalCoins} кодкоинов`;
-
-            document.querySelector('.cashing h3').textContent = `Баланс: ${totalCoins} кодкоинов`;
-        }
+    } catch (error) {
+        console.error("Ошибка загрузки баланса:", error);
+    }
+}
 
         // Обработчики событий для игр
         closeButtonGame.addEventListener('click', closeGameModal);
@@ -317,7 +385,6 @@ function showError(message) {
         updateCoinsInfo();
     }
 
-    // Вспомогательные функции для работы с куками
     function setCookie(name, value, days) {
         let expires = "";
         if (days) {
