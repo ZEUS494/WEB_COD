@@ -46,7 +46,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
             cartItem.innerHTML = `
                 <div class="item-info">
-                    <img src="${item.img}" alt="Product Image" class="item-image">
+                    <img src="./${item.img}" alt="Product Image" class="item-image">
                     <div class="item-details">
                         <p class="item-name">${item.name}</p>
                         <p class="item-price">${item.price.toFixed(2)}</p>

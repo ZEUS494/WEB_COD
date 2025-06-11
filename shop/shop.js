@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     modalClose.addEventListener('click', hideModal);
     modalCart.addEventListener('click', function() {
-        window.location.href = '/bascet/bascet.html';
+        window.location.href = '../bascet/bascet.html';
     });
 
     modal.addEventListener('click', function(e) {

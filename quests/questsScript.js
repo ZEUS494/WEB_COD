@@ -350,9 +350,9 @@ function showError(message) {
 
         document.querySelectorAll('div.snake, div.wolf, div.arkanoid').forEach((game) => {
             game.addEventListener('click', () => {
-                const gameUrl = game.classList.contains('snake') ? "/minigames/snake/snake.html" :
-                                game.classList.contains('wolf') ? "/minigames/wolf/wolf.html" :
-                                "/minigames/arkanoid/arkanoid.html";
+                const gameUrl = game.classList.contains('snake') ? "../minigames/snake/snake.html" :
+                                game.classList.contains('wolf') ? "../minigames/wolf/wolf.html" :
+                                "../minigames/arkanoid/arkanoid.html";
                 openGameModal(gameUrl);
             });
         });
