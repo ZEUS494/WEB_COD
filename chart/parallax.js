@@ -38,15 +38,4 @@ document.addEventListener('DOMContentLoaded', () => {
             chart.style.transform = `translate(${offsetX}px, ${offsetY}px)`;
         });
     });
-
-    const bars = document.querySelectorAll('.bar div');
-    bars.forEach(bar => {
-        const initialHeight = bar.style.height;
-        bar.style.height = '0';
-        
-        setTimeout(() => {
-            bar.style.transition = 'height 1s ease';
-            bar.style.height = initialHeight;
-        }, 100);
-    });
 });

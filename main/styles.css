@@ -66,7 +66,7 @@ body {
 
 .cta-button {
     margin: 10px;
-    background-color: #ff6600;
+    background-color: #6c5ce7;
     color: #ffffff;
     border: none;
     border-radius: 8px;
@@ -77,9 +77,9 @@ body {
 }
 
 .cta-button:hover {
-    background-color: #e55b00;
+    background-color: #6c5ce7;
     transform: scale(1.05);
-    box-shadow: 0 0 30px #ff6600;
+    box-shadow: 0 0 30px #6c5ce7;
 }
 
 .background-video {
